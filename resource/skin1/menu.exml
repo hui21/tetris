@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="menu" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:tween="egret.tween.*">
+	<w:Declarations>
+		<tween:TweenGroup id="menuTween">
+			<tween:TweenItem target="{image}">
+				<tween:Set/>
+				<tween:To duration="1000" ease="quadInOut">
+					<tween:props>
+						<e:Object y="{166.54}"/>
+					</tween:props>
+				</tween:To>
+				<tween:To duration="1000" ease="quadInOut">
+					<tween:props>
+						<e:Object y="{196.54}"/>
+					</tween:props>
+				</tween:To>
+			</tween:TweenItem>
+			<tween:TweenItem target="{image0}">
+				<tween:Set/>
+				<tween:To duration="500">
+					<tween:props>
+						<e:Object y="{742.15}"/>
+					</tween:props>
+				</tween:To>
+				<tween:To duration="600">
+					<tween:props>
+						<e:Object y="{732.15}"/>
+					</tween:props>
+				</tween:To>
+			</tween:TweenItem>
+		</tween:TweenGroup>
+	</w:Declarations>
+	<e:Image source="寺庙大家宅邸郊外-6_爱给网_aigei_com_jpg" x="-221.64" y="16.18" anchorOffsetY="0" height="1120.36" anchorOffsetX="0" width="861.51"/>
+	<e:Image id="image" source="c5bfd9d2280b13e44efc1a66023874d3_png" x="42.68" y="196.54" anchorOffsetX="0" width="556.64" anchorOffsetY="0" height="814.61"/>
+	<e:Image id="image0" source="453ef4a9e9d9f884eb74f39f03c94731_png" x="121.32" y="734.15" anchorOffsetX="0" width="454" anchorOffsetY="0" height="554"/>
+</e:Skin>

@@ -1,23 +1,40 @@
 {
-	"groups":[
-	{
-		"keys":"bg_jpg,egret_icon_png,description_json",
-		"name":"preload"
-	}],
-	"resources":[
-	{
-		"name":"bg_jpg",
-		"type":"image",
-		"url":"assets/bg.jpg"
-	},
-	{
-		"name":"egret_icon_png",
-		"type":"image",
-		"url":"assets/egret_icon.png"
-	},
-	{
-		"name":"description_json",
-		"type":"json",
-		"url":"config/description.json"
-	}]
+	"groups": [
+		{
+			"keys": "description_json,寺庙大家宅邸郊外-6_爱给网_aigei_com_jpg,c5bfd9d2280b13e44efc1a66023874d3_png,453ef4a9e9d9f884eb74f39f03c94731_png,road_png,lines_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "config/description.json",
+			"type": "json",
+			"name": "description_json"
+		},
+		{
+			"url": "assets/寺庙大家宅邸郊外-6_爱给网_aigei_com.jpg",
+			"type": "image",
+			"name": "寺庙大家宅邸郊外-6_爱给网_aigei_com_jpg"
+		},
+		{
+			"url": "assets/c5bfd9d2280b13e44efc1a66023874d3.png",
+			"type": "image",
+			"name": "c5bfd9d2280b13e44efc1a66023874d3_png"
+		},
+		{
+			"url": "assets/453ef4a9e9d9f884eb74f39f03c94731.png",
+			"type": "image",
+			"name": "453ef4a9e9d9f884eb74f39f03c94731_png"
+		},
+		{
+			"url": "assets/road.png",
+			"type": "image",
+			"name": "road_png"
+		},
+		{
+			"url": "assets/lines.png",
+			"type": "image",
+			"name": "lines_png"
+		}
+	]
 }

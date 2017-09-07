@@ -10,8 +10,8 @@ var game_file_list = [
 	"libs/modules/eui/eui.js",
 	"polyfill/promise.js",
 	"bin-debug/Uilt.js",
-	"bin-debug/Game.js",
 	"bin-debug/Main.js",
+	"bin-debug/Play.js",
 	//----auto game_file_list end----
 ];
 
@@ -50,9 +50,9 @@ egret_native.egretStart = function () {
 		contentWidth: 640,
 		contentHeight: 1136,
 		showPaintRect: false,
-		showFPS: false,
+		showFPS: true,
 		fpsStyles: "x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9",
-		showLog: false,
+		showLog: true,
 		logFilter: "",
 		maxTouches: 2,
 		textureScaleFactor: 1

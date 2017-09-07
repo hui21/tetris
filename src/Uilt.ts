@@ -1,5 +1,6 @@
 module Uilt {
 	//配置类
+	import AssetsAdapter = eui.AssetsAdapter;
 	export class Config {
 		public static debug = true;
 		public static panelLineWidth = 2;
@@ -137,11 +138,15 @@ module Uilt {
 	}
 	//舞台类
 	export class Stage {
+		public static _interval:Stage;
+		public static get interval(): Stage{
+			return (this._interval || (this._interval = new Stage));
+		}
 		/**
 		 * 加载进度界面
 		 * Process interface loading
 		 */
-		private loadingView: LoadingUI;
+		private loadingView: LoadingUI = new LoadingUI;
 		/**
 		 * 获取舞台
 		 */
@@ -164,18 +169,40 @@ module Uilt {
 		}
 
 		public init(){
+			//注入自定义的素材解析器
+			let assetAdapter = new AssetAdapter();
+			egret.registerImplementation("eui.IAssetAdapter",assetAdapter);
+			egret.registerImplementation("eui.IThemeAdapter",new ThemeAdapter());
 			//初始化Resource资源加载库
 			//initiate Resource loading library
 			RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
 			RES.loadConfig("resource/default.res.json", "resource/");
 		}
 
+		/**
+		 * 配置文件加载完成,开始预加载皮肤主题资源和preload资源组。
+		 * Loading of configuration file is complete, start to pre-load the theme configuration file and the preload resource group
+		 */
 		private onConfigComplete(event: RES.ResourceEvent): void {
 			RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+
+			let theme = new eui.Theme("resource/default.thm.json", Stage.stage);
+			theme.addEventListener(eui.UIEvent.COMPLETE, this.onThemeLoadComplete, this);
+
 			RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
 			RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
 			RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
 			RES.loadGroup("preload");
+		}
+
+		private isThemeLoadEnd: boolean = false;
+		/**
+		 * 主题文件加载完成,开始预加载
+		 * Loading of theme configuration file is complete, start to pre-load the
+		 */
+		private onThemeLoadComplete(): void {
+			this.isThemeLoadEnd = true;
+			Play.Game.interval.menuInit()
 		}
 
 		/**
@@ -291,6 +318,57 @@ module Uilt {
 					break;
 			}
 
+		}
+	}
+
+	export class AssetAdapter implements eui.IAssetAdapter {
+		/**
+		 * @language zh_CN
+		 * 解析素材
+		 * @param source 待解析的新素材标识符
+		 * @param compFunc 解析完成回调函数，示例：callBack(content:any,source:string):void;
+		 * @param thisObject callBack的 this 引用
+		 */
+		public getAsset(source: string, compFunc:Function, thisObject: any): void {
+			function onGetRes(data: any): void {
+				compFunc.call(thisObject, data, source);
+			}
+			if (RES.hasRes(source)) {
+				let data = RES.getRes(source);
+				if (data) {
+					onGetRes(data);
+				}
+				else {
+					RES.getResAsync(source, onGetRes, this);
+				}
+			}
+			else {
+				RES.getResByUrl(source, onGetRes, this, RES.ResourceItem.TYPE_IMAGE);
+			}
+		}
+	}
+	//主题解析类
+	export class ThemeAdapter implements eui.IThemeAdapter {
+
+		/**
+		 * 解析主题
+		 * @param url 待解析的主题url
+		 * @param compFunc 解析完成回调函数，示例：compFunc(e:egret.Event):void;
+		 * @param errorFunc 解析失败回调函数，示例：errorFunc():void;
+		 * @param thisObject 回调的this引用
+		 */
+		public getTheme(url:string,compFunc:Function,errorFunc:Function,thisObject:any):void {
+			function onGetRes(e:string):void {
+				compFunc.call(thisObject, e);
+			}
+			function onError(e:RES.ResourceEvent):void {
+				if(e.resItem.url == url) {
+					RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, onError, null);
+					errorFunc.call(thisObject);
+				}
+			}
+			RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, onError, null);
+			RES.getResByUrl(url, onGetRes, this, RES.ResourceItem.TYPE_TEXT);
 		}
 	}
 	//游戏状态
