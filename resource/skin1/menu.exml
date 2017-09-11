@@ -30,7 +30,7 @@
 			</tween:TweenItem>
 		</tween:TweenGroup>
 	</w:Declarations>
-	<e:Image source="寺庙大家宅邸郊外-6_爱给网_aigei_com_jpg" x="-221.64" y="16.18" anchorOffsetY="0" height="1120.36" anchorOffsetX="0" width="861.51"/>
+	<e:Image source="寺庙大家宅邸郊外-6_爱给网_aigei_com_jpg" x="-221.64" y="0" anchorOffsetY="0" height="1136" anchorOffsetX="0" width="870.6"/>
 	<e:Image id="image" source="c5bfd9d2280b13e44efc1a66023874d3_png" x="42.68" y="196.54" anchorOffsetX="0" width="556.64" anchorOffsetY="0" height="814.61"/>
 	<e:Image id="startBtn" source="453ef4a9e9d9f884eb74f39f03c94731_png" x="121.32" y="734.15" anchorOffsetX="0" width="454" anchorOffsetY="0" height="554"/>
 </e:Skin>

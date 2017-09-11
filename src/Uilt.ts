@@ -140,6 +140,7 @@ module Uilt {
 	export class Stage {
 		public static _interval:Stage;
 		public static get interval(): Stage{
+			this.stage.width = 640
 			return (this._interval || (this._interval = new Stage));
 		}
 		/**

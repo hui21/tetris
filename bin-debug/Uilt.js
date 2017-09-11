@@ -171,6 +171,7 @@ var Uilt;
         }
         Object.defineProperty(Stage, "interval", {
             get: function () {
+                this.stage.width = 640;
                 return (this._interval || (this._interval = new Stage));
             },
             enumerable: true,
