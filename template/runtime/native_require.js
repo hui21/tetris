@@ -10,8 +10,8 @@ var game_file_list = [
 	"libs/modules/eui/eui.js",
 	"polyfill/promise.js",
 	"bin-debug/Uilt.js",
-	"bin-debug/Game.js",
 	"bin-debug/Main.js",
+	"bin-debug/Play.js",
 	//----auto game_file_list end----
 ];
 

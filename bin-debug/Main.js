@@ -14,7 +14,7 @@ var Main = (function (_super) {
         return _this;
     }
     Main.prototype.onAddToStage = function (event) {
-        this.stage.addChild(Game.Init());
+        this.stage.addChild(Play.Game.Init());
     };
     return Main;
 }(egret.DisplayObjectContainer));

@@ -6,7 +6,7 @@ class Main extends egret.DisplayObjectContainer {
     }
 
     public onAddToStage(event: egret.Event) {
-        this.stage.addChild(Game.Init());
+        this.stage.addChild(Play.Game.Init());
     }
 }
 
