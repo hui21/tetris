@@ -105,16 +105,16 @@ var Play;
              * 获取格子大小
              */
             get: function () {
-                return 64;
+                return 63.9;
             },
             enumerable: true,
             configurable: true
         });
         grid.prototype.initGrid = function () {
-            for (var x = 0; x < grid.gridItemCols; x++) {
+            for (var x = 0; x <= grid.gridItemCols; x++) {
                 var gridItemX = new gridLine((x * grid.gridSize), 0, (x * grid.gridSize), Stage.stageH);
                 this.addChild(gridItemX);
-                for (var y = 1; y < grid.gridItemRows; y++) {
+                for (var y = 1; y <= grid.gridItemRows; y++) {
                     var gridItemY = new gridLine(0, (y * grid.gridSize), ((x + 1) * grid.gridSize), (y * grid.gridSize));
                     this.addChild(gridItemY);
                     this.gridMaps.push(new gridMap(x, y)); //添加位置到数组中
@@ -124,7 +124,7 @@ var Play;
         return grid;
     }(egret.Sprite));
     grid.gridItemCols = 10; //列
-    grid.gridItemRows = 18; //行
+    grid.gridItemRows = 17; //行
     Play.grid = grid;
     __reflect(grid.prototype, "Play.grid");
     //格子对象
@@ -145,7 +145,7 @@ var Play;
     }());
     Play.gridMap = gridMap;
     __reflect(gridMap.prototype, "Play.gridMap");
-    //方块类型
+    //方块类型枚举
     var cudeType;
     (function (cudeType) {
         cudeType[cudeType["Type1"] = 1] = "Type1";
@@ -160,8 +160,12 @@ var Play;
         __extends(cude, _super);
         function cude(x, y, w, h, color) {
             var _this = _super.call(this) || this;
+            _this.posX = x;
+            _this.posY = y;
+            _this.x = cudeData.posTo(x);
+            _this.y = cudeData.posTo(y);
             _this.graphics.beginFill(color);
-            _this.graphics.drawRoundRect(x, y, w, h, 10, 10);
+            _this.graphics.drawRoundRect(0, 0, w, h, 10, 10);
             _this.graphics.endFill();
             return _this;
         }
@@ -180,11 +184,57 @@ var Play;
     }(egret.Sprite));
     Play.cude = cude;
     __reflect(cude.prototype, "Play.cude");
+    //按键事件枚举
+    var KeyCode;
+    (function (KeyCode) {
+        KeyCode[KeyCode["KeyLeft"] = 37] = "KeyLeft";
+        KeyCode[KeyCode["KeyUp"] = 38] = "KeyUp";
+        KeyCode[KeyCode["KeyRight"] = 39] = "KeyRight";
+        KeyCode[KeyCode["KeyDown"] = 40] = "KeyDown";
+        KeyCode[KeyCode["KeySpace"] = 32] = "KeySpace";
+    })(KeyCode = Play.KeyCode || (Play.KeyCode = {}));
+    //方块位置数据
+    var cudePosXY = (function () {
+        function cudePosXY(x, y, posX, posY) {
+            this.x = x;
+            this.y = y;
+            this.posX = posX;
+            this.posY = posY;
+        }
+        return cudePosXY;
+    }());
+    Play.cudePosXY = cudePosXY;
+    __reflect(cudePosXY.prototype, "Play.cudePosXY");
+    //方块数据
     var cudeData = (function (_super) {
         __extends(cudeData, _super);
         function cudeData() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.cudes = [];
+            var _this = _super.call(this) || this;
+            _this.cudes = []; //方块集合
+            _this.nowCude = []; //当前正在前进的方块
+            _this.nowSpeed = 1; //当前速度
+            //按键事件侦听
+            window.addEventListener('keydown', function (e) {
+                switch (e.keyCode) {
+                    case KeyCode.KeyLeft:
+                        _this.KeyLeft();
+                        break;
+                    case KeyCode.KeyUp:
+                        _this.KeyUp();
+                        break;
+                    case KeyCode.KeyRight:
+                        _this.KeyRight();
+                        break;
+                    case KeyCode.KeyDown:
+                        _this.KeyDown();
+                        break;
+                    case KeyCode.KeySpace:
+                        _this.KeySpace();
+                        break;
+                    default:
+                        break;
+                }
+            }, false);
             return _this;
         }
         Object.defineProperty(cudeData, "interval", {
@@ -194,11 +244,103 @@ var Play;
             enumerable: true,
             configurable: true
         });
+        //上移动
+        cudeData.prototype.KeyUp = function () {
+            if (this.nowCudeType === cudeType.Type1)
+                return false;
+            var canRotate = true, newPosXy = [];
+            for (var i = 0; i < this.nowCude.length; i++) {
+                var newXy = this.rotatePoint(this.nowCude[1], this.nowCude[i]);
+                if (newXy.posX < 0 || newXy.posX > (grid.gridItemCols - 1) ||
+                    newXy.posY < 0 || newXy.posY > (grid.gridItemRows - 1)) {
+                    canRotate = false;
+                    break;
+                }
+                newPosXy.push(newXy);
+            }
+            if (canRotate) {
+                for (var i = 0; i < this.nowCude.length; i++) {
+                    this.nowCude[i].x = newPosXy[i].x;
+                    this.nowCude[i].y = newPosXy[i].y;
+                    this.nowCude[i].posX = newPosXy[i].posX;
+                    this.nowCude[i].posY = newPosXy[i].posY;
+                }
+            }
+        };
+        //下移动
+        cudeData.prototype.KeyDown = function () {
+            var canMove = true, newPosXy = [];
+            for (var i = 0; i < this.nowCude.length; i++) {
+                var newXy = new cudePosXY(0, 0, this.nowCude[i].posX, this.nowCude[i].posY + 1);
+                if (newXy.posY > grid.gridItemRows) {
+                    canMove = false;
+                    break;
+                }
+                newPosXy.push(newXy);
+            }
+            if (canMove)
+                this.pos(newPosXy);
+        };
+        //左移动
+        cudeData.prototype.KeyLeft = function () {
+            var canMove = true, newPosXy = [];
+            for (var i = 0; i < this.nowCude.length; i++) {
+                var newXy = new cudePosXY(0, 0, this.nowCude[i].posX - 1, this.nowCude[i].posY);
+                if (newXy.posX < 0) {
+                    canMove = false;
+                    break;
+                }
+                newPosXy.push(newXy);
+            }
+            if (canMove)
+                this.pos(newPosXy);
+        };
+        //右移动
+        cudeData.prototype.KeyRight = function () {
+            var canMove = true, newPosXy = [];
+            for (var i = 0; i < this.nowCude.length; i++) {
+                var newXy = new cudePosXY(0, 0, this.nowCude[i].posX + 1, this.nowCude[i].posY);
+                if (newXy.posX > (grid.gridItemCols - 1)) {
+                    canMove = false;
+                    break;
+                }
+                newPosXy.push(newXy);
+            }
+            if (canMove)
+                this.pos(newPosXy);
+        };
+        cudeData.prototype.KeySpace = function () {
+            console.log('space');
+        };
+        /**
+         * 设置移动后的位置
+         * @param newPosXy
+         */
+        cudeData.prototype.pos = function (newPosXy) {
+            for (var i = 0; i < this.nowCude.length; i++) {
+                this.nowCude[i].x = cudeData.posTo(newPosXy[i].posX);
+                this.nowCude[i].y = cudeData.posTo(newPosXy[i].posY);
+                this.nowCude[i].posX = newPosXy[i].posX;
+                this.nowCude[i].posY = newPosXy[i].posY;
+            }
+        };
+        /**
+         * 原始值转结果值
+         * @param value
+         * @returns {number}
+         */
+        cudeData.posTo = function (value) {
+            return value * grid.gridSize + 1;
+        };
+        /**
+         * 创建随机类型的方块组
+         */
         cudeData.prototype.createRandOneCude = function () {
-            var rand = Math.round(Math.random() * (grid.gridItemCols - 1)), cudetype = Math.round(Math.random() * cudeType.end), effectCude = this.cudesEffect(1, rand);
-            for (var i = 0; i < effectCude.length; i++) {
-                this.cudes.push(effectCude[i]);
-                this.addChild(effectCude[i]);
+            this.nowCudeType = Math.round(Math.random() * cudeType.end);
+            this.nowCude = this.cudesEffect(this.nowCudeType);
+            for (var i = 0; i < this.nowCude.length; i++) {
+                this.cudes.push(this.nowCude[i]);
+                this.addChild(this.nowCude[i]);
             }
         };
         /**
@@ -207,26 +349,70 @@ var Play;
          * @param posX
          * @returns {Array<cude>}
          */
-        cudeData.prototype.cudesEffect = function (type, posX) {
-            var maps = [];
+        cudeData.prototype.cudesEffect = function (type) {
+            var maps = [], maxX = Math.floor(grid.gridItemCols / 2), //最大X轴位置
+            minX = maxX - 1, //最小X轴的位置
+            minY = cude.cudeSize * -4; //开始下落位置
             switch (type) {
                 case cudeType.Type1:
-                    maps.push(new cude((posX * grid.gridSize + 1), 0, cude.cudeSize, cude.cudeSize, 0xff0000));
-                    var posXType1 = void 0;
-                    if (posX >= (grid.gridItemCols / 2)) {
-                        posXType1 = posX - 1;
+                    for (var x = minX; x <= maxX; x++) {
+                        for (var y = 0; y < 2; y++) {
+                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize, 0xff0000));
+                        }
                     }
-                    else {
-                        posXType1 = posX + 1;
+                    break;
+                case cudeType.Type2:
+                    for (var y = 0; y <= 2; y++) {
+                        for (var x = minX; x <= maxX; x++) {
+                            if (y < 2 && x > minX)
+                                continue;
+                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize, 0xff0000));
+                        }
                     }
-                    maps.push(new cude((posXType1 * grid.gridSize + 1), 0, cude.cudeSize, cude.cudeSize, 0xff0000));
+                    break;
+                case cudeType.Type3:
+                    for (var y = 0; y <= 2; y++) {
+                        for (var x = minX; x <= maxX; x++) {
+                            if ((y < 1 && x > minX) || (y > 1 && x < maxX))
+                                continue;
+                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize, 0xff0000));
+                        }
+                    }
+                    break;
+                case cudeType.Type4:
+                    for (var y = 0; y <= 1; y++) {
+                        maps.push(new cude(minX, y, cude.cudeSize, cude.cudeSize, 0xff0000));
+                        if (y < 1)
+                            continue;
+                        maps.push(new cude((minX - 1), y, cude.cudeSize, cude.cudeSize, 0xff0000));
+                        maps.push(new cude(maxX, y, cude.cudeSize, cude.cudeSize, 0xff0000));
+                    }
+                    break;
+                case cudeType.Type5:
+                    for (var y = 0; y <= 3; y++) {
+                        maps.push(new cude(minX, y, cude.cudeSize, cude.cudeSize, 0xff0000));
+                    }
                     break;
                 default:
-                    var posXs = posX * grid.gridSize;
-                    maps.push(new cude(posXs, 0, cude.cudeSize, cude.cudeSize, 0xff0000));
+                    for (var x = minX; x <= maxX; x++) {
+                        for (var y = 0; y < 2; y++) {
+                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize, 0xff0000));
+                        }
+                    }
                     break;
             }
             return maps;
+        };
+        /**
+         * cude2以cude1为中心旋转
+         * @param cude1
+         * @param cude2
+         * @returns {Play.cudePosXY}
+         */
+        cudeData.prototype.rotatePoint = function (cude1, cude2) {
+            var y = (cude2.x - cude1.x + cude1.y), x = (-cude2.y + cude1.x + cude1.y), posx = (-cude2.posY + cude1.posX + cude1.posY), posy = (cude2.posX - cude1.posX + cude1.posY);
+            //console.log(posy, posx)
+            return new cudePosXY(x, y, posx, posy);
         };
         return cudeData;
     }(egret.Sprite));
