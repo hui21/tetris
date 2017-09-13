@@ -79,29 +79,43 @@ module Play {
          * 获取格子大小
          */
         public static get gridSize(): number {
-            return 63.9;
+            return 63;
         }
         public constructor() {
             super()
-            this.initGrid()
-            this.width = Stage.stageW
-            this.height = Stage.stageH
+            this.x = (Stage.stageW - grid.gridItemCols * grid.gridSize) / 2
+            this.width = grid.gridItemCols * grid.gridSize
+            this.height = Stage.stageH - grid.gridSize*1.8
             this['anchorX'] = 1
             this['anchorY'] = 1
+            this.initGrid()
         }
-        public static gridItemCols = 10//列
-        public static gridItemRows = 17//行
+
+        //格子总列数
+        public static get gridItemCols(): number {
+            return 10;
+        }
+        //格子总行数
+        public static get gridItemRows(): number {
+            return 17
+        }
+        //距离顶部
+        public static get topRow(): number {
+            return 2
+        }
         //画格子
         public gridMaps: Array<gridMap> = [];
         public initGrid(): void {
-            for(var x = 0; x <= grid.gridItemCols; x++){
-                let gridItemX = new gridLine((x * grid.gridSize), 0, (x * grid.gridSize), Stage.stageH)
+            this.y = grid.gridSize * grid.topRow
+            for(let x = 0; x <= grid.gridItemCols; x++){
+                let gridItemX = new gridLine((x * grid.gridSize), 0, 0, this.height)
                 this.addChild(gridItemX)
-                for (let y = 1; y <= grid.gridItemRows; y++) {
-                    let gridItemY = new gridLine(0, (y * grid.gridSize), ((x+1) * grid.gridSize), (y * grid.gridSize))
-                    this.addChild(gridItemY)
-                    this.gridMaps.push(new gridMap(x, y))//添加位置到数组中
-                }
+                this.gridMaps.push(new gridMap(x, 0))//添加位置到数组中
+            }
+            for (let y = 0; y < grid.gridItemRows; y++) {
+                let gridItemY = new gridLine(0, (y * grid.gridSize), this.width, 0)
+                this.addChild(gridItemY)
+                this.gridMaps.push(new gridMap(0, y))//添加位置到数组中
             }
         }
     }
@@ -141,9 +155,9 @@ module Play {
         public constructor(x, y, w, h){
             super();
             this.posX = x
-            this.posY = -y
+            this.posY = -y + grid.topRow
             this.x = cudeData.posTo(x)
-            this.y = - cudeData.posTo(y)
+            this.y = - cudeData.posTo(y) + grid.topRow * grid.gridSize
 
             this.graphics.beginFill(this.color);
             this.graphics.drawRoundRect( 0, 0, w, h, 10, 10);
@@ -193,6 +207,10 @@ module Play {
         }
         public constructor(){
             super()
+            this.y = grid.interval.y
+            this.x = grid.interval.x
+            this.width = grid.interval.width
+            this.height = grid.interval.height
             //按键事件侦听
             window.addEventListener('keydown', (e) => {
                 switch (e.keyCode){
@@ -240,7 +258,7 @@ module Play {
             let status: boolean = true;
             for(let i = 0; i < this.nowCude.length; i++){
                 if(
-                    this.nowCude[i].posY == grid.gridItemRows ||
+                    this.nowCude[i].posY == (grid.gridItemRows -2) ||
                     this.isHaveCude(this.nowCude[i])
                 ){
                     status = false;
@@ -298,7 +316,7 @@ module Play {
                 let canMove: boolean = true,
                     newPosXy: Array<cudePosXY> = []
                 for(let i = 0; i < this.nowCude.length; i++){
-                    let newXy = new cudePosXY(0,0, this.nowCude[i].posX, this.nowCude[i].posY+1,)
+                    let newXy = new cudePosXY(0,0, this.nowCude[i].posX, this.nowCude[i].posY+1)
                     if(newXy.posY > grid.gridItemRows){
                         canMove = false
                         break;
@@ -373,13 +391,11 @@ module Play {
          * 消除
          */
         private remove(): boolean {
-            for (let y = grid.gridItemRows; y >= 0; y--){
-                let status: boolean = true,
-                    removeY: number = 0
+            for (let y = 0; y <= grid.gridItemRows; y++){
+                let status: boolean = true
                 for(let x = 0; x < grid.gridItemCols; x++){
                     if(!this.isPosXy(x, y)){
                         status = false;
-                        return false;
                     }
                 }
                 if(status){
@@ -397,28 +413,23 @@ module Play {
                             }
                         }
                     }
-                }
-            }
-            let canMove: boolean = true,
-                newPosXy: Array<cudePosXY> = []
-            for(let i = 0; i < this.cudes.length; i++){
-                let newXy = new cudePosXY(0,0, this.cudes[i].posX, this.cudes[i].posY+1,)
-                if(newXy.posY > grid.gridItemRows){
-                    canMove = false
-                    continue;
-                }
-                newPosXy.push(newXy)
-            }
-            console.log(canMove)
-            if(canMove){
-                for(let i = 0; i < this.cudes.length; i++){
-                    this.cudes[i].x = cudeData.posTo(newPosXy[i].posX)
-                    this.cudes[i].y = cudeData.posTo(newPosXy[i].posY)
-                    this.cudes[i].posX = newPosXy[i].posX
-                    this.cudes[i].posY = newPosXy[i].posY
+                    this.refresh()
                 }
             }
             return true;
+        }
+
+        //刷新
+        private refresh(): void {
+            let newPosXy: Array<cudePosXY> = []
+            for(let i = 0; i < this.cudes.length; i++){
+                let posY:number = this.cudes[i].posY+1
+                if(!this.isPosXy(this.cudes[i].posX, posY) && posY <= grid.gridItemRows){
+                    this.cudes[i].y = cudeData.posTo(posY)
+                    this.cudes[i].posY = posY
+                    this.refresh()
+                }
+            }
         }
 
 
@@ -548,8 +559,10 @@ module Play {
         }
         public constructor(x, y, x1, y1){
             super()
+            this.x = x
+            this.y = y
             this.graphics.lineStyle(this.LineWidth, this.LineColor)
-            this.graphics.moveTo(x, y)
+            this.graphics.moveTo(0, 0)
             this.graphics.lineTo(x1, y1)
             this.graphics.endFill()
             return this

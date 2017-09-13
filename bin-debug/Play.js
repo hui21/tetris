@@ -88,11 +88,12 @@ var Play;
             var _this = _super.call(this) || this;
             //画格子
             _this.gridMaps = [];
-            _this.initGrid();
-            _this.width = Stage.stageW;
-            _this.height = Stage.stageH;
+            _this.x = (Stage.stageW - grid.gridItemCols * grid.gridSize) / 2;
+            _this.width = grid.gridItemCols * grid.gridSize;
+            _this.height = Stage.stageH - grid.gridSize * 1.8;
             _this['anchorX'] = 1;
             _this['anchorY'] = 1;
+            _this.initGrid();
             return _this;
         }
         Object.defineProperty(grid, "interval", {
@@ -107,26 +108,50 @@ var Play;
              * 获取格子大小
              */
             get: function () {
-                return 63.9;
+                return 63;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(grid, "gridItemCols", {
+            //格子总列数
+            get: function () {
+                return 10;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(grid, "gridItemRows", {
+            //格子总行数
+            get: function () {
+                return 17;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(grid, "topRow", {
+            //距离顶部
+            get: function () {
+                return 2;
             },
             enumerable: true,
             configurable: true
         });
         grid.prototype.initGrid = function () {
+            this.y = grid.gridSize * grid.topRow;
             for (var x = 0; x <= grid.gridItemCols; x++) {
-                var gridItemX = new gridLine((x * grid.gridSize), 0, (x * grid.gridSize), Stage.stageH);
+                var gridItemX = new gridLine((x * grid.gridSize), 0, 0, this.height);
                 this.addChild(gridItemX);
-                for (var y = 1; y <= grid.gridItemRows; y++) {
-                    var gridItemY = new gridLine(0, (y * grid.gridSize), ((x + 1) * grid.gridSize), (y * grid.gridSize));
-                    this.addChild(gridItemY);
-                    this.gridMaps.push(new gridMap(x, y)); //添加位置到数组中
-                }
+                this.gridMaps.push(new gridMap(x, 0)); //添加位置到数组中
+            }
+            for (var y = 0; y < grid.gridItemRows; y++) {
+                var gridItemY = new gridLine(0, (y * grid.gridSize), this.width, 0);
+                this.addChild(gridItemY);
+                this.gridMaps.push(new gridMap(0, y)); //添加位置到数组中
             }
         };
         return grid;
     }(egret.Sprite));
-    grid.gridItemCols = 10; //列
-    grid.gridItemRows = 17; //行
     Play.grid = grid;
     __reflect(grid.prototype, "Play.grid");
     //格子对象
@@ -164,9 +189,9 @@ var Play;
             var _this = _super.call(this) || this;
             _this.color = 0xa01311;
             _this.posX = x;
-            _this.posY = -y;
+            _this.posY = -y + grid.topRow;
             _this.x = cudeData.posTo(x);
-            _this.y = -cudeData.posTo(y);
+            _this.y = -cudeData.posTo(y) + grid.topRow * grid.gridSize;
             _this.graphics.beginFill(_this.color);
             _this.graphics.drawRoundRect(0, 0, w, h, 10, 10);
             _this.graphics.endFill();
@@ -216,6 +241,10 @@ var Play;
             _this.cudes = []; //方块集合
             _this.nowCude = []; //当前正在前进的方块
             _this.nowSpeed = 1000; //当前速度
+            _this.y = grid.interval.y;
+            _this.x = grid.interval.x;
+            _this.width = grid.interval.width;
+            _this.height = grid.interval.height;
             //按键事件侦听
             window.addEventListener('keydown', function (e) {
                 switch (e.keyCode) {
@@ -269,7 +298,7 @@ var Play;
         cudeData.prototype.canDown = function () {
             var status = true;
             for (var i = 0; i < this.nowCude.length; i++) {
-                if (this.nowCude[i].posY == grid.gridItemRows ||
+                if (this.nowCude[i].posY == (grid.gridItemRows - 2) ||
                     this.isHaveCude(this.nowCude[i])) {
                     status = false;
                     break;
@@ -397,12 +426,11 @@ var Play;
          * 消除
          */
         cudeData.prototype.remove = function () {
-            for (var y = grid.gridItemRows; y >= 0; y--) {
-                var status_1 = true, removeY = 0;
+            for (var y = 0; y <= grid.gridItemRows; y++) {
+                var status_1 = true;
                 for (var x = 0; x < grid.gridItemCols; x++) {
                     if (!this.isPosXy(x, y)) {
                         status_1 = false;
-                        return false;
                     }
                 }
                 if (status_1) {
@@ -420,27 +448,22 @@ var Play;
                             }
                         }
                     }
-                }
-            }
-            var canMove = true, newPosXy = [];
-            for (var i = 0; i < this.cudes.length; i++) {
-                var newXy = new cudePosXY(0, 0, this.cudes[i].posX, this.cudes[i].posY + 1);
-                if (newXy.posY > grid.gridItemRows) {
-                    canMove = false;
-                    continue;
-                }
-                newPosXy.push(newXy);
-            }
-            console.log(canMove);
-            if (canMove) {
-                for (var i = 0; i < this.cudes.length; i++) {
-                    this.cudes[i].x = cudeData.posTo(newPosXy[i].posX);
-                    this.cudes[i].y = cudeData.posTo(newPosXy[i].posY);
-                    this.cudes[i].posX = newPosXy[i].posX;
-                    this.cudes[i].posY = newPosXy[i].posY;
+                    this.refresh();
                 }
             }
             return true;
+        };
+        //刷新
+        cudeData.prototype.refresh = function () {
+            var newPosXy = [];
+            for (var i = 0; i < this.cudes.length; i++) {
+                var posY = this.cudes[i].posY + 1;
+                if (!this.isPosXy(this.cudes[i].posX, posY) && posY <= grid.gridItemRows) {
+                    this.cudes[i].y = cudeData.posTo(posY);
+                    this.cudes[i].posY = posY;
+                    this.refresh();
+                }
+            }
         };
         /**
          * 设置移动后的位置
@@ -551,8 +574,10 @@ var Play;
         __extends(gridLine, _super);
         function gridLine(x, y, x1, y1) {
             var _this = _super.call(this) || this;
+            _this.x = x;
+            _this.y = y;
             _this.graphics.lineStyle(_this.LineWidth, _this.LineColor);
-            _this.graphics.moveTo(x, y);
+            _this.graphics.moveTo(0, 0);
             _this.graphics.lineTo(x1, y1);
             _this.graphics.endFill();
             return _this;
