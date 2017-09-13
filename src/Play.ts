@@ -1,9 +1,11 @@
-import Tool = Uilt.Tool;
 /**
  * Created by feizhugame on 2017/9/6.
  */
 module Play {
     import Stage = Uilt.Stage;
+    import UniltGame = Uilt.Game;
+    import GameStatus = Uilt.GameStatus;
+    import Tool = Uilt.Tool;
     //游戏开始菜单页面和基础游戏信息
     export class Game extends eui.Component {
         private Score: number = 0;//分数
@@ -33,6 +35,7 @@ module Play {
             Stage.stage.addChild(grid.interval)
             Stage.stage.addChild(cudeData.interval)
             cudeData.interval.createRandOneCude();
+            UniltGame.interval.setGameStatus(GameStatus.Start)
             /*this.skinName = "menu";
             this.menuTween.addEventListener('complete', () => {
                 this.menuTween.play(1)
@@ -132,16 +135,17 @@ module Play {
     export class cude extends egret.Sprite {
         public x:number
         public y:number
+        public color: number = 0xa01311
         public posY:number//原始Y坐标
         public posX:number//原始X坐标
-        public constructor(x, y, w, h, color){
+        public constructor(x, y, w, h){
             super();
             this.posX = x
-            this.posY = y
+            this.posY = -y
             this.x = cudeData.posTo(x)
-            this.y = cudeData.posTo(y)
+            this.y = - cudeData.posTo(y)
 
-            this.graphics.beginFill(color);
+            this.graphics.beginFill(this.color);
             this.graphics.drawRoundRect( 0, 0, w, h, 10, 10);
             this.graphics.endFill();
         }
@@ -161,7 +165,7 @@ module Play {
         KeyUp = 38,//↑
         KeyRight = 39,//→
         KeyDown = 40,//↓
-        KeySpace = 32,//空格暂停
+        KeySpace = 13,//空格暂停
     }
     //方块位置数据
     export class cudePosXY {
@@ -178,10 +182,11 @@ module Play {
     }
     //方块数据
     export class cudeData extends egret.Sprite {
-        public cudes: Array<cude> = []//方块集合
-        public nowCude: Array<cude> = []//当前正在前进的方块
-        public nowCudeType: cudeType//当前正在前进的方块类型
-        public nowSpeed:number = 1//当前速度
+        public cudes: Array<cude> = [] //方块集合
+        public nowCude: Array<cude> = [] //当前正在前进的方块
+        public nowCudeType: cudeType //当前正在前进的方块类型
+        public nowSpeed:number = 1000 //当前速度
+        private timer: egret.Timer //时间对象
         public static _interval: cudeData;
         public static get interval(): cudeData {
             return (this._interval || (this._interval = new cudeData));
@@ -210,8 +215,57 @@ module Play {
                         break;
                 }
             }, false)
+            this.timer = new egret.Timer(this.nowSpeed, 0);
+            //注册事件侦听器
+            this.timer.addEventListener(egret.TimerEvent.TIMER,this.timerFunc,this);
+            this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,this.timerComFunc,this);
+            //开始计时
+            this.timer.start();
+        }
+        public timerFunc(): boolean {
+            if(UniltGame.interval.getGameStatus() !== GameStatus.Start) return false;
+            this.KeyDown()
+            return true;
         }
 
+        public timerComFunc(): void {
+            console.log("timerComplate")
+        }
+
+        /**
+         * 是否能下落
+         * @returns {boolean}
+         */
+        private canDown(): boolean {
+            let status: boolean = true;
+            for(let i = 0; i < this.nowCude.length; i++){
+                if(
+                    this.nowCude[i].posY == grid.gridItemRows ||
+                    this.isHaveCude(this.nowCude[i])
+                ){
+                    status = false;
+                    break;
+                }
+            }
+            return status
+        }
+
+        /**
+         * 该位置是否有方块
+         * @param posX
+         * @param posY
+         * @returns {boolean}
+         */
+        private isHaveCude(cude: cude): boolean {
+            let status: boolean = false;
+            for (let i = 0; i < this.cudes.length; i++){
+                if((this.cudes[i].posY == (cude.posY +1)) && (cude.posY > 0) && (this.cudes[i].posX == cude.posX)){
+                    status = true;
+                    break;
+                }
+            }
+            return status;
+        }
         //上移动
         private KeyUp(){
             if(this.nowCudeType === cudeType.Type1) return false;
@@ -240,26 +294,37 @@ module Play {
 
         //下移动
         private KeyDown(){
-            let canMove: boolean = true,
-                newPosXy: Array<cudePosXY> = []
-            for(let i = 0; i < this.nowCude.length; i++){
-                let newXy = new cudePosXY(0,0, this.nowCude[i].posX, this.nowCude[i].posY+1,)
-                if(newXy.posY > grid.gridItemRows){
-                    canMove = false
-                    break;
+            if(this.canDown()){
+                let canMove: boolean = true,
+                    newPosXy: Array<cudePosXY> = []
+                for(let i = 0; i < this.nowCude.length; i++){
+                    let newXy = new cudePosXY(0,0, this.nowCude[i].posX, this.nowCude[i].posY+1,)
+                    if(newXy.posY > grid.gridItemRows){
+                        canMove = false
+                        break;
+                    }
+                    newPosXy.push(newXy)
                 }
-                newPosXy.push(newXy)
+                if(canMove) this.pos(newPosXy)
+            }else{
+                for(let i = 0; i < this.nowCude.length; i++){
+                    if(this.nowCude[i].posY == 1){
+                        UniltGame.interval.setGameStatus(GameStatus.Died)
+                        console.log("game over")
+                    }
+                    this.cudes.push(this.nowCude[i])
+                }
+                this.remove()
+                cudeData.interval.createRandOneCude()
             }
-            if(canMove) this.pos(newPosXy)
         }
-
         //左移动
         private KeyLeft(){
             let canMove: boolean = true,
                 newPosXy: Array<cudePosXY> = []
             for(let i = 0; i < this.nowCude.length; i++){
                 let newXy = new cudePosXY(0,0, this.nowCude[i].posX -1, this.nowCude[i].posY,)
-                if(newXy.posX < 0){
+                if(newXy.posX < 0 || newXy.posY == grid.gridItemRows){
                     canMove = false
                     break;
                 }
@@ -273,7 +338,7 @@ module Play {
                 newPosXy: Array<cudePosXY> = []
             for(let i = 0; i < this.nowCude.length; i++){
                 let newXy = new cudePosXY(0,0, this.nowCude[i].posX + 1, this.nowCude[i].posY,)
-                if(newXy.posX > (grid.gridItemCols - 1)){
+                if(newXy.posX > (grid.gridItemCols - 1) || newXy.posY == grid.gridItemRows){
                     canMove = false
                     break;
                 }
@@ -282,9 +347,80 @@ module Play {
             if(canMove) this.pos(newPosXy)
         }
 
+        //暂停/开始游戏切换
         private KeySpace(){
-            console.log('space');
+            if(UniltGame.interval.getGameStatus() === GameStatus.Start){
+                UniltGame.interval.setGameStatus(GameStatus.Stop)
+            }else if(UniltGame.interval.getGameStatus() === GameStatus.Stop){
+                UniltGame.interval.setGameStatus(GameStatus.Start)
+            }
         }
+
+        /**
+         * 查找位置
+         * @param x
+         * @param y
+         * @returns {boolean}
+         */
+        private isPosXy(x: number, y: number): boolean{
+            for (let i = 0; i < this.cudes.length; i++){
+                if(this.cudes[i].posX == x && this.cudes[i].posY == y) return true;
+            }
+            return false;
+        }
+
+        /**
+         * 消除
+         */
+        private remove(): boolean {
+            for (let y = grid.gridItemRows; y >= 0; y--){
+                let status: boolean = true,
+                    removeY: number = 0
+                for(let x = 0; x < grid.gridItemCols; x++){
+                    if(!this.isPosXy(x, y)){
+                        status = false;
+                        return false;
+                    }
+                }
+                if(status){
+                    let removeArr: Array<cude> = []
+                    for (let i = 0; i < this.cudes.length; i++){
+                        if(this.cudes[i].posY == y){
+                            this.removeChild(this.cudes[i])
+                            removeArr.push(this.cudes[i])
+                        }
+                    }
+                    for (let i = 0; i < removeArr.length; i++){
+                        for (let k = 0; k < this.cudes.length; k++){
+                            if(this.cudes[k].posY == removeArr[i].posY){
+                                this.cudes.splice(k,1)
+                            }
+                        }
+                    }
+                }
+            }
+            let canMove: boolean = true,
+                newPosXy: Array<cudePosXY> = []
+            for(let i = 0; i < this.cudes.length; i++){
+                let newXy = new cudePosXY(0,0, this.cudes[i].posX, this.cudes[i].posY+1,)
+                if(newXy.posY > grid.gridItemRows){
+                    canMove = false
+                    continue;
+                }
+                newPosXy.push(newXy)
+            }
+            console.log(canMove)
+            if(canMove){
+                for(let i = 0; i < this.cudes.length; i++){
+                    this.cudes[i].x = cudeData.posTo(newPosXy[i].posX)
+                    this.cudes[i].y = cudeData.posTo(newPosXy[i].posY)
+                    this.cudes[i].posX = newPosXy[i].posX
+                    this.cudes[i].posY = newPosXy[i].posY
+                }
+            }
+            return true;
+        }
+
 
         /**
          * 设置移动后的位置
@@ -314,7 +450,6 @@ module Play {
             this.nowCudeType = Math.round(Math.random() * cudeType.end)
             this.nowCude = this.cudesEffect(this.nowCudeType)
             for(let i =0; i < this.nowCude.length; i++){
-                this.cudes.push(this.nowCude[i])
                 this.addChild(this.nowCude[i])
             }
         }
@@ -328,13 +463,12 @@ module Play {
         public cudesEffect(type: cudeType): Array<cude> {
             let maps: Array<cude> = [],
                 maxX = Math.floor(grid.gridItemCols / 2),//最大X轴位置
-                minX = maxX - 1,//最小X轴的位置
-                minY = cude.cudeSize * -4//开始下落位置
+                minX = maxX - 1 //最小X轴的位置
             switch (type){
                 case cudeType.Type1://田字
                     for(let x = minX; x <= maxX; x++){
                         for (let y = 0; y < 2; y++){
-                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize, 0xff0000))
+                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize))
                         }
                     }
                     break;
@@ -342,7 +476,7 @@ module Play {
                     for (let y = 0; y <= 2; y++){
                         for(let x = minX; x <= maxX; x++){
                             if(y < 2 && x > minX) continue;
-                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize, 0xff0000))
+                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize))
                         }
                     }
                     break;
@@ -350,27 +484,27 @@ module Play {
                     for (let y = 0; y <= 2; y++){
                         for(let x = minX; x <= maxX; x++){
                             if((y < 1 && x > minX) || (y > 1 && x < maxX)) continue;
-                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize, 0xff0000))
+                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize))
                         }
                     }
                     break;
                 case cudeType.Type4://上字
                     for (let y = 0; y <= 1; y++){
-                        maps.push(new cude(minX, y, cude.cudeSize, cude.cudeSize, 0xff0000))
+                        maps.push(new cude(minX, y, cude.cudeSize, cude.cudeSize))
                         if(y < 1 ) continue;
-                        maps.push(new cude((minX-1), y, cude.cudeSize, cude.cudeSize, 0xff0000))
-                        maps.push(new cude(maxX, y , cude.cudeSize, cude.cudeSize, 0xff0000))
+                        maps.push(new cude((minX-1), y, cude.cudeSize, cude.cudeSize))
+                        maps.push(new cude(maxX, y, cude.cudeSize, cude.cudeSize))
                     }
                     break;
                 case cudeType.Type5://I字
                     for (let y = 0; y <= 3; y++){
-                        maps.push(new cude(minX, y, cude.cudeSize, cude.cudeSize, 0xff0000))
+                        maps.push(new cude(minX, y, cude.cudeSize, cude.cudeSize))
                     }
                     break;
                 default://默认为田字
                     for(let x = minX; x <= maxX; x++){
                         for (let y = 0; y < 2; y++){
-                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize, 0xff0000))
+                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize))
                         }
                     }
                     break;

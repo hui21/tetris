@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e15c0ce-1242-4c0b-8115-3182b771c740" name="Default" comment="">
+<<<<<<< HEAD
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+<<<<<<< HEAD
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/Play.js" afterPath="$PROJECT_DIR$/bin-debug/Play.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Play.ts" afterPath="$PROJECT_DIR$/src/Play.ts" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
+>>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,8 +30,17 @@
       <file leaf-file-name="Uilt.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Uilt.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="565">
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="456">
+              <caret line="111" column="33" lean-forward="false" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
+=======
+            <state relative-caret-position="0">
+>>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
               <caret line="205" column="41" lean-forward="false" selection-start-line="205" selection-start-column="41" selection-end-line="205" selection-end-column="41" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
               <folding>
                 <element signature="n#Game#0;n#Uilt#0" expanded="false" />
                 <element signature="n#!!block;n#constructor#0;n#Game#0;n#Uilt#0" expanded="false" />
@@ -71,7 +90,35 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Play.ts" pinned="false" current-in-tab="false">
+=======
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="475">
+              <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+=======
+            <state relative-caret-position="418">
+              <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="Game.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Game.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="15" column="39" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+              <folding>
+                <element signature="n#!!doc;n#Game#0" expanded="false" />
+=======
+      <file leaf-file-name="Play.ts" pinned="false" current-in-tab="true">
+>>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
         <entry file="file://$PROJECT_DIR$/src/Play.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="522">
@@ -96,6 +143,7 @@
                 <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#gridLine#0;n#Play#0" expanded="false" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
               </folding>
             </state>
           </provider>
@@ -103,6 +151,11 @@
       </file>
       <file leaf-file-name="Main.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.ts">
+<<<<<<< HEAD
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="75" lean-forward="false" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
+=======
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="242">
               <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
@@ -116,6 +169,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="726">
               <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
               <folding />
             </state>
           </provider>
@@ -131,11 +185,14 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
+=======
   <component name="FindInProjectRecents">
     <findStrings>
       <find>createRandOneCude</find>
     </findStrings>
   </component>
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -171,7 +228,12 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
+<<<<<<< HEAD
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+=======
     <option name="width" value="1924" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
     <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
@@ -189,46 +251,41 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+=======
+      <pane id="PackagesPane" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
+>>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="eluosifangkuai" />
+              <option name="myItemId" value="tetris" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="eluosifangkuai" />
+              <option name="myItemId" value="tetris" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="eluosifangkuai" />
+              <option name="myItemId" value="tetris" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="eluosifangkuai" />
+              <option name="myItemId" value="tetris" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eluosifangkuai" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eluosifangkuai" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="src" />
+=======
               <option name="myItemId" value="skin1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -244,14 +301,23 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="libs" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+=======
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+      <pane id="Scratches" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
+>>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -268,10 +334,26 @@
       <recent name="E:\workspace_game\eluosifangkuai\src" />
     </key>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/eluosifangkuai/index.html">
       <method />
     </configuration>
+=======
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+>>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -698,21 +780,41 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1504681655696</updated>
+<<<<<<< HEAD
+      <workItem from="1504681657555" duration="9479000" />
+      <workItem from="1505218925368" duration="162000" />
+=======
       <workItem from="1504681657555" duration="9511000" />
       <workItem from="1504765034097" duration="6385000" />
       <workItem from="1504832815307" duration="1980000" />
       <workItem from="1505091960373" duration="20487000" />
+<<<<<<< HEAD
       <workItem from="1505179766988" duration="21236000" />
       <workItem from="1505265428129" duration="992000" />
       <workItem from="1505290202350" duration="49000" />
+=======
+      <workItem from="1505179766988" duration="20825000" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
+>>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="60640000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="9641000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+=======
+    <option name="totallyTimeSpent" value="59188000" />
+>>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1924" height="1056" extended-state="0" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -726,11 +828,27 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30802602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14109442" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+=======
+<<<<<<< HEAD
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24403471" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11353944" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30802602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13787554" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
+>>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14109442" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -912,8 +1030,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Uilt.ts">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="456">
+          <caret line="111" column="33" lean-forward="false" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
+=======
         <state relative-caret-position="1386">
           <caret line="205" column="41" lean-forward="false" selection-start-line="205" selection-start-column="41" selection-end-line="205" selection-end-column="41" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
           <folding>
             <element signature="n#Game#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!block;n#constructor#0;n#Game#0;n#Uilt#0" expanded="false" />
@@ -936,40 +1059,125 @@
             <element signature="n#!!doc;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!block;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
             <element signature="n#Scene#0;n#Uilt#0" expanded="false" />
+<<<<<<< HEAD
+            <element signature="n#!!doc;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
+            <element signature="n#!!block;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
+            <element signature="n#Stage#0;n#Uilt#0" expanded="false" />
+            <element signature="e#2852#2904#0" expanded="false" />
+=======
             <element signature="n#Tool#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!doc;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!block;n#interval#0;n#Stage#0;n#Uilt#0" expanded="false" />
             <element signature="e#3057#3109#0" expanded="false" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
             <element signature="n#!!doc;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!block;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!doc;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!block;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!doc;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!block;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
+<<<<<<< HEAD
+            <element signature="n#!!block;n#init#0;n#Stage#0;n#Uilt#0" expanded="false" />
+            <element signature="e#3285#3303#0" expanded="false" />
+            <element signature="n#!!block;n#onConfigComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
+            <element signature="n#!!doc;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
+            <element signature="n#!!block;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
+            <element signature="e#4130#4517#0" expanded="false" />
+            <element signature="n#!!doc;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
+            <element signature="n#!!block;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
+            <element signature="n#!!doc;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
+            <element signature="n#!!block;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
+            <element signature="e#4921#4932#0" expanded="false" />
+            <element signature="n#!!doc;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
+            <element signature="n#!!block;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
+            <element signature="e#5190#5267#0" expanded="false" />
+=======
             <element signature="n#!!doc;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
             <element signature="e#5141#5528#0" expanded="false" />
             <element signature="n#!!doc;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!doc;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
             <element signature="e#5932#5943#0" expanded="false" />
             <element signature="n#!!doc;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
             <element signature="n#LoadingUI#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!block;n#constructor#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!block;n#createView#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!block;n#setProgress#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
             <element signature="n#AnchorUtils#0;n#Uilt#0" expanded="false" />
+<<<<<<< HEAD
+            <element signature="n#GameStatus#0;n#Uilt#0" expanded="false" />
+            <element signature="n#Coordinate#0;n#Uilt#0" expanded="false" />
+=======
             <element signature="n#ThemeAdapter#0;n#Uilt#0" expanded="false" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/egretProperties.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        <state relative-caret-position="456">
+          <caret line="24" column="18" lean-forward="false" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wingProperties.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="15" column="42" lean-forward="false" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!doc;n#Game#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="75" lean-forward="false" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/eui_skins/ButtonSkin.exml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/LoadingUI.ts" />
+    <entry file="file://$PROJECT_DIR$/src/Main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="75" lean-forward="false" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
+=======
     <entry file="file://$PROJECT_DIR$/src/Play.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1002,6 +1210,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
           <folding />
         </state>
       </provider>
@@ -1016,8 +1225,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Uilt.ts">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="456">
+          <caret line="111" column="33" lean-forward="false" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
+=======
         <state relative-caret-position="1694">
           <caret line="179" column="9" lean-forward="false" selection-start-line="179" selection-start-column="9" selection-end-line="179" selection-end-column="9" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
           <folding>
             <element signature="n#Game#0;n#Uilt#0" expanded="false" />
             <element signature="n#!!block;n#constructor#0;n#Game#0;n#Uilt#0" expanded="false" />
@@ -1066,6 +1280,12 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/resource/default.res.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1210">
@@ -1285,18 +1505,29 @@
             <element signature="n#AnchorUtils#0;n#Uilt#0" expanded="false" />
             <element signature="n#ThemeAdapter#0;n#Uilt#0" expanded="false" />
           </folding>
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/egretProperties.json">
+    <entry file="file://$PROJECT_DIR$/resource/eui_skins/ButtonSkin.exml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="190">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+=======
         <state relative-caret-position="528">
           <caret line="24" column="18" lean-forward="false" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wingProperties.json">
+    <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="260">
+          <caret line="18" column="41" lean-forward="true" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+=======
         <state relative-caret-position="154">
           <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="38" />
         </state>
@@ -1306,10 +1537,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
           <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/wingProperties.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="38" />
+=======
     <entry file="file://$PROJECT_DIR$/resource/eui_skins/ButtonSkin.exml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1349,18 +1587,39 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="75" lean-forward="false" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/egretProperties.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+=======
     <entry file="file://$PROJECT_DIR$/src/LoadingUI.ts" />
     <entry file="file://$PROJECT_DIR$/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+<<<<<<< HEAD
+=======
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
+          <folding />
+>>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/Game.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="15" column="39" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+          <folding>
+            <element signature="n#!!doc;n#Game#0" expanded="false" />
+          </folding>
+=======
     <entry file="file://$PROJECT_DIR$/resource/default.res.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1380,6 +1639,7 @@
         <state relative-caret-position="726">
           <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
           <folding />
+>>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
         </state>
       </provider>
     </entry>

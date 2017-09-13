@@ -93,6 +93,13 @@ var Uilt;
             if (num === void 0) { num = 1; }
             this.Score -= num;
         };
+        Object.defineProperty(Game, "interval", {
+            get: function () {
+                return (this._interval || (this._interval = new Game));
+            },
+            enumerable: true,
+            configurable: true
+        });
         return Game;
     }());
     Uilt.Game = Game;
@@ -423,6 +430,7 @@ var Uilt;
         GameStatus[GameStatus["Stop"] = 2] = "Stop";
         GameStatus[GameStatus["Died"] = 3] = "Died";
         GameStatus[GameStatus["Finash"] = 4] = "Finash";
+        GameStatus[GameStatus["OneFinash"] = 5] = "OneFinash";
     })(GameStatus = Uilt.GameStatus || (Uilt.GameStatus = {}));
     //坐标
     var Coordinate;

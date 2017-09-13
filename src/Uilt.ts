@@ -84,6 +84,11 @@ module Uilt {
 		public incScore(num: number = 1){
 			this.Score -= num;
 		}
+
+		public static _interval:Game;
+		public static get interval(): Game{
+			return (this._interval || (this._interval = new Game));
+		}
 	}
 	//场景类
 	export class Scene extends egret.Sprite  {
@@ -379,6 +384,7 @@ module Uilt {
 		Stop = 2,//暂停游戏
 		Died = 3,//游戏结束
 		Finash = 4,//通过游戏
+		OneFinash = 5, //方块下落完成
 	}
 
 	//坐标
