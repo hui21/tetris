@@ -188,6 +188,7 @@ var Play;
         function cude(x, y, w, h) {
             var _this = _super.call(this) || this;
             _this.color = 0xa01311;
+            _this.sorce = 1; //分数
             _this.posX = x;
             _this.posY = -y + grid.topRow;
             _this.x = cudeData.posTo(x);
@@ -267,12 +268,14 @@ var Play;
                         break;
                 }
             }, false);
-            _this.timer = new egret.Timer(_this.nowSpeed, 0);
-            //注册事件侦听器
-            _this.timer.addEventListener(egret.TimerEvent.TIMER, _this.timerFunc, _this);
-            _this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, _this.timerComFunc, _this);
-            //开始计时
-            _this.timer.start();
+            //速度时间
+            _this.speedTimer = new egret.Timer(_this.nowSpeed, 0);
+            _this.speedTimer.addEventListener(egret.TimerEvent.TIMER, _this.speedTimerFunc, _this);
+            _this.speedTimer.start();
+            //游戏时间
+            _this.gameTimer = new egret.Timer(1000, 0);
+            _this.gameTimer.addEventListener(egret.TimerEvent.TIMER, _this.gameTimerFunc, _this);
+            _this.gameTimer.start();
             return _this;
         }
         Object.defineProperty(cudeData, "interval", {
@@ -282,14 +285,21 @@ var Play;
             enumerable: true,
             configurable: true
         });
-        cudeData.prototype.timerFunc = function () {
-            if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
-                return false;
+        /**
+         * 速度回调函数
+         * @returns {boolean}
+         */
+        cudeData.prototype.speedTimerFunc = function () {
             this.KeyDown();
-            return true;
         };
-        cudeData.prototype.timerComFunc = function () {
-            console.log("timerComplate");
+        /**
+         * 时间回调
+         */
+        cudeData.prototype.gameTimerFunc = function () {
+            if (UniltGame.interval.getGameStatus() === GameStatus.Start) {
+                UniltGame.interval.incNowTimeer();
+                this.speedTimer.delay = this.nowSpeed - (UniltGame.interval.getNowTime() / 10); //定时器间隔随时间变化
+            }
         };
         /**
          * 是否能下落
@@ -324,6 +334,8 @@ var Play;
         };
         //上移动
         cudeData.prototype.KeyUp = function () {
+            if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
+                return;
             if (this.nowCudeType === cudeType.Type1)
                 return false;
             var canRotate = true, newPosXy = [];
@@ -347,6 +359,8 @@ var Play;
         };
         //下移动
         cudeData.prototype.KeyDown = function () {
+            if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
+                return;
             if (this.canDown()) {
                 var canMove = true, newPosXy = [];
                 for (var i = 0; i < this.nowCude.length; i++) {
@@ -374,12 +388,24 @@ var Play;
         };
         //左移动
         cudeData.prototype.KeyLeft = function () {
+            if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
+                return;
             var canMove = true, newPosXy = [];
             for (var i = 0; i < this.nowCude.length; i++) {
+                if (!canMove)
+                    break;
                 var newXy = new cudePosXY(0, 0, this.nowCude[i].posX - 1, this.nowCude[i].posY);
                 if (newXy.posX < 0 || newXy.posY == grid.gridItemRows) {
                     canMove = false;
                     break;
+                }
+                for (var k = 0; k < this.cudes.length; k++) {
+                    if (this.cudes[k] !== undefined &&
+                        this.cudes[k].posX == (this.nowCude[i].posX - 1) &&
+                        this.cudes[k].posY == (this.nowCude[i].posY)) {
+                        canMove = false;
+                        break;
+                    }
                 }
                 newPosXy.push(newXy);
             }
@@ -388,12 +414,24 @@ var Play;
         };
         //右移动
         cudeData.prototype.KeyRight = function () {
+            if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
+                return;
             var canMove = true, newPosXy = [];
             for (var i = 0; i < this.nowCude.length; i++) {
+                if (!canMove)
+                    break;
                 var newXy = new cudePosXY(0, 0, this.nowCude[i].posX + 1, this.nowCude[i].posY);
                 if (newXy.posX > (grid.gridItemCols - 1) || newXy.posY == grid.gridItemRows) {
                     canMove = false;
                     break;
+                }
+                for (var k = 0; k < this.cudes.length; k++) {
+                    if (this.cudes[k] !== undefined &&
+                        this.cudes[k].posX == (this.nowCude[i].posX + 1) &&
+                        this.cudes[k].posY == (this.nowCude[i].posY)) {
+                        canMove = false;
+                        break;
+                    }
                 }
                 newPosXy.push(newXy);
             }
@@ -439,8 +477,10 @@ var Play;
                         if (this.cudes[i].posY == y) {
                             this.removeChild(this.cudes[i]);
                             removeArr.push(this.cudes[i]);
+                            UniltGame.interval.incScore(this.cudes[i].sorce);
                         }
                     }
+                    UniltGame.interval.incScore(Math.floor(removeArr.length / 10)); //多行奖励分数
                     for (var i = 0; i < removeArr.length; i++) {
                         for (var k = 0; k < this.cudes.length; k++) {
                             if (this.cudes[k].posY == removeArr[i].posY) {
@@ -458,7 +498,7 @@ var Play;
             var newPosXy = [];
             for (var i = 0; i < this.cudes.length; i++) {
                 var posY = this.cudes[i].posY + 1;
-                if (!this.isPosXy(this.cudes[i].posX, posY) && posY <= grid.gridItemRows) {
+                if (!this.isPosXy(this.cudes[i].posX, posY) && posY <= (grid.gridItemRows - 2)) {
                     this.cudes[i].y = cudeData.posTo(posY);
                     this.cudes[i].posY = posY;
                     this.refresh();

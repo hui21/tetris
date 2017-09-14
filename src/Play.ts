@@ -152,6 +152,7 @@ module Play {
         public color: number = 0xa01311
         public posY:number//原始Y坐标
         public posX:number//原始X坐标
+        public sorce: number = 1 //分数
         public constructor(x, y, w, h){
             super();
             this.posX = x
@@ -200,7 +201,8 @@ module Play {
         public nowCude: Array<cude> = [] //当前正在前进的方块
         public nowCudeType: cudeType //当前正在前进的方块类型
         public nowSpeed:number = 1000 //当前速度
-        private timer: egret.Timer //时间对象
+        private speedTimer: egret.Timer //速度时间对象
+        private gameTimer: egret.Timer //游戏时间对象
         public static _interval: cudeData;
         public static get interval(): cudeData {
             return (this._interval || (this._interval = new cudeData));
@@ -233,21 +235,33 @@ module Play {
                         break;
                 }
             }, false)
-            this.timer = new egret.Timer(this.nowSpeed, 0);
-            //注册事件侦听器
-            this.timer.addEventListener(egret.TimerEvent.TIMER,this.timerFunc,this);
-            this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,this.timerComFunc,this);
-            //开始计时
-            this.timer.start();
-        }
-        public timerFunc(): boolean {
-            if(UniltGame.interval.getGameStatus() !== GameStatus.Start) return false;
-            this.KeyDown()
-            return true;
+            //速度时间
+            this.speedTimer = new egret.Timer(this.nowSpeed, 0);
+            this.speedTimer.addEventListener(egret.TimerEvent.TIMER,this.speedTimerFunc,this);
+            this.speedTimer.start();
+
+            //游戏时间
+            this.gameTimer = new egret.Timer(1000, 0);
+            this.gameTimer.addEventListener(egret.TimerEvent.TIMER,this.gameTimerFunc,this);
+            this.gameTimer.start();
         }
 
-        public timerComFunc(): void {
-            console.log("timerComplate")
+        /**
+         * 速度回调函数
+         * @returns {boolean}
+         */
+        public speedTimerFunc(): void {
+            this.KeyDown()
+        }
+
+        /**
+         * 时间回调
+         */
+        public gameTimerFunc(): void {
+            if(UniltGame.interval.getGameStatus() === GameStatus.Start){
+                UniltGame.interval.incNowTimeer()
+                this.speedTimer.delay = this.nowSpeed - (UniltGame.interval.getNowTime()/10) //定时器间隔随时间变化
+            }
         }
 
         /**
@@ -286,6 +300,7 @@ module Play {
         }
         //上移动
         private KeyUp(){
+            if(UniltGame.interval.getGameStatus() !== GameStatus.Start) return;
             if(this.nowCudeType === cudeType.Type1) return false;
             let canRotate: boolean = true,
                 newPosXy: Array<cudePosXY> = []
@@ -312,6 +327,7 @@ module Play {
 
         //下移动
         private KeyDown(){
+            if(UniltGame.interval.getGameStatus() !== GameStatus.Start) return;
             if(this.canDown()){
                 let canMove: boolean = true,
                     newPosXy: Array<cudePosXY> = []
@@ -338,13 +354,25 @@ module Play {
         }
         //左移动
         private KeyLeft(){
+            if(UniltGame.interval.getGameStatus() !== GameStatus.Start) return;
             let canMove: boolean = true,
                 newPosXy: Array<cudePosXY> = []
             for(let i = 0; i < this.nowCude.length; i++){
+                if(!canMove) break;
                 let newXy = new cudePosXY(0,0, this.nowCude[i].posX -1, this.nowCude[i].posY,)
                 if(newXy.posX < 0 || newXy.posY == grid.gridItemRows){
                     canMove = false
                     break;
+                }
+                for(let k = 0; k < this.cudes.length; k++){
+                    if(
+                        this.cudes[k] !== undefined &&
+                        this.cudes[k].posX == (this.nowCude[i].posX -1) &&
+                        this.cudes[k].posY == (this.nowCude[i].posY)
+                    ){
+                        canMove = false
+                        break;
+                    }
                 }
                 newPosXy.push(newXy)
             }
@@ -352,13 +380,25 @@ module Play {
         }
         //右移动
         private KeyRight(){
+            if(UniltGame.interval.getGameStatus() !== GameStatus.Start) return;
             let canMove: boolean = true,
                 newPosXy: Array<cudePosXY> = []
             for(let i = 0; i < this.nowCude.length; i++){
-                let newXy = new cudePosXY(0,0, this.nowCude[i].posX + 1, this.nowCude[i].posY,)
+                if(!canMove) break;
+                let newXy = new cudePosXY(0,0, this.nowCude[i].posX + 1, this.nowCude[i].posY)
                 if(newXy.posX > (grid.gridItemCols - 1) || newXy.posY == grid.gridItemRows){
                     canMove = false
                     break;
+                }
+                for(let k = 0; k < this.cudes.length; k++){
+                    if(
+                        this.cudes[k] !== undefined &&
+                        this.cudes[k].posX == (this.nowCude[i].posX +1) &&
+                        this.cudes[k].posY == (this.nowCude[i].posY)
+                    ){
+                        canMove = false
+                        break;
+                    }
                 }
                 newPosXy.push(newXy)
             }
@@ -404,8 +444,10 @@ module Play {
                         if(this.cudes[i].posY == y){
                             this.removeChild(this.cudes[i])
                             removeArr.push(this.cudes[i])
+                            UniltGame.interval.incScore(this.cudes[i].sorce)
                         }
                     }
+                    UniltGame.interval.incScore(Math.floor(removeArr.length / 10)) //多行奖励分数
                     for (let i = 0; i < removeArr.length; i++){
                         for (let k = 0; k < this.cudes.length; k++){
                             if(this.cudes[k].posY == removeArr[i].posY){
@@ -424,7 +466,7 @@ module Play {
             let newPosXy: Array<cudePosXY> = []
             for(let i = 0; i < this.cudes.length; i++){
                 let posY:number = this.cudes[i].posY+1
-                if(!this.isPosXy(this.cudes[i].posX, posY) && posY <= grid.gridItemRows){
+                if(!this.isPosXy(this.cudes[i].posX, posY) && posY <= (grid.gridItemRows - 2)){
                     this.cudes[i].y = cudeData.posTo(posY)
                     this.cudes[i].posY = posY
                     this.refresh()

@@ -91,7 +91,7 @@ var Uilt;
          */
         Game.prototype.incScore = function (num) {
             if (num === void 0) { num = 1; }
-            this.Score -= num;
+            this.Score += num;
         };
         Object.defineProperty(Game, "interval", {
             get: function () {

@@ -82,7 +82,7 @@ module Uilt {
 		 * @param num
 		 */
 		public incScore(num: number = 1){
-			this.Score -= num;
+			this.Score += num;
 		}
 
 		public static _interval:Game;
