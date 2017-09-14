@@ -46,6 +46,7 @@ var Play;
         Game.prototype.menuInit = function () {
             Stage.stage.addChild(grid.interval);
             Stage.stage.addChild(cudeData.interval);
+            Stage.stage.addChild(panel.interval);
             cudeData.interval.createRandOneCude();
             UniltGame.interval.setGameStatus(GameStatus.Start);
             /*this.skinName = "menu";
@@ -81,6 +82,70 @@ var Play;
     }(eui.Component));
     Play.Game = Game;
     __reflect(Game.prototype, "Play.Game");
+    //面板
+    var panel = (function (_super) {
+        __extends(panel, _super);
+        function panel() {
+            var _this = _super.call(this) || this;
+            _this.timerTitleText = new egret.TextField; //时间标题
+            _this.timerText = new egret.TextField; //时间
+            _this.scoreTitleText = new egret.TextField; //分数标题
+            _this.scoreText = new egret.TextField; //分数
+            _this.timeGroup = new egret.Sprite; //时间组
+            _this.scoreGroup = new egret.Sprite; //分数组
+            _this.init();
+            return _this;
+        }
+        Object.defineProperty(panel, "interval", {
+            get: function () {
+                return (this._interval || (this._interval = new panel));
+            },
+            enumerable: true,
+            configurable: true
+        });
+        //初始化面板
+        panel.prototype.init = function () {
+            this.width = Stage.stageW;
+            this.height = grid.topRow * grid.gridSize;
+            this.timeGroup.x = this.width / 2;
+            this.timeGroup.y = grid.gridSize / 2;
+            this.timeGroup.anchorOffsetX = this.timeGroup.x / 2;
+            this.scoreGroup.x = this.width;
+            this.scoreGroup.y = grid.gridSize / 2;
+            this.scoreGroup.anchorOffsetX = this.scoreGroup.x / 4;
+            this.addChild(this.timeGroup);
+            this.addChild(this.scoreGroup);
+            this.timerTitleText.text = "Timer: ";
+            this.timerText.text = "0";
+            this.timerText.x = this.timerTitleText.x + 100;
+            this.timerText.textAlign = "center";
+            this.timeGroup.addChild(this.timerTitleText);
+            this.timeGroup.addChild(this.timerText);
+            this.scoreTitleText.text = "Score: ";
+            this.scoreText.text = "0";
+            this.scoreText.x = this.scoreTitleText.x + 100;
+            this.scoreText.textAlign = "center";
+            this.scoreGroup.addChild(this.scoreTitleText);
+            this.scoreGroup.addChild(this.scoreText);
+        };
+        Object.defineProperty(panel.prototype, "score", {
+            //设置分数
+            set: function (val) {
+                UniltGame.interval.incScore(val);
+                this.scoreText.text = String(UniltGame.interval.getScore());
+            },
+            enumerable: true,
+            configurable: true
+        });
+        //设置时间
+        panel.prototype.time = function () {
+            UniltGame.interval.incNowTimeer();
+            this.timerText.text = String(UniltGame.interval.getNowTime());
+        };
+        return panel;
+    }(egret.Sprite));
+    Play.panel = panel;
+    __reflect(panel.prototype, "Play.panel");
     //格子容器对象
     var grid = (function (_super) {
         __extends(grid, _super);
@@ -242,6 +307,7 @@ var Play;
             _this.cudes = []; //方块集合
             _this.nowCude = []; //当前正在前进的方块
             _this.nowSpeed = 1000; //当前速度
+            _this.duration = 0;
             _this.y = grid.interval.y;
             _this.x = grid.interval.x;
             _this.width = grid.interval.width;
@@ -297,7 +363,7 @@ var Play;
          */
         cudeData.prototype.gameTimerFunc = function () {
             if (UniltGame.interval.getGameStatus() === GameStatus.Start) {
-                UniltGame.interval.incNowTimeer();
+                panel.interval.time();
                 this.speedTimer.delay = this.nowSpeed - (UniltGame.interval.getNowTime() / 10); //定时器间隔随时间变化
             }
         };
@@ -477,10 +543,10 @@ var Play;
                         if (this.cudes[i].posY == y) {
                             this.removeChild(this.cudes[i]);
                             removeArr.push(this.cudes[i]);
-                            UniltGame.interval.incScore(this.cudes[i].sorce);
+                            panel.interval.score = this.cudes[i].sorce;
                         }
                     }
-                    UniltGame.interval.incScore(Math.floor(removeArr.length / 10)); //多行奖励分数
+                    panel.interval.score = Math.floor(removeArr.length / 10); //多行奖励分数
                     for (var i = 0; i < removeArr.length; i++) {
                         for (var k = 0; k < this.cudes.length; k++) {
                             if (this.cudes[k].posY == removeArr[i].posY) {
@@ -499,9 +565,13 @@ var Play;
             for (var i = 0; i < this.cudes.length; i++) {
                 var posY = this.cudes[i].posY + 1;
                 if (!this.isPosXy(this.cudes[i].posX, posY) && posY <= (grid.gridItemRows - 2)) {
-                    this.cudes[i].y = cudeData.posTo(posY);
-                    this.cudes[i].posY = posY;
-                    this.refresh();
+                    var abs = Math.abs(this.cudes[i].y - cudeData.posTo(posY));
+                    this.duration = Math.max(this.duration, abs);
+                    //console.log(this.duration)
+                    egret.Tween.get(this.cudes[i]).to({
+                        y: cudeData.posTo(posY),
+                        posY: posY
+                    }, 100, egret.Ease.bounceInOut).call(this.refresh, this);
                 }
             }
         };

@@ -34,7 +34,9 @@ module Play {
         public menuInit(): void {
             Stage.stage.addChild(grid.interval)
             Stage.stage.addChild(cudeData.interval)
-            cudeData.interval.createRandOneCude();
+            Stage.stage.addChild(panel.interval)
+            cudeData.interval.createRandOneCude()
+
             UniltGame.interval.setGameStatus(GameStatus.Start)
             /*this.skinName = "menu";
             this.menuTween.addEventListener('complete', () => {
@@ -67,6 +69,62 @@ module Play {
         }
     }
 
+    //面板
+    export class panel extends egret.Sprite {
+        private timerTitleText: egret.TextField = new egret.TextField //时间标题
+        private timerText: egret.TextField = new egret.TextField //时间
+        private scoreTitleText: egret.TextField = new egret.TextField //分数标题
+        private scoreText: egret.TextField = new egret.TextField //分数
+        private timeGroup: egret.Sprite = new egret.Sprite //时间组
+        private scoreGroup: egret.Sprite = new egret.Sprite //分数组
+        public constructor(){
+            super()
+            this.init()
+        }
+        public static _interval:panel;
+        public static get interval(): panel{
+            return (this._interval || (this._interval = new panel))
+        }
+        //初始化面板
+        private init(): void {
+            this.width = Stage.stageW
+            this.height = grid.topRow * grid.gridSize
+
+            this.timeGroup.x = this.width / 2
+            this.timeGroup.y = grid.gridSize / 2
+            this.timeGroup.anchorOffsetX = this.timeGroup.x / 2
+            this.scoreGroup.x = this.width
+            this.scoreGroup.y = grid.gridSize / 2
+            this.scoreGroup.anchorOffsetX = this.scoreGroup.x / 4
+
+            this.addChild(this.timeGroup)
+            this.addChild(this.scoreGroup)
+
+            this.timerTitleText.text = "Timer: "
+            this.timerText.text = "0"
+            this.timerText.x = this.timerTitleText.x + 100
+            this.timerText.textAlign = "center"
+            this.timeGroup.addChild(this.timerTitleText)
+            this.timeGroup.addChild(this.timerText)
+
+            this.scoreTitleText.text = "Score: "
+            this.scoreText.text = "0"
+            this.scoreText.x = this.scoreTitleText.x + 100
+            this.scoreText.textAlign = "center"
+            this.scoreGroup.addChild(this.scoreTitleText)
+            this.scoreGroup.addChild(this.scoreText)
+        }
+        //设置分数
+        public set score(val: number) {
+            UniltGame.interval.incScore(val)
+            this.scoreText.text = String(UniltGame.interval.getScore())
+        }
+        //设置时间
+        public time() {
+            UniltGame.interval.incNowTimeer()
+            this.timerText.text = String(UniltGame.interval.getNowTime())
+        }
+    }
     //格子容器对象
     export class grid extends egret.Sprite {
 
@@ -259,7 +317,7 @@ module Play {
          */
         public gameTimerFunc(): void {
             if(UniltGame.interval.getGameStatus() === GameStatus.Start){
-                UniltGame.interval.incNowTimeer()
+                panel.interval.time()
                 this.speedTimer.delay = this.nowSpeed - (UniltGame.interval.getNowTime()/10) //定时器间隔随时间变化
             }
         }
@@ -444,10 +502,10 @@ module Play {
                         if(this.cudes[i].posY == y){
                             this.removeChild(this.cudes[i])
                             removeArr.push(this.cudes[i])
-                            UniltGame.interval.incScore(this.cudes[i].sorce)
+                            panel.interval.score = this.cudes[i].sorce
                         }
                     }
-                    UniltGame.interval.incScore(Math.floor(removeArr.length / 10)) //多行奖励分数
+                    panel.interval.score = Math.floor(removeArr.length / 10) //多行奖励分数
                     for (let i = 0; i < removeArr.length; i++){
                         for (let k = 0; k < this.cudes.length; k++){
                             if(this.cudes[k].posY == removeArr[i].posY){
@@ -461,15 +519,23 @@ module Play {
             return true;
         }
 
+        private duration: number = 0
         //刷新
         private refresh(): void {
             let newPosXy: Array<cudePosXY> = []
             for(let i = 0; i < this.cudes.length; i++){
                 let posY:number = this.cudes[i].posY+1
                 if(!this.isPosXy(this.cudes[i].posX, posY) && posY <= (grid.gridItemRows - 2)){
-                    this.cudes[i].y = cudeData.posTo(posY)
-                    this.cudes[i].posY = posY
-                    this.refresh()
+                    let abs = Math.abs(this.cudes[i].y - cudeData.posTo(posY));
+                    this.duration = Math.max(this.duration, abs);
+                    //console.log(this.duration)
+                    egret.Tween.get(this.cudes[i]).to({
+                        y: cudeData.posTo(posY),
+                        posY: posY
+                    }, 100, egret.Ease.bounceInOut).call(this.refresh, this)
+                    /*this.cudes[i].y = cudeData.posTo(posY)
+                    this.cudes[i].posY = posY*/
+                    //this.refresh()
                 }
             }
         }
