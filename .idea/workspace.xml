@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fcd52b74-292c-40dd-88b8-7f23bd19a1bb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/eluosifangkuai.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/Play.js" afterPath="$PROJECT_DIR$/bin-debug/Play.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Play.ts" afterPath="$PROJECT_DIR$/src/Play.ts" />
+    <list default="true" id="f0f5af55-d051-42d6-bf40-899820fe2c4b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,149 +17,9 @@
       <file leaf-file-name="Play.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Play.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="661" column="44" lean-forward="false" selection-start-line="661" selection-start-column="44" selection-end-line="661" selection-end-column="44" />
-              <folding>
-                <element signature="n#!!doc;n#Play#0" expanded="false" />
-                <element signature="n#Game#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#interval#0;n#Game#0;n#Play#0" expanded="false" />
-                <element signature="n#!!doc;n#Init#0;n#Game#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#Init#0;n#Game#0;n#Play#0" expanded="false" />
-                <element signature="n#!!doc;n#menuInit#0;n#Game#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#menuInit#0;n#Game#0;n#Play#0" expanded="false" />
-                <element signature="e#1191#1478#0" expanded="false" />
-                <element signature="n#!!doc;n#startBtnClickEvent#0;n#Game#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#startBtnClickEvent#0;n#Game#0;n#Play#0" expanded="false" />
-                <element signature="e#1739#1881#0" expanded="false" />
-                <element signature="n#!!doc;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
-                <element signature="e#2093#2170#0" expanded="false" />
-                <element signature="n#panel#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#panel#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#interval#0;n#panel#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#init#0;n#panel#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#score#0;n#panel#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#time#0;n#panel#0;n#Play#0" expanded="false" />
-                <element signature="n#grid#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#interval#0;n#grid#0;n#Play#0" expanded="false" />
-                <element signature="n#!!doc;n#gridSize#0;n#grid#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#gridSize#0;n#grid#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#grid#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#gridItemCols#0;n#grid#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#gridItemRows#0;n#grid#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#topRow#0;n#grid#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#initGrid#0;n#grid#0;n#Play#0" expanded="false" />
-                <element signature="e#5639#5844#0" expanded="false" />
-                <element signature="e#5901#6105#0" expanded="false" />
-                <element signature="n#gridMap#0;n#Play#0" expanded="false" />
-                <element signature="n#!!doc;n#constructor#0;n#gridMap#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#gridMap#0;n#Play#0" expanded="false" />
-                <element signature="n#cudeType#0;n#Play#0" expanded="false" />
-                <element signature="n#cude#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#cude#0;n#Play#0" expanded="false" />
-                <element signature="n#!!doc;n#cudeSize#0;n#cude#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#cudeSize#0;n#cude#0;n#Play#0" expanded="false" />
-                <element signature="n#KeyCode#0;n#Play#0" expanded="false" />
-                <element signature="n#cudePosXY#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#cudePosXY#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#interval#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#8764#9458#0" expanded="false" />
-                <element signature="e#8782#9444#0" expanded="false" />
-                <element signature="e#8822#8914#0" expanded="false" />
-                <element signature="e#8935#9023#0" expanded="false" />
-                <element signature="e#9044#9138#0" expanded="false" />
-                <element signature="e#9159#9251#0" expanded="false" />
-                <element signature="e#9272#9366#0" expanded="false" />
-                <element signature="e#9387#9426#0" expanded="false" />
-                <element signature="n#!!doc;n#speedTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#speedTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!doc;n#gameTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#gameTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#10198#10357#0" expanded="false" />
-                <element signature="n#!!doc;n#canDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#canDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#10573#10831#0" expanded="false" />
-                <element signature="e#10735#10817#0" expanded="false" />
-                <element signature="n#!!doc;n#isHaveCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#isHaveCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#11135#11346#0" expanded="false" />
-                <element signature="e#11251#11332#0" expanded="false" />
-                <element signature="n#!!block;n#KeyUp#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#11716#12121#0" expanded="false" />
-                <element signature="e#11986#12070#0" expanded="false" />
-                <element signature="e#12147#12470#0" expanded="false" />
-                <element signature="e#12209#12456#0" expanded="false" />
-                <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#12675#13201#0" expanded="false" />
-                <element signature="e#12834#13140#0" expanded="false" />
-                <element signature="e#12987#13081#0" expanded="false" />
-                <element signature="e#13205#13633#0" expanded="false" />
-                <element signature="e#13267#13535#0" expanded="false" />
-                <element signature="e#13318#13464#0" expanded="false" />
-                <element signature="n#!!block;n#KeyLeft#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#13910#14662#0" expanded="false" />
-                <element signature="e#14112#14194#0" expanded="false" />
-                <element signature="e#14253#14611#0" expanded="false" />
-                <element signature="e#14499#14593#0" expanded="false" />
-                <element signature="n#!!block;n#KeyRight#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#14983#15757#0" expanded="false" />
-                <element signature="e#15207#15289#0" expanded="false" />
-                <element signature="e#15348#15706#0" expanded="false" />
-                <element signature="e#15594#15688#0" expanded="false" />
-                <element signature="n#!!block;n#KeySpace#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#15931#16012#0" expanded="false" />
-                <element signature="e#16075#16157#0" expanded="false" />
-                <element signature="n#!!doc;n#isPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#isPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#16390#16489#0" expanded="false" />
-                <element signature="n#!!doc;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#16698#18193#0" expanded="false" />
-                <element signature="e#16801#16927#0" expanded="false" />
-                <element signature="e#16846#16909#0" expanded="false" />
-                <element signature="e#16954#18179#0" expanded="false" />
-                <element signature="e#17071#17476#0" expanded="false" />
-                <element signature="e#17124#17340#0" expanded="false" />
-                <element signature="e#17371#17454#0" expanded="false" />
-                <element signature="e#17625#18161#0" expanded="false" />
-                <element signature="e#17691#17878#0" expanded="false" />
-                <element signature="e#17769#17852#0" expanded="false" />
-                <element signature="e#17946#18139#0" expanded="false" />
-                <element signature="e#18027#18113#0" expanded="false" />
-                <element signature="e#18250#18822#0" expanded="false" />
-                <element signature="e#18371#18808#0" expanded="false" />
-                <element signature="e#18705#18783#0" expanded="false" />
-                <element signature="n#!!block;n#refresh#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#19045#19671#0" expanded="false" />
-                <element signature="e#19152#19202#0" expanded="false" />
-                <element signature="e#19237#19657#0" expanded="false" />
-                <element signature="e#19517#19595#0" expanded="false" />
-                <element signature="n#!!block;n#findCudeY#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#19786#20100#0" expanded="false" />
-                <element signature="e#19923#20086#0" expanded="false" />
-                <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#20330#21138#0" expanded="false" />
-                <element signature="e#20792#20862#0" expanded="false" />
-                <element signature="e#20887#21124#0" expanded="false" />
-                <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!doc;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#21622#21684#0" expanded="false" />
-                <element signature="n#!!doc;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#22877#23074#0" expanded="false" />
-                <element signature="e#23927#24038#0" expanded="false" />
-                <element signature="n#!!doc;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#gridLine#0;n#Play#0" expanded="false" />
-                <element signature="n#!!doc;n#LineColor#0;n#gridLine#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#LineColor#0;n#gridLine#0;n#Play#0" expanded="false" />
-                <element signature="n#!!doc;n#LineWidth#0;n#gridLine#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#LineWidth#0;n#gridLine#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#gridLine#0;n#Play#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -181,14 +34,6 @@
       <projects_view />
     </option>
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/Play.ts" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-      </list>
-    </option>
-  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
@@ -199,8 +44,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -217,6 +62,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -246,7 +92,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -268,7 +113,7 @@
     </option>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
-    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/tetris/eluosifangkuai/index.html">
+    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/tetris/index.html">
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -597,7 +442,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="eluosifangkuai" />
+      <module name="tetris" />
       <envs />
       <method />
     </configuration>
@@ -692,48 +537,49 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fcd52b74-292c-40dd-88b8-7f23bd19a1bb" name="Default" comment="" />
-      <created>1505642628183</created>
+      <changelist id="f0f5af55-d051-42d6-bf40-899820fe2c4b" name="Default" comment="" />
+      <created>1505645022891</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1505642628183</updated>
-      <workItem from="1505642652371" duration="1773000" />
+      <updated>1505645022891</updated>
+      <workItem from="1505645034352" duration="690000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1773000" />
+    <option name="totallyTimeSpent" value="690000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14674735" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17397882" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17590618" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -754,166 +600,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/eluosifangkuai.iml">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Play.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="661" column="44" lean-forward="false" selection-start-line="661" selection-start-column="44" selection-end-line="661" selection-end-column="44" />
-          <folding>
-            <element signature="n#!!doc;n#Play#0" expanded="false" />
-            <element signature="n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#interval#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#Init#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#Init#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#menuInit#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#menuInit#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="e#1191#1478#0" expanded="false" />
-            <element signature="n#!!doc;n#startBtnClickEvent#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#startBtnClickEvent#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="e#1739#1881#0" expanded="false" />
-            <element signature="n#!!doc;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="e#2093#2170#0" expanded="false" />
-            <element signature="n#panel#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#panel#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#interval#0;n#panel#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#init#0;n#panel#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#score#0;n#panel#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#time#0;n#panel#0;n#Play#0" expanded="false" />
-            <element signature="n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#interval#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#gridSize#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#gridSize#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#gridItemCols#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#gridItemRows#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#topRow#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#initGrid#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="e#5639#5844#0" expanded="false" />
-            <element signature="e#5901#6105#0" expanded="false" />
-            <element signature="n#gridMap#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#constructor#0;n#gridMap#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#gridMap#0;n#Play#0" expanded="false" />
-            <element signature="n#cudeType#0;n#Play#0" expanded="false" />
-            <element signature="n#cude#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#cude#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#cudeSize#0;n#cude#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#cudeSize#0;n#cude#0;n#Play#0" expanded="false" />
-            <element signature="n#KeyCode#0;n#Play#0" expanded="false" />
-            <element signature="n#cudePosXY#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#cudePosXY#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#interval#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#8764#9458#0" expanded="false" />
-            <element signature="e#8782#9444#0" expanded="false" />
-            <element signature="e#8822#8914#0" expanded="false" />
-            <element signature="e#8935#9023#0" expanded="false" />
-            <element signature="e#9044#9138#0" expanded="false" />
-            <element signature="e#9159#9251#0" expanded="false" />
-            <element signature="e#9272#9366#0" expanded="false" />
-            <element signature="e#9387#9426#0" expanded="false" />
-            <element signature="n#!!doc;n#speedTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#speedTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#gameTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#gameTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#10198#10357#0" expanded="false" />
-            <element signature="n#!!doc;n#canDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#canDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#10573#10831#0" expanded="false" />
-            <element signature="e#10735#10817#0" expanded="false" />
-            <element signature="n#!!doc;n#isHaveCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#isHaveCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#11135#11346#0" expanded="false" />
-            <element signature="e#11251#11332#0" expanded="false" />
-            <element signature="n#!!block;n#KeyUp#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#11716#12121#0" expanded="false" />
-            <element signature="e#11986#12070#0" expanded="false" />
-            <element signature="e#12147#12470#0" expanded="false" />
-            <element signature="e#12209#12456#0" expanded="false" />
-            <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#12675#13201#0" expanded="false" />
-            <element signature="e#12834#13140#0" expanded="false" />
-            <element signature="e#12987#13081#0" expanded="false" />
-            <element signature="e#13205#13633#0" expanded="false" />
-            <element signature="e#13267#13535#0" expanded="false" />
-            <element signature="e#13318#13464#0" expanded="false" />
-            <element signature="n#!!block;n#KeyLeft#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#13910#14662#0" expanded="false" />
-            <element signature="e#14112#14194#0" expanded="false" />
-            <element signature="e#14253#14611#0" expanded="false" />
-            <element signature="e#14499#14593#0" expanded="false" />
-            <element signature="n#!!block;n#KeyRight#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#14983#15757#0" expanded="false" />
-            <element signature="e#15207#15289#0" expanded="false" />
-            <element signature="e#15348#15706#0" expanded="false" />
-            <element signature="e#15594#15688#0" expanded="false" />
-            <element signature="n#!!block;n#KeySpace#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#15931#16012#0" expanded="false" />
-            <element signature="e#16075#16157#0" expanded="false" />
-            <element signature="n#!!doc;n#isPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#isPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#16390#16489#0" expanded="false" />
-            <element signature="n#!!doc;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#16698#18193#0" expanded="false" />
-            <element signature="e#16801#16927#0" expanded="false" />
-            <element signature="e#16846#16909#0" expanded="false" />
-            <element signature="e#16954#18179#0" expanded="false" />
-            <element signature="e#17071#17476#0" expanded="false" />
-            <element signature="e#17124#17340#0" expanded="false" />
-            <element signature="e#17371#17454#0" expanded="false" />
-            <element signature="e#17625#18161#0" expanded="false" />
-            <element signature="e#17691#17878#0" expanded="false" />
-            <element signature="e#17769#17852#0" expanded="false" />
-            <element signature="e#17946#18139#0" expanded="false" />
-            <element signature="e#18027#18113#0" expanded="false" />
-            <element signature="e#18250#18822#0" expanded="false" />
-            <element signature="e#18371#18808#0" expanded="false" />
-            <element signature="e#18705#18783#0" expanded="false" />
-            <element signature="n#!!block;n#refresh#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#19045#19671#0" expanded="false" />
-            <element signature="e#19152#19202#0" expanded="false" />
-            <element signature="e#19237#19657#0" expanded="false" />
-            <element signature="e#19517#19595#0" expanded="false" />
-            <element signature="n#!!block;n#findCudeY#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#19786#20100#0" expanded="false" />
-            <element signature="e#19923#20086#0" expanded="false" />
-            <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#20330#21138#0" expanded="false" />
-            <element signature="e#20792#20862#0" expanded="false" />
-            <element signature="e#20887#21124#0" expanded="false" />
-            <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#21622#21684#0" expanded="false" />
-            <element signature="n#!!doc;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#22877#23074#0" expanded="false" />
-            <element signature="e#23927#24038#0" expanded="false" />
-            <element signature="n#!!doc;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#gridLine#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#LineColor#0;n#gridLine#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#LineColor#0;n#gridLine#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#LineWidth#0;n#gridLine#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#LineWidth#0;n#gridLine#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#gridLine#0;n#Play#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="49" column="28" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1785" selection-end-column="10" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
