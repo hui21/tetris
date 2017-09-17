@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e15c0ce-1242-4c0b-8115-3182b771c740" name="Default" comment="">
-<<<<<<< HEAD
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-=======
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-<<<<<<< HEAD
-=======
+    <list default="true" id="fcd52b74-292c-40dd-88b8-7f23bd19a1bb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/eluosifangkuai.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/Play.js" afterPath="$PROJECT_DIR$/bin-debug/Play.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Play.ts" afterPath="$PROJECT_DIR$/src/Play.ts" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
->>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,178 +18,161 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Uilt.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Uilt.ts">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="565">
-=======
-<<<<<<< HEAD
-            <state relative-caret-position="456">
-              <caret line="111" column="33" lean-forward="false" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
-=======
-            <state relative-caret-position="0">
->>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
-              <caret line="205" column="41" lean-forward="false" selection-start-line="205" selection-start-column="41" selection-end-line="205" selection-end-column="41" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-              <folding>
-                <element signature="n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-                <element signature="n#Scene#0;n#Uilt#0" expanded="false" />
-                <element signature="n#Tool#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#interval#0;n#Stage#0;n#Uilt#0" expanded="false" />
-                <element signature="e#3057#3109#0" expanded="false" />
-                <element signature="n#!!doc;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
-                <element signature="e#5141#5528#0" expanded="false" />
-                <element signature="n#!!doc;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!doc;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-                <element signature="e#5932#5943#0" expanded="false" />
-                <element signature="n#!!doc;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
-                <element signature="n#LoadingUI#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#createView#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-                <element signature="n#!!block;n#setProgress#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-                <element signature="n#AnchorUtils#0;n#Uilt#0" expanded="false" />
-                <element signature="n#ThemeAdapter#0;n#Uilt#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="Play.ts" pinned="false" current-in-tab="false">
-=======
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="475">
-              <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-=======
-            <state relative-caret-position="418">
-              <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="Game.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Game.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="15" column="39" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
-              <folding>
-                <element signature="n#!!doc;n#Game#0" expanded="false" />
-=======
+    <leaf>
       <file leaf-file-name="Play.ts" pinned="false" current-in-tab="true">
->>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
         <entry file="file://$PROJECT_DIR$/src/Play.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="393" column="9" lean-forward="true" selection-start-line="393" selection-start-column="9" selection-end-line="393" selection-end-column="9" />
+            <state relative-caret-position="325">
+              <caret line="661" column="44" lean-forward="false" selection-start-line="661" selection-start-column="44" selection-end-line="661" selection-end-column="44" />
               <folding>
                 <element signature="n#!!doc;n#Play#0" expanded="false" />
                 <element signature="n#Game#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#interval#0;n#Game#0;n#Play#0" expanded="false" />
+                <element signature="n#!!doc;n#Init#0;n#Game#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#Init#0;n#Game#0;n#Play#0" expanded="false" />
+                <element signature="n#!!doc;n#menuInit#0;n#Game#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#menuInit#0;n#Game#0;n#Play#0" expanded="false" />
+                <element signature="e#1191#1478#0" expanded="false" />
+                <element signature="n#!!doc;n#startBtnClickEvent#0;n#Game#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#startBtnClickEvent#0;n#Game#0;n#Play#0" expanded="false" />
+                <element signature="e#1739#1881#0" expanded="false" />
+                <element signature="n#!!doc;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
+                <element signature="e#2093#2170#0" expanded="false" />
+                <element signature="n#panel#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#constructor#0;n#panel#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#interval#0;n#panel#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#init#0;n#panel#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#score#0;n#panel#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#time#0;n#panel#0;n#Play#0" expanded="false" />
                 <element signature="n#grid#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#interval#0;n#grid#0;n#Play#0" expanded="false" />
+                <element signature="n#!!doc;n#gridSize#0;n#grid#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#gridSize#0;n#grid#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#constructor#0;n#grid#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#gridItemCols#0;n#grid#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#gridItemRows#0;n#grid#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#topRow#0;n#grid#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#initGrid#0;n#grid#0;n#Play#0" expanded="false" />
+                <element signature="e#5639#5844#0" expanded="false" />
+                <element signature="e#5901#6105#0" expanded="false" />
                 <element signature="n#gridMap#0;n#Play#0" expanded="false" />
+                <element signature="n#!!doc;n#constructor#0;n#gridMap#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#constructor#0;n#gridMap#0;n#Play#0" expanded="false" />
+                <element signature="n#cudeType#0;n#Play#0" expanded="false" />
                 <element signature="n#cude#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#constructor#0;n#cude#0;n#Play#0" expanded="false" />
+                <element signature="n#!!doc;n#cudeSize#0;n#cude#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#cudeSize#0;n#cude#0;n#Play#0" expanded="false" />
+                <element signature="n#KeyCode#0;n#Play#0" expanded="false" />
                 <element signature="n#cudePosXY#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#constructor#0;n#cudePosXY#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#interval#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#constructor#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#8764#9458#0" expanded="false" />
+                <element signature="e#8782#9444#0" expanded="false" />
+                <element signature="e#8822#8914#0" expanded="false" />
+                <element signature="e#8935#9023#0" expanded="false" />
+                <element signature="e#9044#9138#0" expanded="false" />
+                <element signature="e#9159#9251#0" expanded="false" />
+                <element signature="e#9272#9366#0" expanded="false" />
+                <element signature="e#9387#9426#0" expanded="false" />
+                <element signature="n#!!doc;n#speedTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#speedTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="n#!!doc;n#gameTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#gameTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#10198#10357#0" expanded="false" />
+                <element signature="n#!!doc;n#canDown#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#canDown#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#10573#10831#0" expanded="false" />
+                <element signature="e#10735#10817#0" expanded="false" />
+                <element signature="n#!!doc;n#isHaveCude#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#isHaveCude#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#11135#11346#0" expanded="false" />
+                <element signature="e#11251#11332#0" expanded="false" />
+                <element signature="n#!!block;n#KeyUp#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#11716#12121#0" expanded="false" />
+                <element signature="e#11986#12070#0" expanded="false" />
+                <element signature="e#12147#12470#0" expanded="false" />
+                <element signature="e#12209#12456#0" expanded="false" />
                 <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#12675#13201#0" expanded="false" />
+                <element signature="e#12834#13140#0" expanded="false" />
+                <element signature="e#12987#13081#0" expanded="false" />
+                <element signature="e#13205#13633#0" expanded="false" />
+                <element signature="e#13267#13535#0" expanded="false" />
+                <element signature="e#13318#13464#0" expanded="false" />
                 <element signature="n#!!block;n#KeyLeft#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#13910#14662#0" expanded="false" />
+                <element signature="e#14112#14194#0" expanded="false" />
+                <element signature="e#14253#14611#0" expanded="false" />
+                <element signature="e#14499#14593#0" expanded="false" />
                 <element signature="n#!!block;n#KeyRight#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#14983#15757#0" expanded="false" />
+                <element signature="e#15207#15289#0" expanded="false" />
+                <element signature="e#15348#15706#0" expanded="false" />
+                <element signature="e#15594#15688#0" expanded="false" />
+                <element signature="n#!!block;n#KeySpace#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#15931#16012#0" expanded="false" />
+                <element signature="e#16075#16157#0" expanded="false" />
+                <element signature="n#!!doc;n#isPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#isPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#16390#16489#0" expanded="false" />
+                <element signature="n#!!doc;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#16698#18193#0" expanded="false" />
+                <element signature="e#16801#16927#0" expanded="false" />
+                <element signature="e#16846#16909#0" expanded="false" />
+                <element signature="e#16954#18179#0" expanded="false" />
+                <element signature="e#17071#17476#0" expanded="false" />
+                <element signature="e#17124#17340#0" expanded="false" />
+                <element signature="e#17371#17454#0" expanded="false" />
+                <element signature="e#17625#18161#0" expanded="false" />
+                <element signature="e#17691#17878#0" expanded="false" />
+                <element signature="e#17769#17852#0" expanded="false" />
+                <element signature="e#17946#18139#0" expanded="false" />
+                <element signature="e#18027#18113#0" expanded="false" />
+                <element signature="e#18250#18822#0" expanded="false" />
+                <element signature="e#18371#18808#0" expanded="false" />
+                <element signature="e#18705#18783#0" expanded="false" />
+                <element signature="n#!!block;n#refresh#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#19045#19671#0" expanded="false" />
+                <element signature="e#19152#19202#0" expanded="false" />
+                <element signature="e#19237#19657#0" expanded="false" />
+                <element signature="e#19517#19595#0" expanded="false" />
+                <element signature="n#!!block;n#findCudeY#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#19786#20100#0" expanded="false" />
+                <element signature="e#19923#20086#0" expanded="false" />
                 <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#20330#21138#0" expanded="false" />
+                <element signature="e#20792#20862#0" expanded="false" />
+                <element signature="e#20887#21124#0" expanded="false" />
                 <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="n#!!doc;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#21622#21684#0" expanded="false" />
+                <element signature="n#!!doc;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#22877#23074#0" expanded="false" />
+                <element signature="e#23927#24038#0" expanded="false" />
+                <element signature="n#!!doc;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#gridLine#0;n#Play#0" expanded="false" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
+                <element signature="n#!!doc;n#LineColor#0;n#gridLine#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#LineColor#0;n#gridLine#0;n#Play#0" expanded="false" />
+                <element signature="n#!!doc;n#LineWidth#0;n#gridLine#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#LineWidth#0;n#gridLine#0;n#Play#0" expanded="false" />
+                <element signature="n#!!block;n#constructor#0;n#gridLine#0;n#Play#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.ts">
-<<<<<<< HEAD
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="75" lean-forward="false" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
-=======
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="default.thm.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="TypeScript File" />
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
-<<<<<<< HEAD
-=======
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>createRandOneCude</find>
-    </findStrings>
-  </component>
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -204,18 +184,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/egretProperties.json" />
-        <option value="$PROJECT_DIR$/resource/default.thm.json" />
-        <option value="$PROJECT_DIR$/src/Main.ts" />
-        <option value="$PROJECT_DIR$/src/Game.ts" />
-        <option value="$PROJECT_DIR$/src/ThemeAdapter.ts" />
-        <option value="$PROJECT_DIR$/resource/skin1/menu.exml" />
-        <option value="$PROJECT_DIR$/src/Uilt.ts" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="C:/Windows/System32/drivers/etc/hosts" />
-        <option value="$PROJECT_DIR$/libs/modules/document/document.d.ts" />
-        <option value="$PROJECT_DIR$/libs/modules/document/document.js" />
         <option value="$PROJECT_DIR$/src/Play.ts" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -228,13 +198,9 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-<<<<<<< HEAD
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-=======
-    <option name="width" value="1924" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -251,16 +217,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-=======
-      <pane id="PackagesPane" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
->>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -283,63 +240,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-<<<<<<< HEAD
               <option name="myItemId" value="src" />
-=======
-              <option name="myItemId" value="skin1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eluosifangkuai" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eluosifangkuai" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-<<<<<<< HEAD
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-=======
-<<<<<<< HEAD
-=======
-      <pane id="Scope" />
-      <pane id="Scratches" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
->>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_interpreter_path" value="E:/nodejs/node" />
-    <property name="js.eslint.eslintPackage" value="" />
-    <property name="js-jscs-nodeInterpreter" value="E:\nodejs\node.exe" />
-    <property name="typescript-compiler-editor-notification" value="false" />
+    <property name="nodejs_interpreter_path" value="F:/nodejs/node" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\workspace_game\eluosifangkuai\src" />
-    </key>
-  </component>
-<<<<<<< HEAD
-  <component name="RunManager" selected="JavaScript Debug.index.html">
-    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/eluosifangkuai/index.html">
-      <method />
-    </configuration>
-=======
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -352,8 +267,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
->>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/tetris/eluosifangkuai/index.html">
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -611,7 +528,6 @@
       <setting name="passParentEnv" value="true" />
       <setting name="launchBrowser" value="true" />
       <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -654,6 +570,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
@@ -740,12 +663,6 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -775,47 +692,20 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2e15c0ce-1242-4c0b-8115-3182b771c740" name="Default" comment="" />
-      <created>1504681655696</created>
+      <changelist id="fcd52b74-292c-40dd-88b8-7f23bd19a1bb" name="Default" comment="" />
+      <created>1505642628183</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1504681655696</updated>
-<<<<<<< HEAD
-      <workItem from="1504681657555" duration="9479000" />
-      <workItem from="1505218925368" duration="162000" />
-=======
-      <workItem from="1504681657555" duration="9511000" />
-      <workItem from="1504765034097" duration="6385000" />
-      <workItem from="1504832815307" duration="1980000" />
-      <workItem from="1505091960373" duration="20487000" />
-<<<<<<< HEAD
-      <workItem from="1505179766988" duration="21236000" />
-      <workItem from="1505265428129" duration="992000" />
-      <workItem from="1505290202350" duration="49000" />
-=======
-      <workItem from="1505179766988" duration="20825000" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
->>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
+      <updated>1505642628183</updated>
+      <workItem from="1505642652371" duration="1773000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="60640000" />
-=======
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="9641000" />
+    <option name="totallyTimeSpent" value="1773000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-=======
-    <option name="totallyTimeSpent" value="59188000" />
->>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1924" height="1056" extended-state="0" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -823,45 +713,29 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30802602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14109442" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
-=======
-<<<<<<< HEAD
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24403471" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11353944" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
-=======
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30802602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13787554" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
->>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14674735" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14109442" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17397882" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -880,908 +754,167 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Play.ts">
+    <entry file="file://$PROJECT_DIR$/.idea/eluosifangkuai.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc;n#Play#0" expanded="false" />
-            <element signature="n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#initGrid#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#gridMap#0;n#Play#0" expanded="false" />
-            <element signature="n#cude#0;n#Play#0" expanded="false" />
-            <element signature="n#cudePosXY#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyLeft#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyRight#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#gridLine#0;n#Play#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Uilt.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1386">
-          <caret line="205" column="41" lean-forward="false" selection-start-line="205" selection-start-column="41" selection-end-line="205" selection-end-column="41" />
-          <folding>
-            <element signature="n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Scene#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#interval#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#3057#3109#0" expanded="false" />
-            <element signature="n#!!doc;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5141#5528#0" expanded="false" />
-            <element signature="n#!!doc;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5932#5943#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#createView#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setProgress#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#AnchorUtils#0;n#Uilt#0" expanded="false" />
-            <element signature="n#ThemeAdapter#0;n#Uilt#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        <state relative-caret-position="152">
+          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Play.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="325">
+          <caret line="661" column="44" lean-forward="false" selection-start-line="661" selection-start-column="44" selection-end-line="661" selection-end-column="44" />
           <folding>
             <element signature="n#!!doc;n#Play#0" expanded="false" />
             <element signature="n#Game#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#interval#0;n#Game#0;n#Play#0" expanded="false" />
+            <element signature="n#!!doc;n#Init#0;n#Game#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#Init#0;n#Game#0;n#Play#0" expanded="false" />
+            <element signature="n#!!doc;n#menuInit#0;n#Game#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#menuInit#0;n#Game#0;n#Play#0" expanded="false" />
+            <element signature="e#1191#1478#0" expanded="false" />
+            <element signature="n#!!doc;n#startBtnClickEvent#0;n#Game#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#startBtnClickEvent#0;n#Game#0;n#Play#0" expanded="false" />
+            <element signature="e#1739#1881#0" expanded="false" />
+            <element signature="n#!!doc;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
+            <element signature="e#2093#2170#0" expanded="false" />
+            <element signature="n#panel#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#panel#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#interval#0;n#panel#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#init#0;n#panel#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#score#0;n#panel#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#time#0;n#panel#0;n#Play#0" expanded="false" />
             <element signature="n#grid#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#interval#0;n#grid#0;n#Play#0" expanded="false" />
+            <element signature="n#!!doc;n#gridSize#0;n#grid#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#gridSize#0;n#grid#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#constructor#0;n#grid#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#gridItemCols#0;n#grid#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#gridItemRows#0;n#grid#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#topRow#0;n#grid#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#initGrid#0;n#grid#0;n#Play#0" expanded="false" />
+            <element signature="e#5639#5844#0" expanded="false" />
+            <element signature="e#5901#6105#0" expanded="false" />
             <element signature="n#gridMap#0;n#Play#0" expanded="false" />
+            <element signature="n#!!doc;n#constructor#0;n#gridMap#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#gridMap#0;n#Play#0" expanded="false" />
+            <element signature="n#cudeType#0;n#Play#0" expanded="false" />
             <element signature="n#cude#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#cude#0;n#Play#0" expanded="false" />
+            <element signature="n#!!doc;n#cudeSize#0;n#cude#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#cudeSize#0;n#cude#0;n#Play#0" expanded="false" />
+            <element signature="n#KeyCode#0;n#Play#0" expanded="false" />
             <element signature="n#cudePosXY#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#cudePosXY#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#interval#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#constructor#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#8764#9458#0" expanded="false" />
+            <element signature="e#8782#9444#0" expanded="false" />
+            <element signature="e#8822#8914#0" expanded="false" />
+            <element signature="e#8935#9023#0" expanded="false" />
+            <element signature="e#9044#9138#0" expanded="false" />
+            <element signature="e#9159#9251#0" expanded="false" />
+            <element signature="e#9272#9366#0" expanded="false" />
+            <element signature="e#9387#9426#0" expanded="false" />
+            <element signature="n#!!doc;n#speedTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#speedTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="n#!!doc;n#gameTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#gameTimerFunc#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#10198#10357#0" expanded="false" />
+            <element signature="n#!!doc;n#canDown#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#canDown#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#10573#10831#0" expanded="false" />
+            <element signature="e#10735#10817#0" expanded="false" />
+            <element signature="n#!!doc;n#isHaveCude#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#isHaveCude#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#11135#11346#0" expanded="false" />
+            <element signature="e#11251#11332#0" expanded="false" />
+            <element signature="n#!!block;n#KeyUp#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#11716#12121#0" expanded="false" />
+            <element signature="e#11986#12070#0" expanded="false" />
+            <element signature="e#12147#12470#0" expanded="false" />
+            <element signature="e#12209#12456#0" expanded="false" />
             <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#12675#13201#0" expanded="false" />
+            <element signature="e#12834#13140#0" expanded="false" />
+            <element signature="e#12987#13081#0" expanded="false" />
+            <element signature="e#13205#13633#0" expanded="false" />
+            <element signature="e#13267#13535#0" expanded="false" />
+            <element signature="e#13318#13464#0" expanded="false" />
             <element signature="n#!!block;n#KeyLeft#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#13910#14662#0" expanded="false" />
+            <element signature="e#14112#14194#0" expanded="false" />
+            <element signature="e#14253#14611#0" expanded="false" />
+            <element signature="e#14499#14593#0" expanded="false" />
             <element signature="n#!!block;n#KeyRight#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#14983#15757#0" expanded="false" />
+            <element signature="e#15207#15289#0" expanded="false" />
+            <element signature="e#15348#15706#0" expanded="false" />
+            <element signature="e#15594#15688#0" expanded="false" />
+            <element signature="n#!!block;n#KeySpace#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#15931#16012#0" expanded="false" />
+            <element signature="e#16075#16157#0" expanded="false" />
+            <element signature="n#!!doc;n#isPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#isPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#16390#16489#0" expanded="false" />
+            <element signature="n#!!doc;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#16698#18193#0" expanded="false" />
+            <element signature="e#16801#16927#0" expanded="false" />
+            <element signature="e#16846#16909#0" expanded="false" />
+            <element signature="e#16954#18179#0" expanded="false" />
+            <element signature="e#17071#17476#0" expanded="false" />
+            <element signature="e#17124#17340#0" expanded="false" />
+            <element signature="e#17371#17454#0" expanded="false" />
+            <element signature="e#17625#18161#0" expanded="false" />
+            <element signature="e#17691#17878#0" expanded="false" />
+            <element signature="e#17769#17852#0" expanded="false" />
+            <element signature="e#17946#18139#0" expanded="false" />
+            <element signature="e#18027#18113#0" expanded="false" />
+            <element signature="e#18250#18822#0" expanded="false" />
+            <element signature="e#18371#18808#0" expanded="false" />
+            <element signature="e#18705#18783#0" expanded="false" />
+            <element signature="n#!!block;n#refresh#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#19045#19671#0" expanded="false" />
+            <element signature="e#19152#19202#0" expanded="false" />
+            <element signature="e#19237#19657#0" expanded="false" />
+            <element signature="e#19517#19595#0" expanded="false" />
+            <element signature="n#!!block;n#findCudeY#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#19786#20100#0" expanded="false" />
+            <element signature="e#19923#20086#0" expanded="false" />
             <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#20330#21138#0" expanded="false" />
+            <element signature="e#20792#20862#0" expanded="false" />
+            <element signature="e#20887#21124#0" expanded="false" />
             <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="n#!!doc;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#21622#21684#0" expanded="false" />
+            <element signature="n#!!doc;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#22877#23074#0" expanded="false" />
+            <element signature="e#23927#24038#0" expanded="false" />
+            <element signature="n#!!doc;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#gridLine#0;n#Play#0" expanded="false" />
+            <element signature="n#!!doc;n#LineColor#0;n#gridLine#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#LineColor#0;n#gridLine#0;n#Play#0" expanded="false" />
+            <element signature="n#!!doc;n#LineWidth#0;n#gridLine#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#LineWidth#0;n#gridLine#0;n#Play#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#gridLine#0;n#Play#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Uilt.ts">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="456">
-          <caret line="111" column="33" lean-forward="false" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
-=======
-        <state relative-caret-position="1386">
-          <caret line="205" column="41" lean-forward="false" selection-start-line="205" selection-start-column="41" selection-end-line="205" selection-end-column="41" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-          <folding>
-            <element signature="n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Scene#0;n#Uilt#0" expanded="false" />
-<<<<<<< HEAD
-            <element signature="n#!!doc;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#2852#2904#0" expanded="false" />
-=======
-            <element signature="n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#interval#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#3057#3109#0" expanded="false" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-            <element signature="n#!!doc;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-<<<<<<< HEAD
-            <element signature="n#!!block;n#init#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#3285#3303#0" expanded="false" />
-            <element signature="n#!!block;n#onConfigComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#4130#4517#0" expanded="false" />
-            <element signature="n#!!doc;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#4921#4932#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5190#5267#0" expanded="false" />
-=======
-            <element signature="n#!!doc;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5141#5528#0" expanded="false" />
-            <element signature="n#!!doc;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5932#5943#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-            <element signature="n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#createView#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setProgress#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#AnchorUtils#0;n#Uilt#0" expanded="false" />
-<<<<<<< HEAD
-            <element signature="n#GameStatus#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Coordinate#0;n#Uilt#0" expanded="false" />
-=======
-            <element signature="n#ThemeAdapter#0;n#Uilt#0" expanded="false" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/egretProperties.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" column="18" lean-forward="false" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wingProperties.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="15" column="42" lean-forward="false" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
-          <folding>
-            <element signature="n#!!doc;n#Game#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="75" lean-forward="false" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/eui_skins/ButtonSkin.exml">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-=======
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
+          <caret line="49" column="28" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1785" selection-end-column="10" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/LoadingUI.ts" />
-    <entry file="file://$PROJECT_DIR$/src/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="75" lean-forward="false" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/Play.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc;n#Play#0" expanded="false" />
-            <element signature="n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#initGrid#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#gridMap#0;n#Play#0" expanded="false" />
-            <element signature="n#cude#0;n#Play#0" expanded="false" />
-            <element signature="n#cudePosXY#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyLeft#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyRight#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#gridLine#0;n#Play#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Uilt.ts">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="456">
-          <caret line="111" column="33" lean-forward="false" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
-=======
-        <state relative-caret-position="1694">
-          <caret line="179" column="9" lean-forward="false" selection-start-line="179" selection-start-column="9" selection-end-line="179" selection-end-column="9" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-          <folding>
-            <element signature="n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Scene#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#interval#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#3057#3109#0" expanded="false" />
-            <element signature="n#!!doc;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5141#5528#0" expanded="false" />
-            <element signature="n#!!doc;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5932#5943#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#createView#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setProgress#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#AnchorUtils#0;n#Uilt#0" expanded="false" />
-            <element signature="n#ThemeAdapter#0;n#Uilt#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/resource/default.res.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-=======
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1210">
-          <caret line="55" column="49" lean-forward="false" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Play.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc;n#Play#0" expanded="false" />
-            <element signature="n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#initGrid#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#gridMap#0;n#Play#0" expanded="false" />
-            <element signature="n#cude#0;n#Play#0" expanded="false" />
-            <element signature="n#cudePosXY#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyLeft#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyRight#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#gridLine#0;n#Play#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/skin1/menu.exml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Uilt.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1694">
-          <caret line="179" column="9" lean-forward="false" selection-start-line="179" selection-start-column="9" selection-end-line="179" selection-end-column="9" />
-          <folding>
-            <element signature="n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Scene#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#interval#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#3057#3109#0" expanded="false" />
-            <element signature="n#!!doc;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5141#5528#0" expanded="false" />
-            <element signature="n#!!doc;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5932#5943#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#createView#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setProgress#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#AnchorUtils#0;n#Uilt#0" expanded="false" />
-            <element signature="n#ThemeAdapter#0;n#Uilt#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1210">
-          <caret line="55" column="49" lean-forward="false" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Play.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc;n#Play#0" expanded="false" />
-            <element signature="n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#initGrid#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#gridMap#0;n#Play#0" expanded="false" />
-            <element signature="n#cude#0;n#Play#0" expanded="false" />
-            <element signature="n#cudePosXY#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyLeft#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyRight#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#gridLine#0;n#Play#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/skin1/menu.exml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Uilt.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="111" column="33" lean-forward="false" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
-          <folding>
-            <element signature="n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Scene#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#interval#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#3057#3109#0" expanded="false" />
-            <element signature="n#!!doc;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5141#5528#0" expanded="false" />
-            <element signature="n#!!doc;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5932#5943#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#createView#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setProgress#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#AnchorUtils#0;n#Uilt#0" expanded="false" />
-            <element signature="n#ThemeAdapter#0;n#Uilt#0" expanded="false" />
-          </folding>
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/eui_skins/ButtonSkin.exml">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="190">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-=======
-        <state relative-caret-position="528">
-          <caret line="24" column="18" lean-forward="false" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="260">
-          <caret line="18" column="41" lean-forward="true" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-=======
-        <state relative-caret-position="154">
-          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/wingProperties.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="38" />
-=======
-    <entry file="file://$PROJECT_DIR$/resource/eui_skins/ButtonSkin.exml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Play.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="15" column="42" lean-forward="false" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
-          <folding>
-            <element signature="n#!!doc;n#Play#0" expanded="false" />
-            <element signature="n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#initGrid#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#gridMap#0;n#Play#0" expanded="false" />
-            <element signature="n#cude#0;n#Play#0" expanded="false" />
-            <element signature="n#cudePosXY#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyLeft#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyRight#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#gridLine#0;n#Play#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="75" lean-forward="false" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/egretProperties.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/LoadingUI.ts" />
-    <entry file="file://$PROJECT_DIR$/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-<<<<<<< HEAD
-=======
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-          <folding />
->>>>>>> 9f08e6d22845187e129d3b9dedee6fb956359f92
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/Game.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="15" column="39" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
-          <folding>
-            <element signature="n#!!doc;n#Game#0" expanded="false" />
-          </folding>
-=======
-    <entry file="file://$PROJECT_DIR$/resource/default.res.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/eui_skins/ButtonSkin.exml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/default.thm.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding />
->>>>>>> d6708438632cc38d1b55cad472e0afd7571358e7
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wingProperties.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ThemeAdapter.ts" />
-    <entry file="file://$PROJECT_DIR$/../test/src/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="41" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../test/src/AssetAdapter.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="55" column="1" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="55" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/skin1/menu.exml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Windows/System32/drivers/etc/hosts" />
-    <entry file="file://$PROJECT_DIR$/libs/modules/eui/eui.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/modules/document/document.d.ts" />
-    <entry file="file://$PROJECT_DIR$/libs/modules/document/document.js" />
-    <entry file="file://$PROJECT_DIR$/egretProperties.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Play.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="393" column="9" lean-forward="true" selection-start-line="393" selection-start-column="9" selection-end-line="393" selection-end-column="9" />
-          <folding>
-            <element signature="n#!!doc;n#Play#0" expanded="false" />
-            <element signature="n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#isOver#0;n#Game#0;n#Play#0" expanded="false" />
-            <element signature="n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#initGrid#0;n#grid#0;n#Play#0" expanded="false" />
-            <element signature="n#gridMap#0;n#Play#0" expanded="false" />
-            <element signature="n#cude#0;n#Play#0" expanded="false" />
-            <element signature="n#cudePosXY#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyLeft#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#KeyRight#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#gridLine#0;n#Play#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Uilt.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
-          <caret line="205" column="41" lean-forward="false" selection-start-line="205" selection-start-column="41" selection-end-line="205" selection-end-column="41" />
-          <folding>
-            <element signature="n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setGameStatus#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getNowTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incNowTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getTime#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decTimeer#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#getScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#decScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#incScore#0;n#Game#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Scene#0;n#Uilt#0" expanded="false" />
-            <element signature="n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#createBitmapByName#0;n#Tool#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#interval#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#3057#3109#0" expanded="false" />
-            <element signature="n#!!doc;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stage#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageW#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#stageH#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadComplete#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5141#5528#0" expanded="false" />
-            <element signature="n#!!doc;n#onItemLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceLoadError#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="e#5932#5943#0" expanded="false" />
-            <element signature="n#!!doc;n#onResourceProgress#0;n#Stage#0;n#Uilt#0" expanded="false" />
-            <element signature="n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#createView#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#!!block;n#setProgress#0;n#LoadingUI#0;n#Uilt#0" expanded="false" />
-            <element signature="n#AnchorUtils#0;n#Uilt#0" expanded="false" />
-            <element signature="n#ThemeAdapter#0;n#Uilt#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

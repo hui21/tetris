@@ -214,9 +214,9 @@ module Play {
         public constructor(x, y, w, h){
             super();
             this.posX = x
-            this.posY = -y + grid.topRow
+            this.posY = y + grid.topRow
             this.x = cudeData.posTo(x)
-            this.y = - cudeData.posTo(y) + grid.topRow * grid.gridSize
+            this.y = cudeData.posTo(y) + grid.topRow * grid.gridSize
 
             this.graphics.beginFill(this.color);
             this.graphics.drawRoundRect( 0, 0, w, h, 10, 10);
@@ -386,6 +386,7 @@ module Play {
         //下移动
         private KeyDown(){
             if(UniltGame.interval.getGameStatus() !== GameStatus.Start) return;
+            if(this.duration > 0) return;
             if(this.canDown()){
                 let canMove: boolean = true,
                     newPosXy: Array<cudePosXY> = []
@@ -489,7 +490,8 @@ module Play {
          * 消除
          */
         private remove(): boolean {
-            for (let y = 0; y <= grid.gridItemRows; y++){
+            let moveArr: Array<cude> = []
+            for (let y = grid.gridItemRows; y > 0; y--){
                 let status: boolean = true
                 for(let x = 0; x < grid.gridItemCols; x++){
                     if(!this.isPosXy(x, y)){
@@ -503,17 +505,35 @@ module Play {
                             this.removeChild(this.cudes[i])
                             removeArr.push(this.cudes[i])
                             panel.interval.score = this.cudes[i].sorce
+                        }else if(this.cudes[i].posY < y){
+                            moveArr.push(this.cudes[i])
                         }
                     }
                     panel.interval.score = Math.floor(removeArr.length / 10) //多行奖励分数
                     for (let i = 0; i < removeArr.length; i++){
+                        for (let j = 0; j < moveArr.length; j++){
+                            if(removeArr[i].hashCode == moveArr[j].hashCode){
+                                moveArr.splice(j,1)
+                            }
+                        }
                         for (let k = 0; k < this.cudes.length; k++){
-                            if(this.cudes[k].posY == removeArr[i].posY){
+                            if(this.cudes[k].hashCode == removeArr[i].hashCode){
                                 this.cudes.splice(k,1)
                             }
                         }
                     }
-                    this.refresh()
+                }
+            }
+            for(let i = (moveArr.length-1); i >= 0; i--){
+                let newPosY: number = this.findCudeY(moveArr[i])
+                if(newPosY <= (grid.gridItemRows - 2)){
+                    console.log(i,moveArr[i].posY, newPosY)
+                    let newY: number = cudeData.posTo(newPosY)
+                    this.duration += grid.gridSize
+                    moveArr[i].posY = newPosY
+                    egret.Tween.get(moveArr[i]).to({y: newY}, grid.gridSize, egret.Ease.bounceInOut).call(() => {
+                        this.duration -= grid.gridSize
+                    }, this)
                 }
             }
             return true;
@@ -524,20 +544,27 @@ module Play {
         private refresh(): void {
             let newPosXy: Array<cudePosXY> = []
             for(let i = 0; i < this.cudes.length; i++){
-                let posY:number = this.cudes[i].posY+1
-                if(!this.isPosXy(this.cudes[i].posX, posY) && posY <= (grid.gridItemRows - 2)){
-                    let abs = Math.abs(this.cudes[i].y - cudeData.posTo(posY));
-                    this.duration = Math.max(this.duration, abs);
-                    //console.log(this.duration)
-                    egret.Tween.get(this.cudes[i]).to({
-                        y: cudeData.posTo(posY),
-                        posY: posY
-                    }, 100, egret.Ease.bounceInOut).call(this.refresh, this)
-                    /*this.cudes[i].y = cudeData.posTo(posY)
-                    this.cudes[i].posY = posY*/
+                let newPosY:number = this.cudes[i].posY+this.findCudeY(this.cudes[i])
+                if(/*!this.isPosXy(this.cudes[i].posX, newPosY) && */newPosY <= (grid.gridItemRows - 2)){
+                    let newY: number = cudeData.posTo(newPosY)
+                    this.duration += grid.gridSize
+                    this.cudes[i].posY = newPosY
+                    egret.Tween.get(this.cudes[i]).to({y: newY}, grid.gridSize, egret.Ease.bounceInOut).call(() => {
+                        this.duration -= grid.gridSize
+                    }, this)
                     //this.refresh()
                 }
             }
+        }
+
+        private findCudeY(target: cude): number{
+            for(let i = 0; i < this.cudes.length; i++){
+                if(target.posX == this.cudes[i].posX && target.hashCode !== this.cudes[i].hashCode && target.posY < this.cudes[i].posY){
+                    let moveGridCount: number = this.cudes[i].posY - target.posY
+                    return target.posY+Math.abs(moveGridCount)
+                }
+            }
+            return (grid.gridItemRows-2)
         }
 
 
@@ -547,10 +574,20 @@ module Play {
          */
         private pos(newPosXy: Array<cudePosXY>){
             for(let i = 0; i < this.nowCude.length; i++){
-                this.nowCude[i].x = cudeData.posTo(newPosXy[i].posX)
-                this.nowCude[i].y = cudeData.posTo(newPosXy[i].posY)
+                let tw: egret.Tween = egret.Tween.get(this.nowCude[i]),
+                    newX: number = cudeData.posTo(newPosXy[i].posX),
+                    newY: number = cudeData.posTo(newPosXy[i].posY)
                 this.nowCude[i].posX = newPosXy[i].posX
                 this.nowCude[i].posY = newPosXy[i].posY
+                this.duration += grid.gridSize
+                tw.to({x: newX, y: newY}, grid.gridSize, egret.Ease.bounceInOut).call(() => {
+                    this.duration -= grid.gridSize
+                }, this)
+
+                /*this.nowCude[i].x = cudeData.posTo(newPosXy[i].posX)
+                this.nowCude[i].y = cudeData.posTo(newPosXy[i].posY)
+                this.nowCude[i].posX = newPosXy[i].posX
+                this.nowCude[i].posY = newPosXy[i].posY*/
             }
         }
 
@@ -586,43 +623,43 @@ module Play {
             switch (type){
                 case cudeType.Type1://田字
                     for(let x = minX; x <= maxX; x++){
-                        for (let y = 0; y < 2; y++){
-                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize))
+                        for (let y = 1; y >= 0; y--){
+                            maps.push(new cude(x, -y, cude.cudeSize, cude.cudeSize))
                         }
                     }
                     break;
                 case cudeType.Type2://L字
-                    for (let y = 0; y <= 2; y++){
+                    for (let y = 2; y >= 0; y--){
                         for(let x = minX; x <= maxX; x++){
                             if(y < 2 && x > minX) continue;
-                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize))
+                            maps.push(new cude(x, -y, cude.cudeSize, cude.cudeSize))
                         }
                     }
                     break;
                 case cudeType.Type3://转字
-                    for (let y = 0; y <= 2; y++){
+                    for (let y = 2; y >= 0; y--){
                         for(let x = minX; x <= maxX; x++){
                             if((y < 1 && x > minX) || (y > 1 && x < maxX)) continue;
-                            maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize))
+                            maps.push(new cude(x, -y, cude.cudeSize, cude.cudeSize))
                         }
                     }
                     break;
                 case cudeType.Type4://上字
-                    for (let y = 0; y <= 1; y++){
-                        maps.push(new cude(minX, y, cude.cudeSize, cude.cudeSize))
-                        if(y < 1 ) continue;
-                        maps.push(new cude((minX-1), y, cude.cudeSize, cude.cudeSize))
-                        maps.push(new cude(maxX, y, cude.cudeSize, cude.cudeSize))
+                    for (let y = 1; y >= 0; y--){
+                        maps.push(new cude(minX, -y, cude.cudeSize, cude.cudeSize))
+                        if(y > 0 ) continue;
+                        maps.push(new cude((minX-1), -y, cude.cudeSize, cude.cudeSize))
+                        maps.push(new cude(maxX, -y, cude.cudeSize, cude.cudeSize))
                     }
                     break;
                 case cudeType.Type5://I字
-                    for (let y = 0; y <= 3; y++){
+                    for (let y = 3; y >= 0; y--){
                         maps.push(new cude(minX, y, cude.cudeSize, cude.cudeSize))
                     }
                     break;
                 default://默认为田字
                     for(let x = minX; x <= maxX; x++){
-                        for (let y = 0; y < 2; y++){
+                        for (let y = 1; y >= 0; y++){
                             maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize))
                         }
                     }
