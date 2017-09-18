@@ -1,11 +1,16 @@
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /**
  * Created by feizhugame on 2017/9/6.
  */
@@ -307,7 +312,6 @@ var Play;
             _this.cudes = []; //方块集合
             _this.nowCude = []; //当前正在前进的方块
             _this.nowSpeed = 1000; //当前速度
-            _this.duration = 0;
             _this.y = grid.interval.y;
             _this.x = grid.interval.x;
             _this.width = grid.interval.width;
@@ -427,8 +431,6 @@ var Play;
         cudeData.prototype.KeyDown = function () {
             if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
                 return;
-            if (this.duration > 0)
-                return;
             if (this.canDown()) {
                 var canMove = true, newPosXy = [];
                 for (var i = 0; i < this.nowCude.length; i++) {
@@ -532,8 +534,7 @@ var Play;
          * 消除
          */
         cudeData.prototype.remove = function () {
-            var _this = this;
-            var moveArr = [];
+            var moveArr = [], removeArr = [];
             for (var y = grid.gridItemRows; y > 0; y--) {
                 var status_1 = true;
                 for (var x = 0; x < grid.gridItemCols; x++) {
@@ -542,7 +543,6 @@ var Play;
                     }
                 }
                 if (status_1) {
-                    var removeArr = [];
                     for (var i = 0; i < this.cudes.length; i++) {
                         if (this.cudes[i].posY == y) {
                             this.removeChild(this.cudes[i]);
@@ -553,54 +553,50 @@ var Play;
                             moveArr.push(this.cudes[i]);
                         }
                     }
-                    panel.interval.score = Math.floor(removeArr.length / 10); //多行奖励分数
-                    for (var i = 0; i < removeArr.length; i++) {
-                        for (var j = 0; j < moveArr.length; j++) {
-                            if (removeArr[i].hashCode == moveArr[j].hashCode) {
-                                moveArr.splice(j, 1);
-                            }
-                        }
-                        for (var k = 0; k < this.cudes.length; k++) {
-                            if (this.cudes[k].hashCode == removeArr[i].hashCode) {
-                                this.cudes.splice(k, 1);
-                            }
-                        }
+                }
+            }
+            panel.interval.score = Math.floor(removeArr.length / 10); //多行奖励分数
+            for (var i = 0; i < removeArr.length; i++) {
+                for (var j = 0; j < moveArr.length; j++) {
+                    if (removeArr[i].hashCode == moveArr[j].hashCode) {
+                        moveArr.splice(j, 1);
+                    }
+                }
+                for (var k = 0; k < this.cudes.length; k++) {
+                    if (this.cudes[k].hashCode == removeArr[i].hashCode) {
+                        this.cudes.splice(k, 1);
                     }
                 }
             }
-            for (var i = (moveArr.length - 1); i >= 0; i--) {
+            for (var i = 0; i < moveArr.length; i++) {
                 var newPosY = this.findCudeY(moveArr[i]);
                 if (newPosY <= (grid.gridItemRows - 2)) {
-                    console.log(i, moveArr[i].posY, newPosY);
                     var newY = cudeData.posTo(newPosY);
-                    this.duration += grid.gridSize;
                     moveArr[i].posY = newPosY;
-                    egret.Tween.get(moveArr[i]).to({ y: newY }, grid.gridSize, egret.Ease.bounceInOut).call(function () {
-                        _this.duration -= grid.gridSize;
-                    }, this);
+                    moveArr[i].y = newY;
                 }
             }
             return true;
         };
         //刷新
         cudeData.prototype.refresh = function () {
-            var _this = this;
             var newPosXy = [];
             for (var i = 0; i < this.cudes.length; i++) {
                 var newPosY = this.cudes[i].posY + this.findCudeY(this.cudes[i]);
-                if (newPosY <= (grid.gridItemRows - 2)) {
+                if (!this.isPosXy(this.cudes[i].posX, newPosY) && newPosY <= (grid.gridItemRows - 2)) {
                     var newY = cudeData.posTo(newPosY);
-                    this.duration += grid.gridSize;
                     this.cudes[i].posY = newPosY;
-                    egret.Tween.get(this.cudes[i]).to({ y: newY }, grid.gridSize, egret.Ease.bounceInOut).call(function () {
-                        _this.duration -= grid.gridSize;
-                    }, this);
+                    this.cudes[i].y = newY;
+                    //this.refresh()
                 }
             }
         };
         cudeData.prototype.findCudeY = function (target) {
-            for (var i = 0; i < this.cudes.length; i++) {
-                if (target.posX == this.cudes[i].posX && target.hashCode !== this.cudes[i].hashCode && target.posY < this.cudes[i].posY) {
+            for (var i = (this.cudes.length - 1); i > 0; i--) {
+                console.log(target.hashCode, this.cudes[i].hashCode, target.hashCode !== this.cudes[i].hashCode);
+                if (target.posX == this.cudes[i].posX &&
+                    target.hashCode !== this.cudes[i].hashCode &&
+                    target.posY < this.cudes[i].posY) {
                     var moveGridCount = this.cudes[i].posY - target.posY;
                     return target.posY + Math.abs(moveGridCount);
                 }
@@ -612,15 +608,11 @@ var Play;
          * @param newPosXy
          */
         cudeData.prototype.pos = function (newPosXy) {
-            var _this = this;
             for (var i = 0; i < this.nowCude.length; i++) {
-                var tw = egret.Tween.get(this.nowCude[i]), newX = cudeData.posTo(newPosXy[i].posX), newY = cudeData.posTo(newPosXy[i].posY);
+                this.nowCude[i].x = cudeData.posTo(newPosXy[i].posX);
+                this.nowCude[i].y = cudeData.posTo(newPosXy[i].posY);
                 this.nowCude[i].posX = newPosXy[i].posX;
                 this.nowCude[i].posY = newPosXy[i].posY;
-                this.duration += grid.gridSize;
-                tw.to({ x: newX, y: newY }, grid.gridSize, egret.Ease.bounceInOut).call(function () {
-                    _this.duration -= grid.gridSize;
-                }, this);
             }
         };
         /**
@@ -651,14 +643,14 @@ var Play;
             var maps = [], maxX = Math.floor(grid.gridItemCols / 2), //最大X轴位置
             minX = maxX - 1; //最小X轴的位置
             switch (type) {
-                case cudeType.Type1:
+                case cudeType.Type1://田字
                     for (var x = minX; x <= maxX; x++) {
                         for (var y = 1; y >= 0; y--) {
                             maps.push(new cude(x, -y, cude.cudeSize, cude.cudeSize));
                         }
                     }
                     break;
-                case cudeType.Type2:
+                case cudeType.Type2://L字
                     for (var y = 2; y >= 0; y--) {
                         for (var x = minX; x <= maxX; x++) {
                             if (y < 2 && x > minX)
@@ -667,7 +659,7 @@ var Play;
                         }
                     }
                     break;
-                case cudeType.Type3:
+                case cudeType.Type3://转字
                     for (var y = 2; y >= 0; y--) {
                         for (var x = minX; x <= maxX; x++) {
                             if ((y < 1 && x > minX) || (y > 1 && x < maxX))
@@ -676,7 +668,7 @@ var Play;
                         }
                     }
                     break;
-                case cudeType.Type4:
+                case cudeType.Type4://上字
                     for (var y = 1; y >= 0; y--) {
                         maps.push(new cude(minX, -y, cude.cudeSize, cude.cudeSize));
                         if (y > 0)
@@ -685,14 +677,14 @@ var Play;
                         maps.push(new cude(maxX, -y, cude.cudeSize, cude.cudeSize));
                     }
                     break;
-                case cudeType.Type5:
+                case cudeType.Type5://I字
                     for (var y = 3; y >= 0; y--) {
                         maps.push(new cude(minX, y, cude.cudeSize, cude.cudeSize));
                     }
                     break;
-                default:
+                default://默认为田字
                     for (var x = minX; x <= maxX; x++) {
-                        for (var y = 1; y >= 0; y++) {
+                        for (var y = 1; y >= 0; y--) {
                             maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize));
                         }
                     }

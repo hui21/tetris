@@ -1,6 +1,5 @@
 module Uilt {
 	//配置类
-	import AssetsAdapter = eui.AssetsAdapter;
 	export class Config {
 		public static debug = true;
 		public static panelLineWidth = 2;
