@@ -194,7 +194,7 @@ var Play;
         Object.defineProperty(grid, "gridItemRows", {
             //格子总行数
             get: function () {
-                return 17;
+                return 16;
             },
             enumerable: true,
             configurable: true
@@ -214,7 +214,7 @@ var Play;
                 this.addChild(gridItemX);
                 this.gridMaps.push(new gridMap(x, 0)); //添加位置到数组中
             }
-            for (var y = 0; y < grid.gridItemRows; y++) {
+            for (var y = 0; y <= grid.gridItemRows; y++) {
                 var gridItemY = new gridLine(0, (y * grid.gridSize), this.width, 0);
                 this.addChild(gridItemY);
                 this.gridMaps.push(new gridMap(0, y)); //添加位置到数组中
@@ -279,6 +279,14 @@ var Play;
             enumerable: true,
             configurable: true
         });
+        /**
+         * 检测是否是本身
+         * @param hashCode
+         * @returns {boolean}
+         */
+        cude.prototype.isSelf = function (hashCode) {
+            return this.hashCode === hashCode;
+        };
         return cude;
     }(egret.Sprite));
     Play.cude = cude;
@@ -378,7 +386,7 @@ var Play;
         cudeData.prototype.canDown = function () {
             var status = true;
             for (var i = 0; i < this.nowCude.length; i++) {
-                if (this.nowCude[i].posY == (grid.gridItemRows - 2) ||
+                if (this.nowCude[i].posY == (grid.gridItemRows - 1) ||
                     this.isHaveCude(this.nowCude[i])) {
                     status = false;
                     break;
@@ -446,7 +454,7 @@ var Play;
             }
             else {
                 for (var i = 0; i < this.nowCude.length; i++) {
-                    if (this.nowCude[i].posY == 1) {
+                    if (this.nowCude[i].posY == 0) {
                         UniltGame.interval.setGameStatus(GameStatus.Died);
                         console.log("game over");
                     }
@@ -531,77 +539,80 @@ var Play;
             return false;
         };
         /**
+         * 检测是否可以消除
+         * @param y
+         * @returns {boolean}
+         */
+        cudeData.prototype.canRemove = function (y) {
+            var status = true;
+            for (var x = 0; x < grid.gridItemCols; x++) {
+                if (!this.isPosXy(x, y)) {
+                    status = false;
+                }
+            }
+            return status;
+        };
+        /**
          * 消除
          */
         cudeData.prototype.remove = function () {
-            var moveArr = [], removeArr = [];
             for (var y = grid.gridItemRows; y > 0; y--) {
-                var status_1 = true;
-                for (var x = 0; x < grid.gridItemCols; x++) {
-                    if (!this.isPosXy(x, y)) {
-                        status_1 = false;
-                    }
-                }
-                if (status_1) {
+                if (this.canRemove(y)) {
+                    var removeArr = [], moveArr = [];
                     for (var i = 0; i < this.cudes.length; i++) {
                         if (this.cudes[i].posY == y) {
                             this.removeChild(this.cudes[i]);
                             removeArr.push(this.cudes[i]);
                             panel.interval.score = this.cudes[i].sorce;
                         }
-                        else if (this.cudes[i].posY < y) {
+                        else if (y > this.cudes[i].posY) {
                             moveArr.push(this.cudes[i]);
                         }
                     }
-                }
-            }
-            panel.interval.score = Math.floor(removeArr.length / 10); //多行奖励分数
-            for (var i = 0; i < removeArr.length; i++) {
-                for (var j = 0; j < moveArr.length; j++) {
-                    if (removeArr[i].hashCode == moveArr[j].hashCode) {
-                        moveArr.splice(j, 1);
+                    panel.interval.score = Math.floor(removeArr.length / 10); //多行奖励分数
+                    for (var i = 0; i < removeArr.length; i++) {
+                        for (var k = 0; k < moveArr.length; k++) {
+                            if (moveArr[k].hashCode == removeArr[i].hashCode) {
+                                moveArr.splice(k, 1);
+                            }
+                        }
+                        for (var k = 0; k < this.cudes.length; k++) {
+                            if (this.cudes[k].hashCode == removeArr[i].hashCode) {
+                                this.cudes.splice(k, 1);
+                            }
+                        }
                     }
-                }
-                for (var k = 0; k < this.cudes.length; k++) {
-                    if (this.cudes[k].hashCode == removeArr[i].hashCode) {
-                        this.cudes.splice(k, 1);
+                    moveArr = this.moveArrSort(moveArr);
+                    for (var i = 0; i < moveArr.length; i++) {
+                        console.log("moveArr", moveArr[i].posX, moveArr[i].posY);
+                        var newY = this.moveCudePosYCount(moveArr[i]);
+                        console.log("moveTO", moveArr[i].posX, newY);
+                        //moveArr[i].y = cudeData.posTo(newY);
+                        //moveArr[i].posY = newY;
                     }
-                }
-            }
-            for (var i = 0; i < moveArr.length; i++) {
-                var newPosY = this.findCudeY(moveArr[i]);
-                if (newPosY <= (grid.gridItemRows - 2)) {
-                    var newY = cudeData.posTo(newPosY);
-                    moveArr[i].posY = newPosY;
-                    moveArr[i].y = newY;
                 }
             }
             return true;
         };
-        //刷新
-        cudeData.prototype.refresh = function () {
-            var newPosXy = [];
+        cudeData.prototype.moveCudePosYCount = function (move) {
             for (var i = 0; i < this.cudes.length; i++) {
-                var newPosY = this.cudes[i].posY + this.findCudeY(this.cudes[i]);
-                if (!this.isPosXy(this.cudes[i].posX, newPosY) && newPosY <= (grid.gridItemRows - 2)) {
-                    var newY = cudeData.posTo(newPosY);
-                    this.cudes[i].posY = newPosY;
-                    this.cudes[i].y = newY;
-                    //this.refresh()
+                if (this.cudes[i].posY > move.posY && this.cudes[i].posX === move.posX) {
+                    return move.posY + Math.abs(this.cudes[i].posY - move.posY) - 1;
                 }
             }
+            return grid.gridItemRows - 1;
         };
-        cudeData.prototype.findCudeY = function (target) {
-            for (var i = (this.cudes.length - 1); i > 0; i--) {
-                console.log(target.hashCode, this.cudes[i].hashCode, target.hashCode !== this.cudes[i].hashCode);
-                if (target.posX == this.cudes[i].posX &&
-                    target.hashCode !== this.cudes[i].hashCode &&
-                    target.posY < this.cudes[i].posY) {
-                    var moveGridCount = this.cudes[i].posY - target.posY;
-                    return target.posY + Math.abs(moveGridCount);
+        cudeData.prototype.moveArrSort = function (cudes) {
+            for (var i = 1; i < cudes.length; i++) {
+                for (var j = 0; j < cudes.length - i; j++) {
+                    if (cudes[j].posY < cudes[j + 1].posY) {
+                        var temp = cudes[j];
+                        cudes[j] = cudes[j + 1];
+                        cudes[j + 1] = temp;
+                    }
                 }
             }
-            return (grid.gridItemRows - 2);
+            return cudes;
         };
         /**
          * 设置移动后的位置

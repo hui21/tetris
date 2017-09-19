@@ -155,7 +155,7 @@ module Play {
         }
         //格子总行数
         public static get gridItemRows(): number {
-            return 17
+            return 16
         }
         //距离顶部
         public static get topRow(): number {
@@ -170,7 +170,7 @@ module Play {
                 this.addChild(gridItemX)
                 this.gridMaps.push(new gridMap(x, 0))//添加位置到数组中
             }
-            for (let y = 0; y < grid.gridItemRows; y++) {
+            for (let y = 0; y <= grid.gridItemRows; y++) {
                 let gridItemY = new gridLine(0, (y * grid.gridSize), this.width, 0)
                 this.addChild(gridItemY)
                 this.gridMaps.push(new gridMap(0, y))//添加位置到数组中
@@ -229,6 +229,15 @@ module Play {
          */
         public static get cudeSize(): number {
             return 62;
+        }
+
+        /**
+         * 检测是否是本身
+         * @param hashCode
+         * @returns {boolean}
+         */
+        public isSelf(hashCode: number): boolean {
+            return this.hashCode === hashCode
         }
     }
 
@@ -330,7 +339,7 @@ module Play {
             let status: boolean = true;
             for(let i = 0; i < this.nowCude.length; i++){
                 if(
-                    this.nowCude[i].posY == (grid.gridItemRows -2) ||
+                    this.nowCude[i].posY == (grid.gridItemRows -1) ||
                     this.isHaveCude(this.nowCude[i])
                 ){
                     status = false;
@@ -400,7 +409,7 @@ module Play {
                 if(canMove) this.pos(newPosXy)
             }else{
                 for(let i = 0; i < this.nowCude.length; i++){
-                    if(this.nowCude[i].posY == 1){
+                    if(this.nowCude[i].posY == 0){
                         UniltGame.interval.setGameStatus(GameStatus.Died)
                         console.log("game over")
                     }
@@ -486,83 +495,82 @@ module Play {
         }
 
         /**
+         * 检测是否可以消除
+         * @param y
+         * @returns {boolean}
+         */
+        private canRemove(y: number): boolean {
+            let status: boolean = true
+            for(let x = 0; x < grid.gridItemCols; x++){
+                if(!this.isPosXy(x, y)){
+                    status = false;
+                }
+            }
+            return status;
+        }
+        /**
          * 消除
          */
         private remove(): boolean {
-            let moveArr: Array<cude> = [],
-                removeArr: Array<cude> = []
             for (let y = grid.gridItemRows; y > 0; y--){
-                let status: boolean = true
-                for(let x = 0; x < grid.gridItemCols; x++){
-                    if(!this.isPosXy(x, y)){
-                        status = false;
-                    }
-                }
-                if(status){
+                if(this.canRemove(y)){
+                    let removeArr: Array<cude> = [],
+                        moveArr: Array<cude> = []
                     for (let i = 0; i < this.cudes.length; i++){
                         if(this.cudes[i].posY == y){
                             this.removeChild(this.cudes[i])
                             removeArr.push(this.cudes[i])
                             panel.interval.score = this.cudes[i].sorce
-                        }else if(this.cudes[i].posY < y){
+                        }else if(y > this.cudes[i].posY){
                             moveArr.push(this.cudes[i])
                         }
                     }
-                }
-            }
-            panel.interval.score = Math.floor(removeArr.length / 10) //多行奖励分数
-            for (let i = 0; i < removeArr.length; i++){
-                for (let j = 0; j < moveArr.length; j++){
-                    if(removeArr[i].hashCode == moveArr[j].hashCode){
-                        moveArr.splice(j,1)
+                    panel.interval.score = Math.floor(removeArr.length / 10) //多行奖励分数
+                    for (let i = 0; i < removeArr.length; i++){
+                        for (let k = 0; k < moveArr.length; k++){
+                            if(moveArr[k].hashCode == removeArr[i].hashCode){
+                                moveArr.splice(k,1)
+                            }
+                        }
+                        for (let k = 0; k < this.cudes.length; k++){
+                            if(this.cudes[k].hashCode == removeArr[i].hashCode){
+                                this.cudes.splice(k,1)
+                            }
+                        }
                     }
-                }
-                for (let k = 0; k < this.cudes.length; k++){
-                    if(this.cudes[k].hashCode == removeArr[i].hashCode){
-                        this.cudes.splice(k,1)
+                    moveArr = this.moveArrSort(moveArr)
+                    for (let i = 0; i < moveArr.length; i++){
+                        console.log("moveArr",moveArr[i].posX, moveArr[i].posY)
+                        let newY = this.moveCudePosYCount(moveArr[i])
+                        console.log("moveTO",moveArr[i].posX, newY)
+                        //moveArr[i].y = cudeData.posTo(newY);
+                        //moveArr[i].posY = newY;
                     }
-                }
-            }
-            for(let i = 0; i < moveArr.length; i++){
-                let newPosY: number = this.findCudeY(moveArr[i])
-                if(newPosY <= (grid.gridItemRows - 2)){
-                    let newY: number = cudeData.posTo(newPosY)
-                    moveArr[i].posY = newPosY
-                    moveArr[i].y = newY
                 }
             }
             return true;
         }
-
-        //刷新
-        private refresh(): void {
-            let newPosXy: Array<cudePosXY> = []
-            for(let i = 0; i < this.cudes.length; i++){
-                let newPosY:number = this.cudes[i].posY+this.findCudeY(this.cudes[i])
-                if(!this.isPosXy(this.cudes[i].posX, newPosY) && newPosY <= (grid.gridItemRows - 2)){
-                    let newY: number = cudeData.posTo(newPosY)
-                    this.cudes[i].posY = newPosY
-                    this.cudes[i].y = newY
-                    //this.refresh()
+        private moveCudePosYCount(move: cude){
+            for (let i = 0; i < this.cudes.length; i++){
+                if(this.cudes[i].posY > move.posY && this.cudes[i].posX === move.posX){
+                    return move.posY+Math.abs(this.cudes[i].posY-move.posY)-1;
                 }
             }
+            return grid.gridItemRows - 1;
         }
 
-        private findCudeY(target: cude): number{
-            for(let i = (this.cudes.length - 1); i > 0; i--){
-                console.log(target.hashCode,this.cudes[i].hashCode, target.hashCode !== this.cudes[i].hashCode)
-                if(
-                    target.posX == this.cudes[i].posX &&
-                    target.hashCode !== this.cudes[i].hashCode &&
-                    target.posY < this.cudes[i].posY
-                ){
-                    let moveGridCount: number = this.cudes[i].posY - target.posY
-                    return target.posY+Math.abs(moveGridCount)
+        private moveArrSort(cudes: Array<cude>): Array<cude> {
+            for (let i = 1; i < cudes.length; i++){
+                for (let j = 0; j < cudes.length-i; j++){
+                    if(cudes[j].posY < cudes[j+1].posY){
+                        let temp = cudes[j]
+                        cudes[j] = cudes[j+1]
+                        cudes[j+1] = temp
+                    }
                 }
             }
-            return (grid.gridItemRows-2)
+            return cudes;
         }
-
 
         /**
          * 设置移动后的位置
