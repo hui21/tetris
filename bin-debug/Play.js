@@ -320,6 +320,9 @@ var Play;
             _this.cudes = []; //方块集合
             _this.nowCude = []; //当前正在前进的方块
             _this.nowSpeed = 1000; //当前速度
+            _this.isMove = true; //当前方块组是否在移动
+            _this.canMove = true; //是否可以移动
+            _this.moveNewPosXy = []; //移动时新的位置数组
             _this.y = grid.interval.y;
             _this.x = grid.interval.x;
             _this.width = grid.interval.width;
@@ -368,7 +371,55 @@ var Play;
          * @returns {boolean}
          */
         cudeData.prototype.speedTimerFunc = function () {
-            this.KeyDown();
+            if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
+                return;
+            if (this.isMove) {
+                if (this.canDown()) {
+                    this.resetCanMoveAndMoveNewPosXy();
+                    for (var i = 0; i < this.nowCude.length; i++) {
+                        var newY = this.nowCude[i].posY + 1; //检测碰撞，获取新的坐标值
+                        //是否超出格子
+                        if (this.isOverGrid(newY, KeyCode.KeyDown)) {
+                            this.canMove = false;
+                            break;
+                        }
+                        var newXy = new cudePosXY(0, 0, this.nowCude[i].posX, newY);
+                        this.moveNewPosXy.push(newXy);
+                    }
+                    this.pos(this.moveNewPosXy);
+                }
+                else {
+                    this.isMove = false;
+                }
+            }
+            else {
+                console.log(this.cudes.length);
+                this.remove(); //消除
+                cudeData.interval.createRandOneCude(); //创建一个类型方块组
+                this.isMove = true;
+            }
+        };
+        /**
+         * 将当前的方块组添加到视图方块组中
+         */
+        cudeData.prototype.nowCudeToCudes = function () {
+            for (var i = 0; i < this.nowCude.length; i++) {
+                //添加方块对象到视图方块组
+                this.cudes.push(this.nowCude[i]);
+            }
+        };
+        /**
+         * 游戏是否结束
+         * @returns {boolean}
+         */
+        cudeData.prototype.isGameOVer = function () {
+            for (var i = 0; i < this.nowCude.length; i++) {
+                if (this.nowCude[i].posY == 0) {
+                    UniltGame.interval.setGameStatus(GameStatus.Died);
+                    return true;
+                }
+            }
+            return false;
         };
         /**
          * 时间回调
@@ -410,17 +461,31 @@ var Play;
             }
             return status;
         };
-        //上移动
+        /**
+         * 重设对象属性
+         */
+        cudeData.prototype.resetCanMoveAndMoveNewPosXy = function () {
+            this.canMove = true;
+            this.moveNewPosXy = [];
+        };
+        /**
+         * 旋转/变形
+         * @returns {boolean}
+         * @constructor
+         */
         cudeData.prototype.KeyUp = function () {
+            //如果游戏状态不为开始/运行状态则直接返回
             if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
                 return;
             if (this.nowCudeType === cudeType.Type1)
-                return false;
+                return;
             var canRotate = true, newPosXy = [];
             for (var i = 0; i < this.nowCude.length; i++) {
                 var newXy = this.rotatePoint(this.nowCude[1], this.nowCude[i]);
-                if (newXy.posX < 0 || newXy.posX > (grid.gridItemCols - 1) ||
-                    newXy.posY < 0 || newXy.posY > (grid.gridItemRows - 1)) {
+                if (newXy.posY < 0 ||
+                    this.isOverGrid(newXy.posX) ||
+                    this.isOverGrid(newXy.posX, KeyCode.KeyRight) ||
+                    this.isOverGrid(newXy.posY, KeyCode.KeyDown)) {
                     canRotate = false;
                     break;
                 }
@@ -435,89 +500,120 @@ var Play;
                 }
             }
         };
-        //下移动
+        /**
+         * 下移动
+         * @constructor
+         */
         cudeData.prototype.KeyDown = function () {
+            //如果游戏状态不为开始/运行状态则直接返回
             if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
                 return;
+            //检测是否可以下落
             if (this.canDown()) {
-                var canMove = true, newPosXy = [];
-                for (var i = 0; i < this.nowCude.length; i++) {
-                    var newXy = new cudePosXY(0, 0, this.nowCude[i].posX, this.nowCude[i].posY + 1);
-                    if (newXy.posY > grid.gridItemRows) {
-                        canMove = false;
-                        break;
+                this.resetCanMoveAndMoveNewPosXy();
+                var newNowCude = this.ArrSortDesc(this.nowCude);
+                console.log(newNowCude);
+                for (var i = 0; i < newNowCude.length; i++) {
+                    var newY = void 0;
+                    if (this.cudes.length < 1) {
+                        newY = this.isNowCude(newNowCude, i);
+                        console.log("newY", newNowCude[i].posX, newNowCude[i].posY, "moveTo", this.isNowCude(newNowCude, i));
                     }
-                    newPosXy.push(newXy);
-                }
-                if (canMove)
-                    this.pos(newPosXy);
-            }
-            else {
-                for (var i = 0; i < this.nowCude.length; i++) {
-                    if (this.nowCude[i].posY == 0) {
-                        UniltGame.interval.setGameStatus(GameStatus.Died);
-                        console.log("game over");
+                    else {
+                        newY = this.moveCudePosYCount(newNowCude[i]); //检测碰撞，获取新的坐标值
                     }
-                    this.cudes.push(this.nowCude[i]);
+                    //console.log(newNowCude)
+                    newNowCude[i].y = cudeData.posTo(newY);
+                    newNowCude[i].posY = newY;
+                    this.isMove = false;
                 }
-                this.remove();
-                cudeData.interval.createRandOneCude();
+                this.isMove = false;
+                this.nowCudeToCudes();
             }
         };
-        //左移动
+        cudeData.prototype.isNowCude = function (cudes, index) {
+            for (var i = 0; i < cudes.length; i++) {
+                if (cudes[i].posY > cudes[index].posY && cudes[i].posX === cudes[index].posX) {
+                    return cudes[i].posY;
+                }
+            }
+            return grid.gridItemRows - 1;
+        };
+        /**
+         * 左移动
+         * @constructor
+         */
         cudeData.prototype.KeyLeft = function () {
+            //如果游戏状态不为开始/运行状态则直接返回
             if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
                 return;
-            var canMove = true, newPosXy = [];
+            this.resetCanMoveAndMoveNewPosXy();
             for (var i = 0; i < this.nowCude.length; i++) {
-                if (!canMove)
-                    break;
-                var newXy = new cudePosXY(0, 0, this.nowCude[i].posX - 1, this.nowCude[i].posY);
-                if (newXy.posX < 0 || newXy.posY == grid.gridItemRows) {
-                    canMove = false;
+                if (!this.canMove)
+                    break; //如果已经标记为不能移动则直接跳出循环
+                var newX = this.nowCude[i].posX - 1; //右移
+                //是否超出格子、新位置是否有方块数据
+                if (this.isOverGrid(newX, KeyCode.KeyLeft) || this.isPosXy(newX, this.nowCude[i].posY)) {
+                    this.canMove = false;
                     break;
                 }
-                for (var k = 0; k < this.cudes.length; k++) {
-                    if (this.cudes[k] !== undefined &&
-                        this.cudes[k].posX == (this.nowCude[i].posX - 1) &&
-                        this.cudes[k].posY == (this.nowCude[i].posY)) {
-                        canMove = false;
-                        break;
-                    }
-                }
-                newPosXy.push(newXy);
+                // 添加新数据到移动数组中
+                var newXy = new cudePosXY(0, 0, newX, this.nowCude[i].posY);
+                this.moveNewPosXy.push(newXy);
             }
-            if (canMove)
-                this.pos(newPosXy);
+            //如果可以移动则调用位移方法
+            this.pos(this.moveNewPosXy);
         };
-        //右移动
+        /**
+         * 右移
+         * @constructor
+         */
         cudeData.prototype.KeyRight = function () {
+            //如果游戏状态不为开始/运行状态则直接返回
             if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
                 return;
-            var canMove = true, newPosXy = [];
+            this.resetCanMoveAndMoveNewPosXy();
             for (var i = 0; i < this.nowCude.length; i++) {
-                if (!canMove)
-                    break;
-                var newXy = new cudePosXY(0, 0, this.nowCude[i].posX + 1, this.nowCude[i].posY);
-                if (newXy.posX > (grid.gridItemCols - 1) || newXy.posY == grid.gridItemRows) {
-                    canMove = false;
+                if (!this.canMove)
+                    break; //如果已经标记为不能移动则直接跳出循环
+                var newX = this.nowCude[i].posX + 1; //右移
+                //是否超出格子、新位置是否有方块数据
+                if (this.isOverGrid(newX, KeyCode.KeyRight) || this.isPosXy(newX, this.nowCude[i].posY)) {
+                    this.canMove = false;
                     break;
                 }
-                for (var k = 0; k < this.cudes.length; k++) {
-                    if (this.cudes[k] !== undefined &&
-                        this.cudes[k].posX == (this.nowCude[i].posX + 1) &&
-                        this.cudes[k].posY == (this.nowCude[i].posY)) {
-                        canMove = false;
-                        break;
-                    }
-                }
-                newPosXy.push(newXy);
+                // 添加新数据到移动数组中
+                var newXy = new cudePosXY(0, 0, newX, this.nowCude[i].posY);
+                this.moveNewPosXy.push(newXy);
             }
-            if (canMove)
-                this.pos(newPosXy);
+            //如果可以移动则调用位移方法
+            this.pos(this.moveNewPosXy);
         };
-        //暂停/开始游戏切换
+        /**
+         * 是否超出格子
+         * @param posVal 第几个格子
+         * @param type 类型
+         * @returns {boolean}
+         */
+        cudeData.prototype.isOverGrid = function (posVal, type) {
+            if (type === void 0) { type = KeyCode.KeyDown; }
+            switch (type) {
+                case KeyCode.KeyDown://下落
+                    return posVal === grid.gridItemRows;
+                case KeyCode.KeyLeft://左移
+                    return posVal === -1;
+                case KeyCode.KeyRight:// 右移
+                    return posVal === grid.gridItemCols;
+                default://默认为下落
+                    return posVal === grid.gridItemRows;
+            }
+        };
+        /**
+         * 暂停/开始游戏切换
+         * @constructor
+         */
         cudeData.prototype.KeySpace = function () {
+            //如果游戏的状态为开始/运行的状态，则暂停
             if (UniltGame.interval.getGameStatus() === GameStatus.Start) {
                 UniltGame.interval.setGameStatus(GameStatus.Stop);
             }
@@ -532,8 +628,9 @@ var Play;
          * @returns {boolean}
          */
         cudeData.prototype.isPosXy = function (x, y) {
+            //检测该位置是否有方块
             for (var i = 0; i < this.cudes.length; i++) {
-                if (this.cudes[i].posX == x && this.cudes[i].posY == y)
+                if (this.cudes[i].posX === x && this.cudes[i].posY === y)
                     return true;
             }
             return false;
@@ -546,8 +643,10 @@ var Play;
         cudeData.prototype.canRemove = function (y) {
             var status = true;
             for (var x = 0; x < grid.gridItemCols; x++) {
+                //如果该位置没有方块数据，则返回false
                 if (!this.isPosXy(x, y)) {
                     status = false;
+                    break;
                 }
             }
             return status;
@@ -556,53 +655,102 @@ var Play;
          * 消除
          */
         cudeData.prototype.remove = function () {
+            var removeArr = [], //需要消去的数据
+            moveArr = []; //需要位移的数据
+            //从底部开始扫描消去
             for (var y = grid.gridItemRows; y > 0; y--) {
+                //检测是否可以消去此行
                 if (this.canRemove(y)) {
-                    var removeArr = [], moveArr = [];
                     for (var i = 0; i < this.cudes.length; i++) {
+                        //选择等于此行的数据
                         if (this.cudes[i].posY == y) {
-                            this.removeChild(this.cudes[i]);
-                            removeArr.push(this.cudes[i]);
-                            panel.interval.score = this.cudes[i].sorce;
+                            this.removeChild(this.cudes[i]); //从视图上移除对象
+                            removeArr.push(this.cudes[i]); //把移除对象添加到数组中
+                            panel.interval.score = this.cudes[i].sorce; //添加分数
                         }
                         else if (y > this.cudes[i].posY) {
                             moveArr.push(this.cudes[i]);
                         }
                     }
-                    panel.interval.score = Math.floor(removeArr.length / 10); //多行奖励分数
-                    for (var i = 0; i < removeArr.length; i++) {
-                        for (var k = 0; k < moveArr.length; k++) {
-                            if (moveArr[k].hashCode == removeArr[i].hashCode) {
-                                moveArr.splice(k, 1);
-                            }
-                        }
-                        for (var k = 0; k < this.cudes.length; k++) {
-                            if (this.cudes[k].hashCode == removeArr[i].hashCode) {
-                                this.cudes.splice(k, 1);
-                            }
-                        }
-                    }
-                    moveArr = this.moveArrSort(moveArr);
-                    for (var i = 0; i < moveArr.length; i++) {
-                        console.log("moveArr", moveArr[i].posX, moveArr[i].posY);
-                        var newY = this.moveCudePosYCount(moveArr[i]);
-                        console.log("moveTO", moveArr[i].posX, newY);
-                        //moveArr[i].y = cudeData.posTo(newY);
-                        //moveArr[i].posY = newY;
+                }
+            }
+            panel.interval.score = Math.floor(removeArr.length / 10); //多行奖励分数
+            //消除的数据
+            for (var i = 0; i < removeArr.length; i++) {
+                //如果之前标记需要移动的数据已被移除则删除moveArr的相关数据
+                for (var k = 0; k < moveArr.length; k++) {
+                    if (moveArr[k].hashCode == removeArr[i].hashCode) {
+                        moveArr.splice(k, 1);
                     }
                 }
+                //删除方块数组重需要消去的数据
+                for (var k = 0; k < this.cudes.length; k++) {
+                    if (this.cudes[k].hashCode == removeArr[i].hashCode) {
+                        this.cudes.splice(k, 1);
+                    }
+                }
+            }
+            //移动
+            moveArr = this.ArrSortDesc(moveArr); //对需要移动的数据进行Y轴倒叙
+            for (var i = 0; i < moveArr.length; i++) {
+                var newY = this.moveCudePosYCount(moveArr[i]); //检测碰撞，获取新的坐标值
+                moveArr[i].y = cudeData.posTo(newY);
+                moveArr[i].posY = newY;
+                //如果新行可以消除则调用消除方法
+                if (this.canRemove(moveArr[i].y))
+                    this.remove();
             }
             return true;
         };
+        /**
+         * 需要移动的位移
+         * @param move
+         * @returns {number}
+         */
         cudeData.prototype.moveCudePosYCount = function (move) {
-            for (var i = 0; i < this.cudes.length; i++) {
-                if (this.cudes[i].posY > move.posY && this.cudes[i].posX === move.posX) {
-                    return move.posY + Math.abs(this.cudes[i].posY - move.posY) - 1;
+            var newCudes = this.ArrSortAsc(this.cudes);
+            for (var i = 0; i < newCudes.length; i++) {
+                //筛选大于move对象的posY值并X值相同的
+                if (newCudes[i].posY > move.posY && newCudes[i].posX === move.posX) {
+                    return move.posY + Math.abs(newCudes[i].posY - move.posY) - 1;
                 }
             }
-            return grid.gridItemRows - 1;
+            return grid.gridItemRows - 1; //如果都为空则直接位移到底部
         };
-        cudeData.prototype.moveArrSort = function (cudes) {
+        cudeData.prototype.moveNowCudePosYCount = function (move) {
+            var newCudes = this.ArrSortAsc(this.cudes);
+            for (var i = 0; i < newCudes.length; i++) {
+                //筛选大于move对象的posY值并X值相同的
+                if (newCudes[i].posY > move.posY && newCudes[i].posX === move.posX) {
+                    return move.posY + Math.abs(newCudes[i].posY - move.posY) - 1;
+                }
+            }
+            return grid.gridItemRows - 1; //如果都为空则直接位移到底部
+        };
+        /**
+         * 数组冒泡升序排序
+         * @param cudes
+         * @returns {Array<cude>}
+         */
+        cudeData.prototype.ArrSortAsc = function (cudes) {
+            for (var i = 1; i < cudes.length; i++) {
+                for (var j = 0; j < cudes.length - i; j++) {
+                    if (cudes[j].posY > cudes[j + 1].posY) {
+                        var temp = cudes[j];
+                        cudes[j] = cudes[j + 1];
+                        cudes[j + 1] = temp;
+                    }
+                }
+            }
+            return cudes;
+        };
+        /**
+         * 数组倒叙排序
+         * @param cudes
+         * @returns {Array<cude>}
+         * @constructor
+         */
+        cudeData.prototype.ArrSortDesc = function (cudes) {
             for (var i = 1; i < cudes.length; i++) {
                 for (var j = 0; j < cudes.length - i; j++) {
                     if (cudes[j].posY < cudes[j + 1].posY) {
@@ -619,7 +767,18 @@ var Play;
          * @param newPosXy
          */
         cudeData.prototype.pos = function (newPosXy) {
+            if (!this.canMove)
+                return; //如果不能移动则返回
             for (var i = 0; i < this.nowCude.length; i++) {
+                //大佬，这里交给你了
+                /*let newX: number = cudeData.posTo(newPosXy[i].posX),
+                    newY: number = cudeData.posTo(newPosXy[i].posY)
+                this.nowCude[i].posX = newPosXy[i].posX
+                this.nowCude[i].posY = newPosXy[i].posY
+                egret.Tween.get(this.nowCude[i]).to({
+                    x: newX,
+                    y: newY
+                }, 50, egret.Ease.bounceInOut)*/
                 this.nowCude[i].x = cudeData.posTo(newPosXy[i].posX);
                 this.nowCude[i].y = cudeData.posTo(newPosXy[i].posY);
                 this.nowCude[i].posX = newPosXy[i].posX;
@@ -711,7 +870,6 @@ var Play;
          */
         cudeData.prototype.rotatePoint = function (cude1, cude2) {
             var y = (cude2.x - cude1.x + cude1.y), x = (-cude2.y + cude1.x + cude1.y), posx = (-cude2.posY + cude1.posX + cude1.posY), posy = (cude2.posX - cude1.posX + cude1.posY);
-            //console.log(posy, posx)
             return new cudePosXY(x, y, posx, posy);
         };
         return cudeData;
