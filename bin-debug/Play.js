@@ -307,7 +307,6 @@ var Play;
             _this.cudes = []; //方块集合
             _this.nowCude = []; //当前正在前进的方块
             _this.nowSpeed = 1000; //当前速度
-            _this.duration = 0;
             _this.y = grid.interval.y;
             _this.x = grid.interval.x;
             _this.width = grid.interval.width;
@@ -427,8 +426,6 @@ var Play;
         cudeData.prototype.KeyDown = function () {
             if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
                 return;
-            if (this.duration > 0)
-                return;
             if (this.canDown()) {
                 var canMove = true, newPosXy = [];
                 for (var i = 0; i < this.nowCude.length; i++) {
@@ -532,8 +529,7 @@ var Play;
          * 消除
          */
         cudeData.prototype.remove = function () {
-            var _this = this;
-            var moveArr = [];
+            var moveArr = [], removeArr = [];
             for (var y = grid.gridItemRows; y > 0; y--) {
                 var status_1 = true;
                 for (var x = 0; x < grid.gridItemCols; x++) {
@@ -542,7 +538,6 @@ var Play;
                     }
                 }
                 if (status_1) {
-                    var removeArr = [];
                     for (var i = 0; i < this.cudes.length; i++) {
                         if (this.cudes[i].posY == y) {
                             this.removeChild(this.cudes[i]);
@@ -553,58 +548,64 @@ var Play;
                             moveArr.push(this.cudes[i]);
                         }
                     }
-                    panel.interval.score = Math.floor(removeArr.length / 10); //多行奖励分数
-                    for (var i = 0; i < removeArr.length; i++) {
-                        for (var j = 0; j < moveArr.length; j++) {
-                            if (removeArr[i].hashCode == moveArr[j].hashCode) {
-                                moveArr.splice(j, 1);
-                            }
-                        }
-                        for (var k = 0; k < this.cudes.length; k++) {
-                            if (this.cudes[k].hashCode == removeArr[i].hashCode) {
-                                this.cudes.splice(k, 1);
-                            }
-                        }
+                }
+            }
+            panel.interval.score = Math.floor(removeArr.length / 10); //多行奖励分数
+            for (var i = 0; i < removeArr.length; i++) {
+                for (var j = 0; j < moveArr.length; j++) {
+                    if (removeArr[i].hashCode == moveArr[j].hashCode) {
+                        moveArr.splice(j, 1);
+                    }
+                }
+                for (var k = 0; k < this.cudes.length; k++) {
+                    if (this.cudes[k].hashCode == removeArr[i].hashCode) {
+                        this.cudes.splice(k, 1);
                     }
                 }
             }
-            for (var i = (moveArr.length - 1); i >= 0; i--) {
-                var newPosY = this.findCudeY(moveArr[i]);
+            for (var i = 0; i < moveArr.length; i++) {
+                console.log(i, moveArr[i].posY);
+                var newPosY = this.findCudeY(moveArr[i], moveArr);
                 if (newPosY <= (grid.gridItemRows - 2)) {
-                    console.log(i, moveArr[i].posY, newPosY);
                     var newY = cudeData.posTo(newPosY);
-                    this.duration += grid.gridSize;
                     moveArr[i].posY = newPosY;
-                    egret.Tween.get(moveArr[i]).to({ y: newY }, grid.gridSize, egret.Ease.bounceInOut).call(function () {
-                        _this.duration -= grid.gridSize;
-                    }, this);
+                    moveArr[i].y = newY;
                 }
             }
             return true;
         };
         //刷新
         cudeData.prototype.refresh = function () {
-            var _this = this;
             var newPosXy = [];
             for (var i = 0; i < this.cudes.length; i++) {
                 var newPosY = this.cudes[i].posY + this.findCudeY(this.cudes[i]);
-                if (newPosY <= (grid.gridItemRows - 2)) {
+                if (!this.isPosXy(this.cudes[i].posX, newPosY) && newPosY <= (grid.gridItemRows - 2)) {
                     var newY = cudeData.posTo(newPosY);
-                    this.duration += grid.gridSize;
                     this.cudes[i].posY = newPosY;
-                    egret.Tween.get(this.cudes[i]).to({ y: newY }, grid.gridSize, egret.Ease.bounceInOut).call(function () {
-                        _this.duration -= grid.gridSize;
-                    }, this);
+                    this.cudes[i].y = newY;
                 }
             }
         };
-        cudeData.prototype.findCudeY = function (target) {
-            for (var i = 0; i < this.cudes.length; i++) {
-                if (target.posX == this.cudes[i].posX && target.hashCode !== this.cudes[i].hashCode && target.posY < this.cudes[i].posY) {
-                    var moveGridCount = this.cudes[i].posY - target.posY;
+        cudeData.prototype.findCudeY = function (target, moveArr) {
+            for (var i = 0; i < moveArr.length; i++) {
+                console.log(moveArr[i].posY);
+                if (target.posX == moveArr[i].posX &&
+                    target.hashCode !== moveArr[i].hashCode &&
+                    target.posY < moveArr[i].posY) {
+                    var moveGridCount = moveArr[i].posY - target.posY;
                     return target.posY + Math.abs(moveGridCount);
                 }
             }
+            /*for(let i = 0; i < this.cudes.length; i++){
+                if(
+                    target.posX == this.cudes[i].posX &&
+                    target.hashCode !== this.cudes[i].hashCode &&
+                    target.posY < this.cudes[i].posY
+                ){
+                    let moveGridCount: number = this.cudes[i].posY - target.posY
+                    return target.posY+Math.abs(moveGridCount)
+                }
+            }*/
             return (grid.gridItemRows - 2);
         };
         /**
@@ -612,15 +613,11 @@ var Play;
          * @param newPosXy
          */
         cudeData.prototype.pos = function (newPosXy) {
-            var _this = this;
             for (var i = 0; i < this.nowCude.length; i++) {
-                var tw = egret.Tween.get(this.nowCude[i]), newX = cudeData.posTo(newPosXy[i].posX), newY = cudeData.posTo(newPosXy[i].posY);
+                this.nowCude[i].x = cudeData.posTo(newPosXy[i].posX);
+                this.nowCude[i].y = cudeData.posTo(newPosXy[i].posY);
                 this.nowCude[i].posX = newPosXy[i].posX;
                 this.nowCude[i].posY = newPosXy[i].posY;
-                this.duration += grid.gridSize;
-                tw.to({ x: newX, y: newY }, grid.gridSize, egret.Ease.bounceInOut).call(function () {
-                    _this.duration -= grid.gridSize;
-                }, this);
             }
         };
         /**
@@ -692,7 +689,7 @@ var Play;
                     break;
                 default:
                     for (var x = minX; x <= maxX; x++) {
-                        for (var y = 1; y >= 0; y++) {
+                        for (var y = 1; y >= 0; y--) {
                             maps.push(new cude(x, y, cude.cudeSize, cude.cudeSize));
                         }
                     }

@@ -8,7 +8,7 @@ var game_file_list = [
 	"libs/modules/res/res.js",
 	"libs/modules/tween/tween.js",
 	"libs/modules/eui/eui.js",
-	"polyfill/promise.js",
+	"promise/promise.js",
 	"bin-debug/Uilt.js",
 	"bin-debug/Main.js",
 	"bin-debug/Play.js",

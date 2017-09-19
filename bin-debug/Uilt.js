@@ -8,6 +8,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Uilt;
 (function (Uilt) {
+    //配置类
     var Config = (function () {
         function Config() {
         }
