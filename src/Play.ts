@@ -420,10 +420,8 @@ module Play {
             let canRotate: boolean = true,
                 newPosXy: Array<cudePosXY> = []
             for(let i = 0; i < this.nowCude.length; i++){
-                let newXy = this.rotatePoint(this.nowCude[1], this.nowCude[i])
-                if(
-                    newXy.posY < 0 ||
-                    this.isOverGrid(newXy.posX) ||
+                let newXy = this.rotatePoint(this.nowCude[2], this.nowCude[i])
+                if(this.isOverGrid(newXy.posX, KeyCode.KeyLeft) ||
                     this.isOverGrid(newXy.posX, KeyCode.KeyRight) ||
                     this.isOverGrid(newXy.posY, KeyCode.KeyDown)
                 ){

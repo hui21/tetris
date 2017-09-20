@@ -463,9 +463,8 @@ var Play;
                 return;
             var canRotate = true, newPosXy = [];
             for (var i = 0; i < this.nowCude.length; i++) {
-                var newXy = this.rotatePoint(this.nowCude[1], this.nowCude[i]);
-                if (newXy.posY < 0 ||
-                    this.isOverGrid(newXy.posX) ||
+                var newXy = this.rotatePoint(this.nowCude[2], this.nowCude[i]);
+                if (this.isOverGrid(newXy.posX, KeyCode.KeyLeft) ||
                     this.isOverGrid(newXy.posX, KeyCode.KeyRight) ||
                     this.isOverGrid(newXy.posY, KeyCode.KeyDown)) {
                     canRotate = false;
