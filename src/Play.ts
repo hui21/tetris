@@ -92,10 +92,10 @@ module Play {
 
             this.timeGroup.x = this.width / 2
             this.timeGroup.y = grid.gridSize / 2
-            this.timeGroup.anchorOffsetX = this.timeGroup.x / 2
+            this.timeGroup.anchorOffsetX = (this.timeGroup.x+this.timeGroup.width) / 2
             this.scoreGroup.x = this.width
             this.scoreGroup.y = grid.gridSize / 2
-            this.scoreGroup.anchorOffsetX = this.scoreGroup.x / 4
+            this.scoreGroup.anchorOffsetX = (this.scoreGroup.x+this.scoreGroup.width)/2
 
             this.addChild(this.timeGroup)
             this.addChild(this.scoreGroup)
@@ -267,7 +267,7 @@ module Play {
         public cudes: Array<cude> = [] //方块集合
         public nowCude: Array<cude> = [] //当前正在前进的方块
         public nowCudeType: cudeType //当前正在前进的方块类型
-        public nowSpeed:number = 1000 //当前速度
+        public nowSpeed:number = 400 //当前速度
         private speedTimer: egret.Timer //速度时间对象
         private gameTimer: egret.Timer //游戏时间对象
         private isMove: boolean = true //当前方块组是否在移动
@@ -338,9 +338,12 @@ module Play {
                     this.pos(this.moveNewPosXy)
                 }else{
                     this.isMove = false
+                    for(let i = 0; i < this.nowCude.length; i++){
+                        this.cudes.push(this.nowCude[i])
+                    }
+                    if(!this.canDown()) this.remove() //消除
                 }
             }else{
-                this.remove() //消除
                 cudeData.interval.createRandOneCude() //创建一个类型方块组
                 this.isMove = true
             }
@@ -448,55 +451,40 @@ module Play {
             if(UniltGame.interval.getGameStatus() !== GameStatus.Start) return;
             //检测是否可以下落
             if(this.canDown()){
-                this.resetCanMoveAndMoveNewPosXy()
-                let newNowCude: Array<cude> = this.ArrSortDesc(this.nowCude),
-                    cudeYdiff:Array<number> = []
-                for(let i = 0; i < newNowCude.length; i++) {
-                    cudeYdiff.push(newNowCude[0].posY-newNowCude[i].posY)
-                }
-                for(let i = 0; i < newNowCude.length; i++) {
-                    let newY: number;
-                    //如果视图方块数组为空则用当前方块方法计算位置
-                    if(this.cudes.length < 1) {
-                        newY = this.isNowCude(newNowCude, i)
-                    }else{
-                        newY = this.isNowCude2(newNowCude[i], cudeYdiff[i])
+                let nowCudeYDiff: number = null
+                for (let i = 0; i < this.nowCude.length; i++){
+                    let diff: number = this.downDiff(this.nowCude[i])
+                    if(nowCudeYDiff === null){
+                        nowCudeYDiff = diff
+                    }else if(nowCudeYDiff > diff){
+                        nowCudeYDiff = diff
                     }
-                    newNowCude[i].y = cudeData.posTo(newY)
-                    newNowCude[i].posY = newY
-                    this.isMove = false
-                    this.cudes.push(newNowCude[i])
+                }
+
+                for (let i = 0; i < this.nowCude.length; i++){
+                    let y: number = nowCudeYDiff+this.nowCude[i].posY
+                    this.nowCude[i].y = cudeData.posTo(y)
+                    this.nowCude[i].posY = y
                 }
             }
         }
 
         /**
-         * 当前的移动方块数组下落检测
-         * @param cudes
-         * @param index
+         * 获取掉落差值
+         * @param map
          * @returns {number}
          */
-        private isNowCude(cudes: Array<cude>, index): number {
-
-                for(let i = 0; i < cudes.length; i++) {
-                    if(cudes[i].posY > cudes[index].posY && cudes[i].posX === cudes[index].posX){
-                        return cudes[index].posY+Math.abs(cudes[i].posY - cudes[index].posY) -1
-                    }
-                }
-                return grid.gridItemRows -1
-        }
-
-        private isNowCude2(map: cude, diff: number): number {
-
+        private downDiff(map: cude): number {
+            if(this.cudes.length < 1){
+                return grid.gridItemRows-1-map.posY
+            }
             let newCudes: Array<cude> = this.ArrSortAsc(this.cudes)
             for (let i = 0; i < newCudes.length; i++){
-                console.log(newCudes[i].posX, newCudes[i].posY)
-                //筛选大于move对象的posY值并X值相同的
-                if(newCudes[i].posY > map.posY && newCudes[i].posX === map.posX){
-                    return map.posY+Math.abs(newCudes[i].posY-map.posY)-1;
+                if(newCudes[i].posX === map.posX){
+                    return newCudes[i].posY-map.posY-1
                 }
             }
-            return grid.gridItemRows-1-diff;
+            return grid.gridItemRows-1-map.posY
         }
 
         /**
@@ -724,18 +712,22 @@ module Play {
             if(!this.canMove) return; //如果不能移动则返回
             for(let i = 0; i < this.nowCude.length; i++){
                 //大佬，这里交给你了
-                /*let newX: number = cudeData.posTo(newPosXy[i].posX),
+                let newX: number = cudeData.posTo(newPosXy[i].posX),
                     newY: number = cudeData.posTo(newPosXy[i].posY)
-                this.nowCude[i].posX = newPosXy[i].posX
-                this.nowCude[i].posY = newPosXy[i].posY
+                /*this.nowCude[i].posX = newPosXy[i].posX
+                this.nowCude[i].posY = newPosXy[i].posY*/
+                egret.Tween.removeTweens(this.nowCude[i])
                 egret.Tween.get(this.nowCude[i]).to({
                     x: newX,
                     y: newY
-                }, 50, egret.Ease.bounceInOut)*/
-                this.nowCude[i].x = cudeData.posTo(newPosXy[i].posX)
+                }, 50, egret.Ease.bounceInOut).set({
+                    posX: newPosXy[i].posX,
+                    posY: newPosXy[i].posY
+                })
+                /*this.nowCude[i].x = cudeData.posTo(newPosXy[i].posX)
                 this.nowCude[i].y = cudeData.posTo(newPosXy[i].posY)
                 this.nowCude[i].posX = newPosXy[i].posX
-                this.nowCude[i].posY = newPosXy[i].posY
+                this.nowCude[i].posY = newPosXy[i].posY*/
             }
         }
 
