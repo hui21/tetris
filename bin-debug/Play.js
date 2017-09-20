@@ -641,6 +641,7 @@ var Play;
          * 消除
          */
         cudeData.prototype.remove = function () {
+            var _this = this;
             var removeArr = [], //需要消去的数据
             moveArr = []; //需要位移的数据
             //从底部开始扫描消去
@@ -650,7 +651,14 @@ var Play;
                     for (var i = 0; i < this.cudes.length; i++) {
                         //选择等于此行的数据
                         if (this.cudes[i].posY == y) {
-                            this.removeChild(this.cudes[i]); //从视图上移除对象
+                            var tw = egret.Tween.get(this.cudes[i]);
+                            tw.to({
+                                scaleY: 0,
+                                alpha: 0
+                            }, 100).call(function (target) {
+                                egret.Tween.removeTweens(target);
+                                _this.removeChild(target);
+                            }, this, [this.cudes[i]]);
                             removeArr.push(this.cudes[i]); //把移除对象添加到数组中
                             panel.interval.score = this.cudes[i].sorce; //添加分数
                         }
@@ -679,12 +687,18 @@ var Play;
             //移动
             moveArr = this.ArrSortDesc(moveArr); //对需要移动的数据进行Y轴倒叙
             for (var i = 0; i < moveArr.length; i++) {
-                var newY = this.moveCudePosYCount(moveArr[i]); //检测碰撞，获取新的坐标值
-                moveArr[i].y = cudeData.posTo(newY);
-                moveArr[i].posY = newY;
-                //如果新行可以消除则调用消除方法
-                if (this.canRemove(moveArr[i].y))
-                    this.remove();
+                var newY = this.moveCudePosYCount(moveArr[i]), //检测碰撞，获取新的坐标值
+                tw = egret.Tween.get(moveArr[i]);
+                tw.to({
+                    y: cudeData.posTo(newY)
+                }).set({
+                    posY: newY
+                }).call(function (target, y) {
+                    egret.Tween.removeTweens(target);
+                    //如果新行可以消除则调用消除方法
+                    if (_this.canRemove(y))
+                        _this.remove();
+                }, this, [moveArr[i], newY]);
             }
             return true;
         };
@@ -746,15 +760,12 @@ var Play;
             if (!this.canMove)
                 return; //如果不能移动则返回
             for (var i = 0; i < this.nowCude.length; i++) {
-                //大佬，这里交给你了
                 var newX = cudeData.posTo(newPosXy[i].posX), newY = cudeData.posTo(newPosXy[i].posY);
-                /*this.nowCude[i].posX = newPosXy[i].posX
-                this.nowCude[i].posY = newPosXy[i].posY*/
                 egret.Tween.removeTweens(this.nowCude[i]);
                 egret.Tween.get(this.nowCude[i]).to({
                     x: newX,
                     y: newY
-                }, 50, egret.Ease.bounceInOut).set({
+                }, 10, egret.Ease.sineIn).set({
                     posX: newPosXy[i].posX,
                     posY: newPosXy[i].posY
                 });

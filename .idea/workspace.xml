@@ -4,6 +4,7 @@
     <list default="true" id="f0f5af55-d051-42d6-bf40-899820fe2c4b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/Play.js" afterPath="$PROJECT_DIR$/bin-debug/Play.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Play.ts" afterPath="$PROJECT_DIR$/src/Play.ts" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +23,8 @@
       <file leaf-file-name="Play.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Play.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="423" column="19" lean-forward="false" selection-start-line="423" selection-start-column="19" selection-end-line="423" selection-end-column="19" />
+            <state relative-caret-position="387">
+              <caret line="658" column="55" lean-forward="false" selection-start-line="658" selection-start-column="55" selection-end-line="658" selection-end-column="55" />
               <folding>
                 <element signature="n#!!doc;n#Play#0" expanded="false" />
                 <element signature="n#Game#0;n#Play#0" expanded="false" />
@@ -88,8 +89,6 @@
                 <element signature="n#!!block;n#resetCanMoveAndMoveNewPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!doc;n#KeyUp#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="e#14013#14097#0" expanded="false" />
-                <element signature="e#14174#14497#0" expanded="false" />
-                <element signature="e#14236#14483#0" expanded="false" />
                 <element signature="n#!!doc;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#downDiff#0;n#cudeData#0;n#Play#0" expanded="false" />
@@ -116,48 +115,42 @@
                 <element signature="e#19603#19779#0" expanded="false" />
                 <element signature="e#19683#19765#0" expanded="false" />
                 <element signature="n#!!doc;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="n#!!block;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="e#19988#19997#0" expanded="false" />
-                <element signature="e#20077#20735#0" expanded="false" />
-                <element signature="e#20145#20721#0" expanded="false" />
-                <element signature="e#20210#20703#0" expanded="false" />
-                <element signature="e#20299#20547#0" expanded="false" />
-                <element signature="e#20578#20681#0" expanded="false" />
-                <element signature="e#20805#20813#0" expanded="false" />
-                <element signature="e#20888#21420#0" expanded="false" />
-                <element signature="e#20997#21152#0" expanded="false" />
-                <element signature="e#21067#21134#0" expanded="false" />
-                <element signature="e#21245#21406#0" expanded="false" />
-                <element signature="e#21318#21388#0" expanded="false" />
+                <element signature="e#21164#21172#0" expanded="false" />
+                <element signature="e#21356#21511#0" expanded="false" />
+                <element signature="e#21426#21493#0" expanded="false" />
+                <element signature="e#21604#21765#0" expanded="false" />
+                <element signature="e#21677#21747#0" expanded="false" />
                 <element signature="n#!!doc;n#moveCudePosYCount#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#moveCudePosYCount#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!doc;n#ArrSortAsc#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#ArrSortAsc#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#22663#22965#0" expanded="false" />
-                <element signature="e#22721#22951#0" expanded="false" />
-                <element signature="e#22778#22933#0" expanded="false" />
+                <element signature="e#23268#23570#0" expanded="false" />
+                <element signature="e#23326#23556#0" expanded="false" />
+                <element signature="e#23383#23538#0" expanded="false" />
                 <element signature="n#!!doc;n#ArrSortDesc#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#ArrSortDesc#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#23240#23542#0" expanded="false" />
-                <element signature="e#23298#23528#0" expanded="false" />
-                <element signature="e#23355#23510#0" expanded="false" />
+                <element signature="e#23845#24147#0" expanded="false" />
+                <element signature="e#23903#24133#0" expanded="false" />
+                <element signature="e#23960#24115#0" expanded="false" />
                 <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
+                <element signature="e#24667#24743#0" expanded="false" />
                 <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!doc;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#25175#25237#0" expanded="false" />
+                <element signature="e#25377#25439#0" expanded="false" />
                 <element signature="n#!!doc;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-                <element signature="e#25697#25885#0" expanded="false" />
-                <element signature="e#25751#25863#0" expanded="false" />
-                <element signature="e#26002#26255#0" expanded="false" />
-                <element signature="e#26061#26233#0" expanded="false" />
-                <element signature="e#26372#26650#0" expanded="false" />
-                <element signature="e#26431#26628#0" expanded="false" />
-                <element signature="e#27208#27314#0" expanded="false" />
-                <element signature="e#27427#27614#0" expanded="false" />
-                <element signature="e#27481#27592#0" expanded="false" />
+                <element signature="e#25899#26087#0" expanded="false" />
+                <element signature="e#25953#26065#0" expanded="false" />
+                <element signature="e#26204#26457#0" expanded="false" />
+                <element signature="e#26263#26435#0" expanded="false" />
+                <element signature="e#26574#26852#0" expanded="false" />
+                <element signature="e#26633#26830#0" expanded="false" />
+                <element signature="e#27410#27516#0" expanded="false" />
+                <element signature="e#27629#27816#0" expanded="false" />
+                <element signature="e#27683#27794#0" expanded="false" />
                 <element signature="n#!!doc;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
                 <element signature="n#gridLine#0;n#Play#0" expanded="false" />
@@ -167,6 +160,16 @@
                 <element signature="n#!!block;n#LineWidth#0;n#gridLine#0;n#Play#0" expanded="false" />
                 <element signature="n#!!block;n#constructor#0;n#gridLine#0;n#Play#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -190,6 +193,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/Play.ts" />
       </list>
     </option>
@@ -740,16 +744,16 @@
       <workItem from="1505645034352" duration="1344000" />
       <workItem from="1505740137806" duration="2896000" />
       <workItem from="1505826973016" duration="5808000" />
-      <workItem from="1505869767106" duration="11141000" />
+      <workItem from="1505869767106" duration="14651000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21189000" />
+    <option name="totallyTimeSpent" value="24699000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -866,8 +870,6 @@
             <element signature="n#!!block;n#resetCanMoveAndMoveNewPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#KeyUp#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="e#14013#14097#0" expanded="false" />
-            <element signature="e#14174#14497#0" expanded="false" />
-            <element signature="e#14236#14483#0" expanded="false" />
             <element signature="n#!!doc;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#downDiff#0;n#cudeData#0;n#Play#0" expanded="false" />
@@ -894,48 +896,42 @@
             <element signature="e#19603#19779#0" expanded="false" />
             <element signature="e#19683#19765#0" expanded="false" />
             <element signature="n#!!doc;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="e#19988#19997#0" expanded="false" />
-            <element signature="e#20077#20735#0" expanded="false" />
-            <element signature="e#20145#20721#0" expanded="false" />
-            <element signature="e#20210#20703#0" expanded="false" />
-            <element signature="e#20299#20547#0" expanded="false" />
-            <element signature="e#20578#20681#0" expanded="false" />
-            <element signature="e#20805#20813#0" expanded="false" />
-            <element signature="e#20888#21420#0" expanded="false" />
-            <element signature="e#20997#21152#0" expanded="false" />
-            <element signature="e#21067#21134#0" expanded="false" />
-            <element signature="e#21245#21406#0" expanded="false" />
-            <element signature="e#21318#21388#0" expanded="false" />
+            <element signature="e#21164#21172#0" expanded="false" />
+            <element signature="e#21356#21511#0" expanded="false" />
+            <element signature="e#21426#21493#0" expanded="false" />
+            <element signature="e#21604#21765#0" expanded="false" />
+            <element signature="e#21677#21747#0" expanded="false" />
             <element signature="n#!!doc;n#moveCudePosYCount#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#moveCudePosYCount#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#ArrSortAsc#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#ArrSortAsc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#22663#22965#0" expanded="false" />
-            <element signature="e#22721#22951#0" expanded="false" />
-            <element signature="e#22778#22933#0" expanded="false" />
+            <element signature="e#23268#23570#0" expanded="false" />
+            <element signature="e#23326#23556#0" expanded="false" />
+            <element signature="e#23383#23538#0" expanded="false" />
             <element signature="n#!!doc;n#ArrSortDesc#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#ArrSortDesc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#23240#23542#0" expanded="false" />
-            <element signature="e#23298#23528#0" expanded="false" />
-            <element signature="e#23355#23510#0" expanded="false" />
+            <element signature="e#23845#24147#0" expanded="false" />
+            <element signature="e#23903#24133#0" expanded="false" />
+            <element signature="e#23960#24115#0" expanded="false" />
             <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#24667#24743#0" expanded="false" />
             <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#25175#25237#0" expanded="false" />
+            <element signature="e#25377#25439#0" expanded="false" />
             <element signature="n#!!doc;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#25697#25885#0" expanded="false" />
-            <element signature="e#25751#25863#0" expanded="false" />
-            <element signature="e#26002#26255#0" expanded="false" />
-            <element signature="e#26061#26233#0" expanded="false" />
-            <element signature="e#26372#26650#0" expanded="false" />
-            <element signature="e#26431#26628#0" expanded="false" />
-            <element signature="e#27208#27314#0" expanded="false" />
-            <element signature="e#27427#27614#0" expanded="false" />
-            <element signature="e#27481#27592#0" expanded="false" />
+            <element signature="e#25899#26087#0" expanded="false" />
+            <element signature="e#25953#26065#0" expanded="false" />
+            <element signature="e#26204#26457#0" expanded="false" />
+            <element signature="e#26263#26435#0" expanded="false" />
+            <element signature="e#26574#26852#0" expanded="false" />
+            <element signature="e#26633#26830#0" expanded="false" />
+            <element signature="e#27410#27516#0" expanded="false" />
+            <element signature="e#27629#27816#0" expanded="false" />
+            <element signature="e#27683#27794#0" expanded="false" />
             <element signature="n#!!doc;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#gridLine#0;n#Play#0" expanded="false" />
@@ -1016,8 +1012,6 @@
             <element signature="n#!!block;n#resetCanMoveAndMoveNewPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#KeyUp#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="e#14013#14097#0" expanded="false" />
-            <element signature="e#14174#14497#0" expanded="false" />
-            <element signature="e#14236#14483#0" expanded="false" />
             <element signature="n#!!doc;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#downDiff#0;n#cudeData#0;n#Play#0" expanded="false" />
@@ -1044,48 +1038,42 @@
             <element signature="e#19603#19779#0" expanded="false" />
             <element signature="e#19683#19765#0" expanded="false" />
             <element signature="n#!!doc;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="e#19988#19997#0" expanded="false" />
-            <element signature="e#20077#20735#0" expanded="false" />
-            <element signature="e#20145#20721#0" expanded="false" />
-            <element signature="e#20210#20703#0" expanded="false" />
-            <element signature="e#20299#20547#0" expanded="false" />
-            <element signature="e#20578#20681#0" expanded="false" />
-            <element signature="e#20805#20813#0" expanded="false" />
-            <element signature="e#20888#21420#0" expanded="false" />
-            <element signature="e#20997#21152#0" expanded="false" />
-            <element signature="e#21067#21134#0" expanded="false" />
-            <element signature="e#21245#21406#0" expanded="false" />
-            <element signature="e#21318#21388#0" expanded="false" />
+            <element signature="e#21164#21172#0" expanded="false" />
+            <element signature="e#21356#21511#0" expanded="false" />
+            <element signature="e#21426#21493#0" expanded="false" />
+            <element signature="e#21604#21765#0" expanded="false" />
+            <element signature="e#21677#21747#0" expanded="false" />
             <element signature="n#!!doc;n#moveCudePosYCount#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#moveCudePosYCount#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#ArrSortAsc#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#ArrSortAsc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#22663#22965#0" expanded="false" />
-            <element signature="e#22721#22951#0" expanded="false" />
-            <element signature="e#22778#22933#0" expanded="false" />
+            <element signature="e#23268#23570#0" expanded="false" />
+            <element signature="e#23326#23556#0" expanded="false" />
+            <element signature="e#23383#23538#0" expanded="false" />
             <element signature="n#!!doc;n#ArrSortDesc#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#ArrSortDesc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#23240#23542#0" expanded="false" />
-            <element signature="e#23298#23528#0" expanded="false" />
-            <element signature="e#23355#23510#0" expanded="false" />
+            <element signature="e#23845#24147#0" expanded="false" />
+            <element signature="e#23903#24133#0" expanded="false" />
+            <element signature="e#23960#24115#0" expanded="false" />
             <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#24667#24743#0" expanded="false" />
             <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#25175#25237#0" expanded="false" />
+            <element signature="e#25377#25439#0" expanded="false" />
             <element signature="n#!!doc;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#25697#25885#0" expanded="false" />
-            <element signature="e#25751#25863#0" expanded="false" />
-            <element signature="e#26002#26255#0" expanded="false" />
-            <element signature="e#26061#26233#0" expanded="false" />
-            <element signature="e#26372#26650#0" expanded="false" />
-            <element signature="e#26431#26628#0" expanded="false" />
-            <element signature="e#27208#27314#0" expanded="false" />
-            <element signature="e#27427#27614#0" expanded="false" />
-            <element signature="e#27481#27592#0" expanded="false" />
+            <element signature="e#25899#26087#0" expanded="false" />
+            <element signature="e#25953#26065#0" expanded="false" />
+            <element signature="e#26204#26457#0" expanded="false" />
+            <element signature="e#26263#26435#0" expanded="false" />
+            <element signature="e#26574#26852#0" expanded="false" />
+            <element signature="e#26633#26830#0" expanded="false" />
+            <element signature="e#27410#27516#0" expanded="false" />
+            <element signature="e#27629#27816#0" expanded="false" />
+            <element signature="e#27683#27794#0" expanded="false" />
             <element signature="n#!!doc;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#gridLine#0;n#Play#0" expanded="false" />
@@ -1166,8 +1154,6 @@
             <element signature="n#!!block;n#resetCanMoveAndMoveNewPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#KeyUp#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="e#14013#14097#0" expanded="false" />
-            <element signature="e#14174#14497#0" expanded="false" />
-            <element signature="e#14236#14483#0" expanded="false" />
             <element signature="n#!!doc;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#downDiff#0;n#cudeData#0;n#Play#0" expanded="false" />
@@ -1194,48 +1180,42 @@
             <element signature="e#19603#19779#0" expanded="false" />
             <element signature="e#19683#19765#0" expanded="false" />
             <element signature="n#!!doc;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="e#19988#19997#0" expanded="false" />
-            <element signature="e#20077#20735#0" expanded="false" />
-            <element signature="e#20145#20721#0" expanded="false" />
-            <element signature="e#20210#20703#0" expanded="false" />
-            <element signature="e#20299#20547#0" expanded="false" />
-            <element signature="e#20578#20681#0" expanded="false" />
-            <element signature="e#20805#20813#0" expanded="false" />
-            <element signature="e#20888#21420#0" expanded="false" />
-            <element signature="e#20997#21152#0" expanded="false" />
-            <element signature="e#21067#21134#0" expanded="false" />
-            <element signature="e#21245#21406#0" expanded="false" />
-            <element signature="e#21318#21388#0" expanded="false" />
+            <element signature="e#21164#21172#0" expanded="false" />
+            <element signature="e#21356#21511#0" expanded="false" />
+            <element signature="e#21426#21493#0" expanded="false" />
+            <element signature="e#21604#21765#0" expanded="false" />
+            <element signature="e#21677#21747#0" expanded="false" />
             <element signature="n#!!doc;n#moveCudePosYCount#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#moveCudePosYCount#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#ArrSortAsc#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#ArrSortAsc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#22663#22965#0" expanded="false" />
-            <element signature="e#22721#22951#0" expanded="false" />
-            <element signature="e#22778#22933#0" expanded="false" />
+            <element signature="e#23268#23570#0" expanded="false" />
+            <element signature="e#23326#23556#0" expanded="false" />
+            <element signature="e#23383#23538#0" expanded="false" />
             <element signature="n#!!doc;n#ArrSortDesc#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#ArrSortDesc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#23240#23542#0" expanded="false" />
-            <element signature="e#23298#23528#0" expanded="false" />
-            <element signature="e#23355#23510#0" expanded="false" />
+            <element signature="e#23845#24147#0" expanded="false" />
+            <element signature="e#23903#24133#0" expanded="false" />
+            <element signature="e#23960#24115#0" expanded="false" />
             <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#24667#24743#0" expanded="false" />
             <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#25175#25237#0" expanded="false" />
+            <element signature="e#25377#25439#0" expanded="false" />
             <element signature="n#!!doc;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#25697#25885#0" expanded="false" />
-            <element signature="e#25751#25863#0" expanded="false" />
-            <element signature="e#26002#26255#0" expanded="false" />
-            <element signature="e#26061#26233#0" expanded="false" />
-            <element signature="e#26372#26650#0" expanded="false" />
-            <element signature="e#26431#26628#0" expanded="false" />
-            <element signature="e#27208#27314#0" expanded="false" />
-            <element signature="e#27427#27614#0" expanded="false" />
-            <element signature="e#27481#27592#0" expanded="false" />
+            <element signature="e#25899#26087#0" expanded="false" />
+            <element signature="e#25953#26065#0" expanded="false" />
+            <element signature="e#26204#26457#0" expanded="false" />
+            <element signature="e#26263#26435#0" expanded="false" />
+            <element signature="e#26574#26852#0" expanded="false" />
+            <element signature="e#26633#26830#0" expanded="false" />
+            <element signature="e#27410#27516#0" expanded="false" />
+            <element signature="e#27629#27816#0" expanded="false" />
+            <element signature="e#27683#27794#0" expanded="false" />
             <element signature="n#!!doc;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#gridLine#0;n#Play#0" expanded="false" />
@@ -1271,10 +1251,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Play.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="423" column="19" lean-forward="false" selection-start-line="423" selection-start-column="19" selection-end-line="423" selection-end-column="19" />
+        <state relative-caret-position="387">
+          <caret line="658" column="55" lean-forward="false" selection-start-line="658" selection-start-column="55" selection-end-line="658" selection-end-column="55" />
           <folding>
             <element signature="n#!!doc;n#Play#0" expanded="false" />
             <element signature="n#Game#0;n#Play#0" expanded="false" />
@@ -1339,8 +1327,6 @@
             <element signature="n#!!block;n#resetCanMoveAndMoveNewPosXy#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#KeyUp#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="e#14013#14097#0" expanded="false" />
-            <element signature="e#14174#14497#0" expanded="false" />
-            <element signature="e#14236#14483#0" expanded="false" />
             <element signature="n#!!doc;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#KeyDown#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#downDiff#0;n#cudeData#0;n#Play#0" expanded="false" />
@@ -1367,48 +1353,42 @@
             <element signature="e#19603#19779#0" expanded="false" />
             <element signature="e#19683#19765#0" expanded="false" />
             <element signature="n#!!doc;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="n#!!block;n#remove#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="e#19988#19997#0" expanded="false" />
-            <element signature="e#20077#20735#0" expanded="false" />
-            <element signature="e#20145#20721#0" expanded="false" />
-            <element signature="e#20210#20703#0" expanded="false" />
-            <element signature="e#20299#20547#0" expanded="false" />
-            <element signature="e#20578#20681#0" expanded="false" />
-            <element signature="e#20805#20813#0" expanded="false" />
-            <element signature="e#20888#21420#0" expanded="false" />
-            <element signature="e#20997#21152#0" expanded="false" />
-            <element signature="e#21067#21134#0" expanded="false" />
-            <element signature="e#21245#21406#0" expanded="false" />
-            <element signature="e#21318#21388#0" expanded="false" />
+            <element signature="e#21164#21172#0" expanded="false" />
+            <element signature="e#21356#21511#0" expanded="false" />
+            <element signature="e#21426#21493#0" expanded="false" />
+            <element signature="e#21604#21765#0" expanded="false" />
+            <element signature="e#21677#21747#0" expanded="false" />
             <element signature="n#!!doc;n#moveCudePosYCount#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#moveCudePosYCount#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#ArrSortAsc#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#ArrSortAsc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#22663#22965#0" expanded="false" />
-            <element signature="e#22721#22951#0" expanded="false" />
-            <element signature="e#22778#22933#0" expanded="false" />
+            <element signature="e#23268#23570#0" expanded="false" />
+            <element signature="e#23326#23556#0" expanded="false" />
+            <element signature="e#23383#23538#0" expanded="false" />
             <element signature="n#!!doc;n#ArrSortDesc#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#ArrSortDesc#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#23240#23542#0" expanded="false" />
-            <element signature="e#23298#23528#0" expanded="false" />
-            <element signature="e#23355#23510#0" expanded="false" />
+            <element signature="e#23845#24147#0" expanded="false" />
+            <element signature="e#23903#24133#0" expanded="false" />
+            <element signature="e#23960#24115#0" expanded="false" />
             <element signature="n#!!doc;n#pos#0;n#cudeData#0;n#Play#0" expanded="false" />
+            <element signature="e#24667#24743#0" expanded="false" />
             <element signature="n#!!doc;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#posTo#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!doc;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#createRandOneCude#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#25175#25237#0" expanded="false" />
+            <element signature="e#25377#25439#0" expanded="false" />
             <element signature="n#!!doc;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#cudesEffect#0;n#cudeData#0;n#Play#0" expanded="false" />
-            <element signature="e#25697#25885#0" expanded="false" />
-            <element signature="e#25751#25863#0" expanded="false" />
-            <element signature="e#26002#26255#0" expanded="false" />
-            <element signature="e#26061#26233#0" expanded="false" />
-            <element signature="e#26372#26650#0" expanded="false" />
-            <element signature="e#26431#26628#0" expanded="false" />
-            <element signature="e#27208#27314#0" expanded="false" />
-            <element signature="e#27427#27614#0" expanded="false" />
-            <element signature="e#27481#27592#0" expanded="false" />
+            <element signature="e#25899#26087#0" expanded="false" />
+            <element signature="e#25953#26065#0" expanded="false" />
+            <element signature="e#26204#26457#0" expanded="false" />
+            <element signature="e#26263#26435#0" expanded="false" />
+            <element signature="e#26574#26852#0" expanded="false" />
+            <element signature="e#26633#26830#0" expanded="false" />
+            <element signature="e#27410#27516#0" expanded="false" />
+            <element signature="e#27629#27816#0" expanded="false" />
+            <element signature="e#27683#27794#0" expanded="false" />
             <element signature="n#!!doc;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#!!block;n#rotatePoint#0;n#cudeData#0;n#Play#0" expanded="false" />
             <element signature="n#gridLine#0;n#Play#0" expanded="false" />
