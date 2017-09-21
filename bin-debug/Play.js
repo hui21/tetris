@@ -14,6 +14,7 @@ var Play;
     var Stage = Uilt.Stage;
     var UniltGame = Uilt.Game;
     var GameStatus = Uilt.GameStatus;
+    var AnchorUtils = Uilt.AnchorUtils;
     //游戏开始菜单页面和基础游戏信息
     var Game = (function (_super) {
         __extends(Game, _super);
@@ -38,6 +39,7 @@ var Play;
         Game.Init = function () {
             var game = Game.interval;
             Stage.interval.init();
+            AnchorUtils.init(); // 初始化锚点类
             return game;
         };
         /**
@@ -107,25 +109,31 @@ var Play;
         panel.prototype.init = function () {
             this.width = Stage.stageW;
             this.height = grid.topRow * grid.gridSize;
-            this.timeGroup.x = this.width / 2;
-            this.timeGroup.y = grid.gridSize / 2;
-            this.timeGroup.anchorOffsetX = (this.timeGroup.x + this.timeGroup.width) / 2;
-            this.scoreGroup.x = this.width;
-            this.scoreGroup.y = grid.gridSize / 2;
-            this.scoreGroup.anchorOffsetX = (this.scoreGroup.x + this.scoreGroup.width) / 2;
+            this.timeGroup.x = 0;
+            this.timeGroup.width = this.width / 2;
+            this.timeGroup.height = grid.topRow * grid.gridSize;
+            this.scoreGroup.x = this.width / 2;
+            this.scoreGroup.width = this.width / 2;
+            this.scoreGroup.height = grid.topRow * grid.gridSize;
             this.addChild(this.timeGroup);
             this.addChild(this.scoreGroup);
+            this.timerTitleText.width = this.timeGroup.width;
             this.timerTitleText.text = "Timer: ";
-            this.timerText.text = "0";
-            this.timerText.x = this.timerTitleText.x + 100;
-            this.timerText.textAlign = "center";
+            this.timerTitleText.textAlign = "center";
             this.timeGroup.addChild(this.timerTitleText);
+            this.timerText.y = grid.gridSize;
+            this.timerText.text = "0";
+            this.timerText.width = this.timerTitleText.width;
+            this.timerText.textAlign = "center";
             this.timeGroup.addChild(this.timerText);
             this.scoreTitleText.text = "Score: ";
-            this.scoreText.text = "0";
-            this.scoreText.x = this.scoreTitleText.x + 100;
-            this.scoreText.textAlign = "center";
+            this.scoreTitleText.width = this.scoreGroup.width;
+            this.scoreTitleText.textAlign = "center";
             this.scoreGroup.addChild(this.scoreTitleText);
+            this.scoreText.y = grid.gridSize;
+            this.scoreText.text = "0";
+            this.scoreText.width = this.scoreTitleText.width;
+            this.scoreText.textAlign = "center";
             this.scoreGroup.addChild(this.scoreText);
         };
         Object.defineProperty(panel.prototype, "score", {
@@ -153,11 +161,10 @@ var Play;
             var _this = _super.call(this) || this;
             //画格子
             _this.gridMaps = [];
-            _this.x = (Stage.stageW - grid.gridItemCols * grid.gridSize) / 2;
             _this.width = grid.gridItemCols * grid.gridSize;
             _this.height = Stage.stageH - grid.gridSize * 1.8;
-            _this['anchorX'] = 1;
-            _this['anchorY'] = 1;
+            _this.x = (Stage.stageW - grid.gridItemCols * grid.gridSize) / 2;
+            AnchorUtils.setAnchor(_this, 0);
             _this.initGrid();
             return _this;
         }
@@ -240,6 +247,7 @@ var Play;
     //方块类型枚举
     var cudeType;
     (function (cudeType) {
+        cudeType[cudeType["Type0"] = 0] = "Type0";
         cudeType[cudeType["Type1"] = 1] = "Type1";
         cudeType[cudeType["Type2"] = 2] = "Type2";
         cudeType[cudeType["Type3"] = 3] = "Type3";
@@ -258,6 +266,7 @@ var Play;
             _this.posY = y;
             _this.x = cudeData.posTo(x);
             _this.y = cudeData.posTo(y);
+            AnchorUtils.setAnchor(_this, 0.5);
             _this.graphics.beginFill(_this.color);
             _this.graphics.drawRoundRect(0, 0, w, h, 10, 10);
             _this.graphics.endFill();
@@ -459,7 +468,7 @@ var Play;
             //如果游戏状态不为开始/运行状态则直接返回
             if (UniltGame.interval.getGameStatus() !== GameStatus.Start)
                 return;
-            if (this.nowCudeType === cudeType.Type1)
+            if (this.nowCudeType === cudeType.Type1 || this.nowCudeType === cudeType.Type0)
                 return;
             var canRotate = true, newPosXy = [];
             for (var i = 0; i < this.nowCude.length; i++) {
@@ -643,7 +652,8 @@ var Play;
         cudeData.prototype.remove = function () {
             var _this = this;
             var removeArr = [], //需要消去的数据
-            moveArr = []; //需要位移的数据
+            moveArr = [], //需要位移的数据
+            score = 0; //添加的分数
             //从底部开始扫描消去
             for (var y = grid.gridItemRows; y > 0; y--) {
                 //检测是否可以消去此行
@@ -651,24 +661,27 @@ var Play;
                     for (var i = 0; i < this.cudes.length; i++) {
                         //选择等于此行的数据
                         if (this.cudes[i].posY == y) {
+                            egret.Tween.removeTweens(this.cudes[i]);
                             var tw = egret.Tween.get(this.cudes[i]);
                             tw.to({
                                 scaleY: 0,
                                 alpha: 0
-                            }, 100).call(function (target) {
-                                egret.Tween.removeTweens(target);
+                            }, 500, egret.Ease.backInOut).call(function (target) {
                                 _this.removeChild(target);
                             }, this, [this.cudes[i]]);
                             removeArr.push(this.cudes[i]); //把移除对象添加到数组中
-                            panel.interval.score = this.cudes[i].sorce; //添加分数
+                            score += this.cudes[i].sorce; //添加分数
                         }
                         else if (y > this.cudes[i].posY) {
-                            moveArr.push(this.cudes[i]);
+                            if (!this.inArray(this.cudes[i], moveArr))
+                                moveArr.push(this.cudes[i]);
                         }
                     }
                 }
             }
-            panel.interval.score = Math.floor(removeArr.length / 10); //多行奖励分数
+            if (removeArr.length < 1)
+                return false;
+            panel.interval.score = Math.floor(score + (removeArr.length / 10)); //多行奖励分数
             //消除的数据
             for (var i = 0; i < removeArr.length; i++) {
                 //如果之前标记需要移动的数据已被移除则删除moveArr的相关数据
@@ -685,22 +698,34 @@ var Play;
                 }
             }
             //移动
-            moveArr = this.ArrSortDesc(moveArr); //对需要移动的数据进行Y轴倒叙
-            for (var i = 0; i < moveArr.length; i++) {
-                var newY = this.moveCudePosYCount(moveArr[i]), //检测碰撞，获取新的坐标值
-                tw = egret.Tween.get(moveArr[i]);
+            var newmoveArr = this.ArrSortDesc(moveArr); //对需要移动的数据进行Y轴倒叙
+            for (var i = 0; i < newmoveArr.length; i++) {
+                egret.Tween.removeTweens(newmoveArr[i]);
+                var newY = this.moveCudePosYCount(newmoveArr[i]), //检测碰撞，获取新的坐标值
+                tw = egret.Tween.get(newmoveArr[i]);
+                moveArr[i].posY = newY;
                 tw.to({
                     y: cudeData.posTo(newY)
-                }).set({
-                    posY: newY
-                }).call(function (target, y) {
-                    egret.Tween.removeTweens(target);
+                }, 100).call(function (target, y) {
                     //如果新行可以消除则调用消除方法
                     if (_this.canRemove(y))
                         _this.remove();
                 }, this, [moveArr[i], newY]);
             }
             return true;
+        };
+        /**
+         * 检测是否在数据数组中
+         * @param target 被检测对象
+         * @param targets 数组
+         * @returns {boolean}
+         */
+        cudeData.prototype.inArray = function (target, targets) {
+            for (var i = 0; i < targets.length; i++) {
+                if (target.hashCode === targets[i].hashCode)
+                    return true;
+            }
+            return false;
         };
         /**
          * 需要移动的位移
@@ -762,10 +787,12 @@ var Play;
             for (var i = 0; i < this.nowCude.length; i++) {
                 var newX = cudeData.posTo(newPosXy[i].posX), newY = cudeData.posTo(newPosXy[i].posY);
                 egret.Tween.removeTweens(this.nowCude[i]);
+                /*this.nowCude[i].posX = newPosXy[i].posX
+                this.nowCude[i].posY = newPosXy[i].posY*/
                 egret.Tween.get(this.nowCude[i]).to({
                     x: newX,
                     y: newY
-                }, 10, egret.Ease.sineIn).set({
+                }, 15, egret.Ease.sineIn).set({
                     posX: newPosXy[i].posX,
                     posY: newPosXy[i].posY
                 });
@@ -777,7 +804,7 @@ var Play;
          * @returns {number}
          */
         cudeData.posTo = function (value) {
-            return value * grid.gridSize + 1;
+            return value * grid.gridSize + 1 + grid.gridSize / 2;
         };
         /**
          * 创建随机类型的方块组
