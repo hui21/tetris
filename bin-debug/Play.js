@@ -56,6 +56,7 @@ var Play;
     }(egret.Sprite));
     Play.Game = Game;
     __reflect(Game.prototype, "Play.Game");
+    //菜单
     var Menu = (function (_super) {
         __extends(Menu, _super);
         function Menu() {
@@ -515,6 +516,9 @@ var Play;
     //方块数据
     var cudeData = (function (_super) {
         __extends(cudeData, _super);
+        /*private isTouch: boolean = false //是否在滑动
+        private touchX: number = 0 //开始滑动的点X值
+        private touchY: number = 0 //开始滑动点的Y值*/
         function cudeData() {
             var _this = _super.call(this) || this;
             _this.cudes = []; //方块集合
@@ -527,6 +531,12 @@ var Play;
             _this.x = grid.interval.x;
             _this.width = grid.interval.width;
             _this.height = grid.interval.height;
+            _this.touchEnabled = true;
+            /*this.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.touchBegin,this);
+            this.addEventListener(egret.TouchEvent.TOUCH_END,this.touchEnd,this);*/
+            _this.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+                console.log(123456);
+            }, _this);
             //按键事件侦听
             window.addEventListener('keydown', function (e) {
                 switch (e.keyCode) {
@@ -566,6 +576,33 @@ var Play;
             enumerable: true,
             configurable: true
         });
+        /*private touchBegin(e: egret.TouchEvent): void {
+            console.log(123)
+            this.isTouch = true
+            this.touchX = e.localX
+            this.touchY = e.localY
+        }
+        private touchEnd(e: egret.TouchEvent): void {
+            let xDiff: number = (e.localX-this.touchX),
+                yDiff: number = (e.localY-this.touchY)
+            console.log(xDiff, yDiff)
+            if(Math.abs(xDiff) > Math.abs(yDiff)){
+                if(xDiff > 100){
+                    this.KeyRight()
+                }else if(xDiff < -100){
+                    this.KeyLeft()
+                }
+            }else{
+                if(yDiff > 100){
+                    this.KeyDown()
+                }else if(yDiff < -100){
+                    this.KeyUp()
+                }
+            }
+            this.touchY = 0
+            this.touchX = 0
+            this.isTouch = false
+        }*/
         /**
          * 速度回调函数
          * @returns {boolean}
