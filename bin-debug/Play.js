@@ -19,9 +19,10 @@ var Play;
     var Game = (function (_super) {
         __extends(Game, _super);
         function Game() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
+            var _this = _super.call(this) || this;
             _this.Score = 0; //分数
             _this.Level = 1; //关卡
+            _this.Init();
             return _this;
         }
         Object.defineProperty(Game, "interval", {
@@ -36,27 +37,10 @@ var Play;
          * @returns {Game}
          * @constructor
          */
-        Game.Init = function () {
-            var game = Game.interval;
-            Stage.interval.init();
+        Game.prototype.Init = function () {
             AnchorUtils.init(); // 初始化锚点类
-            return game;
-        };
-        /**
-         * 菜单初始化
-         */
-        Game.prototype.menuInit = function () {
-            Stage.stage.addChild(grid.interval);
-            Stage.stage.addChild(cudeData.interval);
-            Stage.stage.addChild(panel.interval);
-            cudeData.interval.createRandOneCude();
-            UniltGame.interval.setGameStatus(GameStatus.Start);
-            /*this.skinName = "menu";
-            this.menuTween.addEventListener('complete', () => {
-                this.menuTween.play(1)
-            }, this)
-            this.menuTween.play()
-            this.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startBtnClickEvent, this)*/
+            var menu = new Menu();
+            Stage.stage.addChild(menu);
         };
         /**
          * 开始游戏按钮监听事件
@@ -68,22 +52,115 @@ var Play;
             Stage.stage.addChild(cudeData.interval)
             cudeData.interval.createRandOneCude();*/
         };
-        /**
-         * 是否结束游戏
-         * @returns {boolean}
-         */
-        Game.isOver = function () {
-            var gridMap = grid.interval;
-            for (var i = 0; i < grid.gridItemRows; i++) {
-                if (!gridMap.gridMaps[i].isEmpty)
-                    return true;
-            }
-            return false;
-        };
         return Game;
-    }(eui.Component));
+    }(egret.Sprite));
     Play.Game = Game;
     __reflect(Game.prototype, "Play.Game");
+    var Menu = (function (_super) {
+        __extends(Menu, _super);
+        function Menu() {
+            var _this = _super.call(this) || this;
+            _this.group = new egret.Sprite(); //菜单组
+            _this.gameName = new egret.Sprite(); //游戏名字
+            _this.btnColor = 0xe0690c; //按钮默认颜色
+            _this.btnRound = 10; //默认圆角大小
+            _this.btnHeight = 60; //按钮默认高度
+            _this.btnWidth = 200; //按钮默认宽度
+            _this.fontColor = 0xffffff; //字体颜色
+            _this.init();
+            return _this;
+        }
+        Menu.prototype.init = function () {
+            //面板
+            this.groupDraw();
+            this.gameNameDraw();
+            this.addChild(this.gameName);
+            this.addChild(this.group);
+            var btnX = (this.group.width - this.btnWidth) / 2;
+            this.startBtn = this.drawBtn(btnX, 0, "开始游戏");
+            this.aboutBtn = this.drawBtn(btnX, this.btnHeight + 20, "关于游戏");
+            this.explainBtn = this.drawBtn(btnX, (this.btnHeight + 20) * 2, "操作介绍");
+            this.settingBtn = this.drawBtn(btnX, (this.btnHeight + 20) * 3, "游戏设置");
+            this.group.addChild(this.startBtn);
+            this.group.addChild(this.aboutBtn);
+            this.group.addChild(this.explainBtn);
+            this.group.addChild(this.settingBtn);
+            this.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startBtnFunc, this);
+        };
+        /**
+         * 绘制游戏名称
+         */
+        Menu.prototype.gameNameDraw = function () {
+            var nameText = new egret.TextField();
+            this.gameName.width = Stage.stageW;
+            this.gameName.y = -80;
+            this.gameName.addChild(nameText);
+            nameText.text = "俄罗斯方块";
+            nameText.width = this.gameName.width;
+            nameText.textAlign = "center";
+            nameText.x = (Stage.stageW - this.gameName.width) / 2;
+            nameText.textColor = this.btnColor;
+            nameText.fontFamily = "楷体";
+            nameText.size = 80;
+            egret.Tween.get(this.gameName).to({
+                y: 350
+            }, 600, egret.Ease.backInOut).call(function (target) {
+                egret.Tween.removeTweens(target);
+            }, this, [this.gameName]);
+        };
+        /**
+         * 绘制菜单组
+         */
+        Menu.prototype.groupDraw = function () {
+            this.group.width = 400;
+            this.group.height = 300;
+            this.group.alpha = 0;
+            this.group.x = (Stage.stageW - this.group.width) / 2;
+            this.group.y = (Stage.stageH - this.group.height) / 1.5;
+            //this.group.graphics.beginFill(0x3bb4f2)
+            this.group.graphics.drawRoundRect(0, 0, this.group.width, this.group.height, 10, 10);
+            this.group.graphics.endFill();
+            egret.Tween.get(this.group).to({
+                alpha: 1
+            }, 2000, egret.Ease.backInOut).call(function (target) {
+                egret.Tween.removeTweens(target);
+            }, this, [this.group]);
+        };
+        Menu.prototype.startBtnFunc = function () {
+            this.startBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.startBtnFunc, this);
+            Stage.stage.addChild(grid.interval);
+            Stage.stage.addChild(cudeData.interval);
+            Stage.stage.addChild(panel.interval);
+            cudeData.interval.createRandOneCude();
+            UniltGame.interval.setGameStatus(GameStatus.Start);
+        };
+        /**
+         * 画按钮
+         * @param x X值
+         * @param y Y值
+         * @returns {egret.Sprite}
+         */
+        Menu.prototype.drawBtn = function (x, y, textField) {
+            var btn = new egret.Sprite(), text = new egret.TextField();
+            btn.addChild(text);
+            btn.x = x;
+            btn.y = y;
+            btn.graphics.beginFill(this.btnColor);
+            btn.graphics.drawRoundRect(0, 0, this.btnWidth, this.btnHeight, this.btnRound, this.btnRound);
+            btn.graphics.endFill();
+            btn.touchEnabled = true;
+            text.y = 15;
+            text.width = this.btnWidth;
+            text.height = this.btnHeight;
+            text.text = textField;
+            text.textAlign = "center";
+            text.textColor = this.fontColor;
+            return btn;
+        };
+        return Menu;
+    }(egret.Sprite));
+    Play.Menu = Menu;
+    __reflect(Menu.prototype, "Play.Menu");
     //面板
     var panel = (function (_super) {
         __extends(panel, _super);
@@ -149,6 +226,11 @@ var Play;
         panel.prototype.time = function () {
             UniltGame.interval.incNowTimeer();
             this.timerText.text = String(UniltGame.interval.getNowTime());
+        };
+        //重置数据
+        panel.prototype.restart = function () {
+            this.timerText.text = "0";
+            this.scoreText.text = "0";
         };
         return panel;
     }(egret.Sprite));
@@ -316,6 +398,119 @@ var Play;
     }());
     Play.cudePosXY = cudePosXY;
     __reflect(cudePosXY.prototype, "Play.cudePosXY");
+    //游戏结束面板
+    var gameOver = (function (_super) {
+        __extends(gameOver, _super);
+        function gameOver() {
+            var _this = _super.call(this) || this;
+            _this.maskMap = new egret.Shape(); //遮罩
+            _this.group = new egret.Sprite(); //组件
+            _this.restartBtn = new egret.Sprite(); //重新开始按钮
+            _this.width = Stage.stageW;
+            _this.height = Stage.stageH;
+            _this.init();
+            return _this;
+        }
+        //初始化
+        gameOver.prototype.init = function () {
+            this.x = 0;
+            this.y = 0;
+            this.maskMap.graphics.beginFill(0x000);
+            this.maskMap.graphics.drawRect(0, 0, this.width, this.height);
+            this.maskMap.graphics.endFill();
+            this.maskMap.alpha = 0.6;
+            this.addChild(this.maskMap);
+            //面板
+            this.group.width = 400;
+            this.group.height = 300;
+            this.group.alpha = 0;
+            this.group.x = (Stage.stageW - this.group.width) / 2;
+            this.group.y = (Stage.stageH - this.group.height) / 2;
+            this.group.graphics.beginFill(0x3bb4f2);
+            this.group.graphics.drawRoundRect(0, 0, this.group.width, this.group.height, 10, 10);
+            this.group.graphics.endFill();
+            this.addChild(this.group);
+            //重新开始按钮
+            this.restartBtn.graphics.beginFill(0xe0690c);
+            this.restartBtn.graphics.drawRoundRect(100, this.group.height - 90, 200, 60, 10, 10);
+            this.restartBtn.graphics.endFill();
+            this.group.addChild(this.restartBtn);
+            this.restartBtn.touchEnabled = true;
+            this.restartBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.restartFunc, this);
+            //重新开始文字
+            var restartText = new egret.TextField();
+            restartText.x = 100;
+            restartText.y = this.group.height - 77;
+            restartText.width = 200;
+            restartText.height = 60;
+            restartText.text = "重新开始";
+            restartText.textAlign = "center";
+            restartText.textColor = 0xffffff;
+            this.group.addChild(restartText);
+            //分数
+            var scoreTitleText = new egret.TextField();
+            scoreTitleText.y = 60;
+            scoreTitleText.width = this.group.width / 2;
+            scoreTitleText.text = "分数";
+            scoreTitleText.textAlign = "center";
+            var scoreText = new egret.TextField();
+            scoreText.width = this.group.width / 2;
+            scoreText.y = scoreTitleText.y + 60;
+            scoreText.textAlign = "center";
+            scoreText.text = String(UniltGame.interval.getScore());
+            this.group.addChild(scoreTitleText);
+            this.group.addChild(scoreText);
+            //时间
+            var timeTitleText = new egret.TextField();
+            timeTitleText.x = this.group.width / 2;
+            timeTitleText.y = 60;
+            timeTitleText.width = this.group.width / 2;
+            timeTitleText.text = "用时";
+            timeTitleText.textAlign = "center";
+            var timeText = new egret.TextField();
+            timeText.x = this.group.width / 2;
+            timeText.y = timeTitleText.y + 60;
+            timeText.width = this.group.width / 2;
+            timeText.textAlign = "center";
+            timeText.text = String(UniltGame.interval.getNowTime());
+            this.group.addChild(timeTitleText);
+            this.group.addChild(timeText);
+            //显示、抖动效果
+            egret.Tween.get(this.group).to({
+                alpha: 1
+            }, 1000, egret.Ease.circOut).wait(600).to({
+                x: this.group.x - 10
+            }, 50, egret.Ease.backInOut).to({
+                x: this.group.x
+            }, 50, egret.Ease.backInOut).to({
+                x: this.group.x + 10
+            }, 50, egret.Ease.backInOut).to({
+                x: this.group.x
+            }, 50, egret.Ease.backInOut).call(function (group) {
+                egret.Tween.removeTweens(group);
+            }, this, [this.group]);
+        };
+        //重新开始按钮点击事件
+        gameOver.prototype.restartFunc = function (e) {
+            this.restartBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.restartFunc, this);
+            Stage.stage.removeChild(this);
+            //重置数据
+            panel.interval.restart();
+            cudeData.interval.cudes = [];
+            cudeData.interval.nowCude = [];
+            cudeData.interval.removeChildren();
+            cudeData.interval.nowSpeed = 400;
+            cudeData.interval.speedTimer.reset();
+            cudeData.interval.speedTimer.start();
+            cudeData.interval.gameTimer.reset();
+            cudeData.interval.gameTimer.start();
+            UniltGame.interval.restart();
+            cudeData.interval.createRandOneCude();
+        };
+        return gameOver;
+    }(egret.Sprite));
+    Play.gameOver = gameOver;
+    __reflect(gameOver.prototype, "Play.gameOver");
     //方块数据
     var cudeData = (function (_super) {
         __extends(cudeData, _super);
@@ -402,6 +597,13 @@ var Play;
                 }
             }
             else {
+                console.log("not move");
+                if (this.isGameOVer()) {
+                    this.speedTimer.stop();
+                    this.gameTimer.stop();
+                    var gameOverMap = new gameOver();
+                    Stage.stage.addChild(gameOverMap);
+                }
                 cudeData.interval.createRandOneCude(); //创建一个类型方块组
                 this.isMove = true;
             }
@@ -420,11 +622,10 @@ var Play;
          * @returns {boolean}
          */
         cudeData.prototype.isGameOVer = function () {
-            for (var i = 0; i < this.nowCude.length; i++) {
-                if (this.nowCude[i].posY == 0) {
-                    UniltGame.interval.setGameStatus(GameStatus.Died);
-                    return true;
-                }
+            var cudes = this.ArrSortAsc(this.cudes);
+            if (cudes[0].posY <= 0) {
+                Uilt.Game.interval.setGameStatus(GameStatus.Died);
+                return true;
             }
             return false;
         };

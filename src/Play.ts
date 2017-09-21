@@ -8,7 +8,7 @@ module Play {
     import Tool = Uilt.Tool;
     import AnchorUtils = Uilt.AnchorUtils;
     //游戏开始菜单页面和基础游戏信息
-    export class Game extends eui.Component {
+    export class Game extends egret.Sprite {
         private Score: number = 0;//分数
         private Level: number = 1;//关卡
         public menuTween: egret.tween.TweenGroup;//菜单动画
@@ -18,34 +18,20 @@ module Play {
             return (this._interval || (this._interval = new Game));
         }
 
+        public constructor() {
+            super()
+            this.Init()
+        }
+
         /**
          * 初始化
          * @returns {Game}
          * @constructor
          */
-        public static Init(): Game{
-            let game = Game.interval;
-            Stage.interval.init();
+        public Init(): void{
             AnchorUtils.init() // 初始化锚点类
-            return game;
-        }
-
-        /**
-         * 菜单初始化
-         */
-        public menuInit(): void {
-            Stage.stage.addChild(grid.interval)
-            Stage.stage.addChild(cudeData.interval)
-            Stage.stage.addChild(panel.interval)
-            cudeData.interval.createRandOneCude()
-
-            UniltGame.interval.setGameStatus(GameStatus.Start)
-            /*this.skinName = "menu";
-            this.menuTween.addEventListener('complete', () => {
-                this.menuTween.play(1)
-            }, this)
-            this.menuTween.play()
-            this.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startBtnClickEvent, this)*/
+            let menu: Menu = new Menu()
+            Stage.stage.addChild(menu)
         }
 
         /**
@@ -58,19 +44,120 @@ module Play {
             Stage.stage.addChild(cudeData.interval)
             cudeData.interval.createRandOneCude();*/
         }
+
+    }
+    export class Menu extends egret.Sprite {
+        public group: egret.Sprite = new egret.Sprite() //菜单组
+        public gameName: egret.Sprite = new egret.Sprite() //游戏名字
+        public startBtn: egret.Sprite //开始游戏按钮
+        public aboutBtn: egret.Sprite //关于游戏按钮
+        public explainBtn: egret.Sprite //操作介绍按钮
+        public settingBtn: egret.Sprite //设置按钮
+        private btnColor: number = 0xe0690c //按钮默认颜色
+        private btnRound: number = 10 //默认圆角大小
+        private btnHeight: number = 60 //按钮默认高度
+        private btnWidth: number = 200 //按钮默认宽度
+        private fontColor: number = 0xffffff //字体颜色
+        public constructor(){
+            super()
+            this.init()
+        }
+        public init(): void {
+            //面板
+            this.groupDraw()
+            this.gameNameDraw()
+            this.addChild(this.gameName)
+            this.addChild(this.group)
+            let btnX: number = (this.group.width - this.btnWidth)/2
+            this.startBtn = this.drawBtn(btnX, 0, "开始游戏")
+            this.aboutBtn = this.drawBtn(btnX, this.btnHeight+20, "关于游戏")
+            this.explainBtn = this.drawBtn(btnX, (this.btnHeight+20)*2, "操作介绍")
+            this.settingBtn = this.drawBtn(btnX, (this.btnHeight+20)*3, "游戏设置")
+            this.group.addChild(this.startBtn)
+            this.group.addChild(this.aboutBtn)
+            this.group.addChild(this.explainBtn)
+            this.group.addChild(this.settingBtn)
+            this.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startBtnFunc, this)
+        }
+
         /**
-         * 是否结束游戏
-         * @returns {boolean}
+         * 绘制游戏名称
          */
-        private static isOver() {
-            let gridMap = grid.interval;
-            for(let i = 0; i < grid.gridItemRows; i++){
-                if(!gridMap.gridMaps[i].isEmpty) return true;
-            }
-            return false;
+        private gameNameDraw(): void {
+            let nameText: egret.TextField = new egret.TextField()
+            this.gameName.width = Stage.stageW
+            this.gameName.y = -80
+            this.gameName.addChild(nameText)
+            nameText.text = "俄罗斯方块"
+            nameText.width = this.gameName.width
+            nameText.textAlign = "center"
+            nameText.x = (Stage.stageW - this.gameName.width)/2
+            nameText.textColor = this.btnColor
+            nameText.fontFamily = "楷体"
+            nameText.size = 80
+            egret.Tween.get(this.gameName).to({
+                y: 350
+            }, 600, egret.Ease.backInOut).call((target) => {
+                egret.Tween.removeTweens(target)
+            }, this, [this.gameName])
+        }
+
+        /**
+         * 绘制菜单组
+         */
+        private groupDraw(): void {
+            this.group.width = 400
+            this.group.height = 300
+            this.group.alpha = 0
+            this.group.x = (Stage.stageW-this.group.width)/2
+            this.group.y = (Stage.stageH-this.group.height)/1.5
+            //this.group.graphics.beginFill(0x3bb4f2)
+            this.group.graphics.drawRoundRect( 0, 0, this.group.width, this.group.height, 10, 10)
+            this.group.graphics.endFill()
+            egret.Tween.get(this.group).to({
+                alpha: 1
+            }, 2000, egret.Ease.backInOut).call((target) => {
+                egret.Tween.removeTweens(target)
+            }, this, [this.group])
+
+        }
+
+        private startBtnFunc(): void {
+            this.startBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.startBtnFunc, this)
+            Stage.stage.addChild(grid.interval)
+            Stage.stage.addChild(cudeData.interval)
+            Stage.stage.addChild(panel.interval)
+            cudeData.interval.createRandOneCude()
+
+            UniltGame.interval.setGameStatus(GameStatus.Start)
+        }
+
+        /**
+         * 画按钮
+         * @param x X值
+         * @param y Y值
+         * @returns {egret.Sprite}
+         */
+        private drawBtn(x:number, y: number, textField: string): egret.Sprite {
+            let btn: egret.Sprite = new egret.Sprite(),
+                text: egret.TextField = new egret.TextField()
+            btn.addChild(text)
+            btn.x = x
+            btn.y = y
+            btn.graphics.beginFill(this.btnColor)
+            btn.graphics.drawRoundRect( 0, 0, this.btnWidth, this.btnHeight, this.btnRound, this.btnRound);
+            btn.graphics.endFill();
+            btn.touchEnabled = true
+
+            text.y = 15
+            text.width = this.btnWidth
+            text.height = this.btnHeight
+            text.text = textField
+            text.textAlign = "center"
+            text.textColor = this.fontColor
+            return btn
         }
     }
-
     //面板
     export class panel extends egret.Sprite {
         private timerTitleText: egret.TextField = new egret.TextField //时间标题
@@ -134,6 +221,12 @@ module Play {
         public time() {
             UniltGame.interval.incNowTimeer()
             this.timerText.text = String(UniltGame.interval.getNowTime())
+        }
+
+        //重置数据
+        public restart(): void {
+            this.timerText.text = "0"
+            this.scoreText.text = "0"
         }
     }
     //格子容器对象
@@ -274,14 +367,131 @@ module Play {
             this.posY = posY
         }
     }
+
+    //游戏结束面板
+    export class gameOver extends egret.Sprite {
+        public maskMap: egret.Shape = new egret.Shape() //遮罩
+        public group: egret.Sprite = new egret.Sprite() //组件
+        public restartBtn: egret.Sprite = new egret.Sprite() //重新开始按钮
+        public constructor(){
+            super()
+            this.width = Stage.stageW
+            this.height = Stage.stageH
+            this.init()
+        }
+
+        //初始化
+        private init(): void {
+            this.x = 0
+            this.y = 0
+            this.maskMap.graphics.beginFill( 0x000 )
+            this.maskMap.graphics.drawRect( 0,0,this.width,this.height)
+            this.maskMap.graphics.endFill()
+            this.maskMap.alpha = 0.6
+            this.addChild( this.maskMap )
+
+            //面板
+            this.group.width = 400
+            this.group.height = 300
+            this.group.alpha = 0
+            this.group.x = (Stage.stageW-this.group.width)/2
+            this.group.y = (Stage.stageH-this.group.height)/2
+            this.group.graphics.beginFill(0x3bb4f2)
+            this.group.graphics.drawRoundRect( 0, 0, this.group.width, this.group.height, 10, 10)
+            this.group.graphics.endFill()
+            this.addChild(this.group)
+
+            //重新开始按钮
+            this.restartBtn.graphics.beginFill(0xe0690c)
+            this.restartBtn.graphics.drawRoundRect( 100, this.group.height-90, 200, 60, 10, 10);
+            this.restartBtn.graphics.endFill();
+            this.group.addChild(this.restartBtn)
+            this.restartBtn.touchEnabled = true
+            this.restartBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.restartFunc, this)
+
+            //重新开始文字
+            let restartText: egret.TextField = new egret.TextField()
+            restartText.x = 100
+            restartText.y = this.group.height-77
+            restartText.width = 200
+            restartText.height = 60
+            restartText.text = "重新开始"
+            restartText.textAlign = "center"
+            restartText.textColor = 0xffffff
+            this.group.addChild(restartText)
+
+            //分数
+            let scoreTitleText: egret.TextField = new egret.TextField()
+            scoreTitleText.y = 60
+            scoreTitleText.width = this.group.width/2
+            scoreTitleText.text = "分数"
+            scoreTitleText.textAlign = "center"
+            let scoreText: egret.TextField = new egret.TextField()
+            scoreText.width = this.group.width/2
+            scoreText.y = scoreTitleText.y+60
+            scoreText.textAlign = "center"
+            scoreText.text = String(UniltGame.interval.getScore())
+            this.group.addChild(scoreTitleText)
+            this.group.addChild(scoreText)
+
+            //时间
+            let timeTitleText: egret.TextField = new egret.TextField()
+            timeTitleText.x = this.group.width/2
+            timeTitleText.y = 60
+            timeTitleText.width = this.group.width/2
+            timeTitleText.text = "用时"
+            timeTitleText.textAlign = "center"
+            let timeText: egret.TextField = new egret.TextField()
+            timeText.x = this.group.width/2
+            timeText.y = timeTitleText.y+60
+            timeText.width = this.group.width/2
+            timeText.textAlign = "center"
+            timeText.text = String(UniltGame.interval.getNowTime())
+            this.group.addChild(timeTitleText)
+            this.group.addChild(timeText)
+
+            //显示、抖动效果
+            egret.Tween.get(this.group).to({
+                alpha: 1
+            }, 1000, egret.Ease.circOut).wait(600).to({
+                x: this.group.x-10
+            }, 50, egret.Ease.backInOut).to({
+                x: this.group.x
+            }, 50, egret.Ease.backInOut).to({
+                x: this.group.x+10
+            }, 50, egret.Ease.backInOut).to({
+                x: this.group.x
+            }, 50, egret.Ease.backInOut).call((group)=>{
+                egret.Tween.removeTweens(group)
+            }, this, [this.group])
+        }
+
+        //重新开始按钮点击事件
+        private restartFunc(e: egret.Event){
+            this.restartBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.restartFunc, this)
+            Stage.stage.removeChild(this)
+            //重置数据
+            panel.interval.restart()
+            cudeData.interval.cudes = []
+            cudeData.interval.nowCude = []
+            cudeData.interval.removeChildren()
+            cudeData.interval.nowSpeed = 400
+            cudeData.interval.speedTimer.reset()
+            cudeData.interval.speedTimer.start()
+            cudeData.interval.gameTimer.reset()
+            cudeData.interval.gameTimer.start()
+            UniltGame.interval.restart()
+            cudeData.interval.createRandOneCude()
+        }
+    }
     //方块数据
     export class cudeData extends egret.Sprite {
         public cudes: Array<cude> = [] //方块集合
         public nowCude: Array<cude> = [] //当前正在前进的方块
         public nowCudeType: cudeType //当前正在前进的方块类型
         public nowSpeed:number = 400 //当前速度
-        private speedTimer: egret.Timer //速度时间对象
-        private gameTimer: egret.Timer //游戏时间对象
+        public speedTimer: egret.Timer //速度时间对象
+        public gameTimer: egret.Timer //游戏时间对象
         private isMove: boolean = true //当前方块组是否在移动
         private canMove: boolean = true //是否可以移动
         private moveNewPosXy: Array<cudePosXY> = [] //移动时新的位置数组
@@ -356,6 +566,13 @@ module Play {
                     if(!this.canDown()) this.remove() //消除
                 }
             }else{
+                console.log("not move")
+                if(this.isGameOVer()){
+                    this.speedTimer.stop()
+                    this.gameTimer.stop()
+                    let gameOverMap: gameOver = new gameOver()
+                    Stage.stage.addChild(gameOverMap)
+                }
                 cudeData.interval.createRandOneCude() //创建一个类型方块组
                 this.isMove = true
             }
@@ -375,11 +592,10 @@ module Play {
          * @returns {boolean}
          */
         private isGameOVer(): boolean {
-            for(let i = 0; i < this.nowCude.length; i++) {
-                if (this.nowCude[i].posY == 0) { //判断游戏是否结束
-                    UniltGame.interval.setGameStatus(GameStatus.Died)
-                    return true
-                }
+            let cudes: Array<cude> = this.ArrSortAsc(this.cudes)
+            if(cudes[0].posY <= 0){
+                Uilt.Game.interval.setGameStatus(GameStatus.Died)
+                return true
             }
             return false
         }

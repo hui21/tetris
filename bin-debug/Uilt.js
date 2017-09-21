@@ -94,6 +94,11 @@ var Uilt;
             if (num === void 0) { num = 1; }
             this.Score += num;
         };
+        Game.prototype.restart = function () {
+            this.Score = 0;
+            this.Status = GameStatus.Start;
+            this.NowTimer = 0;
+        };
         Object.defineProperty(Game, "interval", {
             get: function () {
                 return (this._interval || (this._interval = new Game));
@@ -170,12 +175,6 @@ var Uilt;
     //舞台类
     var Stage = (function () {
         function Stage() {
-            /**
-             * 加载进度界面
-             * Process interface loading
-             */
-            this.loadingView = new LoadingUI;
-            this.isThemeLoadEnd = false;
         }
         Object.defineProperty(Stage, "interval", {
             get: function () {
@@ -215,103 +214,10 @@ var Uilt;
             enumerable: true,
             configurable: true
         });
-        Stage.prototype.init = function () {
-            //注入自定义的素材解析器
-            var assetAdapter = new AssetAdapter();
-            egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
-            egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
-            //初始化Resource资源加载库
-            //initiate Resource loading library
-            RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
-            RES.loadConfig("resource/default.res.json", "resource/");
-        };
-        /**
-         * 配置文件加载完成,开始预加载皮肤主题资源和preload资源组。
-         * Loading of configuration file is complete, start to pre-load the theme configuration file and the preload resource group
-         */
-        Stage.prototype.onConfigComplete = function (event) {
-            RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
-            var theme = new eui.Theme("resource/default.thm.json", Stage.stage);
-            theme.addEventListener(eui.UIEvent.COMPLETE, this.onThemeLoadComplete, this);
-            RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
-            RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
-            RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
-            RES.loadGroup("preload");
-        };
-        /**
-         * 主题文件加载完成,开始预加载
-         * Loading of theme configuration file is complete, start to pre-load the
-         */
-        Stage.prototype.onThemeLoadComplete = function () {
-            this.isThemeLoadEnd = true;
-            Play.Game.interval.menuInit();
-        };
-        /**
-         * preload资源组加载完成
-         * Preload resource group is loaded
-         */
-        Stage.prototype.onResourceLoadComplete = function (event) {
-            if (event.groupName == "preload") {
-                RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
-                RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
-                RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
-                RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
-            }
-        };
-        /**
-         * 资源组加载出错
-         *  The resource group loading failed
-         */
-        Stage.prototype.onItemLoadError = function (event) {
-            console.warn("Url:" + event.resItem.url + " has failed to load");
-        };
-        /**
-         * 资源组加载出错
-         *  The resource group loading failed
-         */
-        Stage.prototype.onResourceLoadError = function (event) {
-            //TODO
-            console.warn("Group:" + event.groupName + " has failed to load");
-            //忽略加载失败的项目
-            //Ignore the loading failed projects
-            this.onResourceLoadComplete(event);
-        };
-        /**
-         * preload资源组加载进度
-         * Loading process of preload resource group
-         */
-        Stage.prototype.onResourceProgress = function (event) {
-            if (event.groupName == "preload") {
-                this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
-            }
-        };
         return Stage;
     }());
     Uilt.Stage = Stage;
     __reflect(Stage.prototype, "Uilt.Stage");
-    //加载UI类
-    var LoadingUI = (function (_super) {
-        __extends(LoadingUI, _super);
-        function LoadingUI() {
-            var _this = _super.call(this) || this;
-            _this.createView();
-            return _this;
-        }
-        LoadingUI.prototype.createView = function () {
-            this.textField = new egret.TextField();
-            this.addChild(this.textField);
-            this.textField.y = 300;
-            this.textField.width = 480;
-            this.textField.height = 100;
-            this.textField.textAlign = "center";
-        };
-        LoadingUI.prototype.setProgress = function (current, total) {
-            this.textField.text = "Loading..." + current + "/" + total;
-        };
-        return LoadingUI;
-    }(egret.Sprite));
-    Uilt.LoadingUI = LoadingUI;
-    __reflect(LoadingUI.prototype, "Uilt.LoadingUI");
     //锚点工具类（需要初始化）
     var AnchorUtils = (function () {
         function AnchorUtils() {
@@ -417,65 +323,6 @@ var Uilt;
     }());
     Uilt.AnchorUtils = AnchorUtils;
     __reflect(AnchorUtils.prototype, "Uilt.AnchorUtils");
-    var AssetAdapter = (function () {
-        function AssetAdapter() {
-        }
-        /**
-         * @language zh_CN
-         * 解析素材
-         * @param source 待解析的新素材标识符
-         * @param compFunc 解析完成回调函数，示例：callBack(content:any,source:string):void;
-         * @param thisObject callBack的 this 引用
-         */
-        AssetAdapter.prototype.getAsset = function (source, compFunc, thisObject) {
-            function onGetRes(data) {
-                compFunc.call(thisObject, data, source);
-            }
-            if (RES.hasRes(source)) {
-                var data = RES.getRes(source);
-                if (data) {
-                    onGetRes(data);
-                }
-                else {
-                    RES.getResAsync(source, onGetRes, this);
-                }
-            }
-            else {
-                RES.getResByUrl(source, onGetRes, this, RES.ResourceItem.TYPE_IMAGE);
-            }
-        };
-        return AssetAdapter;
-    }());
-    Uilt.AssetAdapter = AssetAdapter;
-    __reflect(AssetAdapter.prototype, "Uilt.AssetAdapter", ["eui.IAssetAdapter"]);
-    //主题解析类
-    var ThemeAdapter = (function () {
-        function ThemeAdapter() {
-        }
-        /**
-         * 解析主题
-         * @param url 待解析的主题url
-         * @param compFunc 解析完成回调函数，示例：compFunc(e:egret.Event):void;
-         * @param errorFunc 解析失败回调函数，示例：errorFunc():void;
-         * @param thisObject 回调的this引用
-         */
-        ThemeAdapter.prototype.getTheme = function (url, compFunc, errorFunc, thisObject) {
-            function onGetRes(e) {
-                compFunc.call(thisObject, e);
-            }
-            function onError(e) {
-                if (e.resItem.url == url) {
-                    RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, onError, null);
-                    errorFunc.call(thisObject);
-                }
-            }
-            RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, onError, null);
-            RES.getResByUrl(url, onGetRes, this, RES.ResourceItem.TYPE_TEXT);
-        };
-        return ThemeAdapter;
-    }());
-    Uilt.ThemeAdapter = ThemeAdapter;
-    __reflect(ThemeAdapter.prototype, "Uilt.ThemeAdapter", ["eui.IThemeAdapter"]);
     //游戏状态
     var GameStatus;
     (function (GameStatus) {
