@@ -70,9 +70,9 @@ module Play {
             this.addChild(this.group)
             let btnX: number = (this.group.width - this.btnWidth)/2
             this.startBtn = this.drawBtn(btnX, 0, "开始游戏")
-            this.aboutBtn = this.drawBtn(btnX, this.btnHeight+20, "关于游戏")
-            this.explainBtn = this.drawBtn(btnX, (this.btnHeight+20)*2, "操作介绍")
-            this.settingBtn = this.drawBtn(btnX, (this.btnHeight+20)*3, "游戏设置")
+            this.explainBtn = this.drawBtn(btnX, (this.btnHeight+20)*1, "操作介绍")
+            this.settingBtn = this.drawBtn(btnX, (this.btnHeight+20)*2, "游戏设置")
+            this.aboutBtn = this.drawBtn(btnX, (this.btnHeight+20)*3, "关于游戏")
             this.group.addChild(this.startBtn)
             this.group.addChild(this.aboutBtn)
             this.group.addChild(this.explainBtn)
