@@ -71,6 +71,8 @@ var Play;
             return _this;
         }
         Menu.prototype.init = function () {
+            Stage.stage.addChild(grid.interval);
+            Stage.stage.addChild(panel.interval);
             //面板
             this.groupDraw();
             this.gameNameDraw();
@@ -127,10 +129,9 @@ var Play;
             }, this, [this.group]);
         };
         Menu.prototype.startBtnFunc = function () {
+            Stage.stage.removeChild(this);
             this.startBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.startBtnFunc, this);
-            Stage.stage.addChild(grid.interval);
             Stage.stage.addChild(cudeData.interval);
-            Stage.stage.addChild(panel.interval);
             cudeData.interval.createRandOneCude();
             UniltGame.interval.setGameStatus(GameStatus.Start);
         };

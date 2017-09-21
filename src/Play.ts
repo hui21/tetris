@@ -63,6 +63,8 @@ module Play {
             this.init()
         }
         public init(): void {
+            Stage.stage.addChild(grid.interval)
+            Stage.stage.addChild(panel.interval)
             //面板
             this.groupDraw()
             this.gameNameDraw()
@@ -123,10 +125,9 @@ module Play {
         }
 
         private startBtnFunc(): void {
+            Stage.stage.removeChild(this)
             this.startBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.startBtnFunc, this)
-            Stage.stage.addChild(grid.interval)
             Stage.stage.addChild(cudeData.interval)
-            Stage.stage.addChild(panel.interval)
             cudeData.interval.createRandOneCude()
 
             UniltGame.interval.setGameStatus(GameStatus.Start)
