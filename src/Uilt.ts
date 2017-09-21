@@ -84,6 +84,12 @@ module Uilt {
 			this.Score += num;
 		}
 
+		public restart(): void{
+			this.Score = 0;
+			this.Status = GameStatus.Start;
+			this.NowTimer = 0;
+		}
+
 		public static _interval:Game;
 		public static get interval(): Game{
 			return (this._interval || (this._interval = new Game));
@@ -139,6 +145,32 @@ module Uilt {
 			shp.graphics.endFill();
 			return shp;
 		}
+
+		/**
+		 * 画按钮
+		 * @param x X值
+		 * @param y Y值
+		 * @returns {egret.Sprite}
+		 */
+		public static drawBtn(x:number, y: number, w:number, h: number, r:number, textField: string, btnColor: number, fontColor: number, touchEnalb: boolean = true): egret.Sprite {
+			let btn: egret.Sprite = new egret.Sprite(),
+				text: egret.TextField = new egret.TextField()
+			btn.addChild(text)
+			btn.x = x
+			btn.y = y
+			btn.graphics.beginFill(btnColor)
+			btn.graphics.drawRoundRect( 0, 0, w, h, r, r);
+			btn.graphics.endFill();
+			btn.touchEnabled = true
+
+			text.y = 15
+			text.width = w
+			text.height = h
+			text.text = textField
+			text.textAlign = "center"
+			text.textColor = fontColor
+			return btn
+		}
 	}
 	//舞台类
 	export class Stage {
@@ -147,11 +179,6 @@ module Uilt {
 			this.stage.width = 640
 			return (this._interval || (this._interval = new Stage));
 		}
-		/**
-		 * 加载进度界面
-		 * Process interface loading
-		 */
-		private loadingView: LoadingUI = new LoadingUI;
 		/**
 		 * 获取舞台
 		 */
@@ -172,210 +199,119 @@ module Uilt {
 		public static get stageH() {
 			return egret.MainContext.instance.stage.stageHeight;
 		}
-
-		public init(){
-			//注入自定义的素材解析器
-			let assetAdapter = new AssetAdapter();
-			egret.registerImplementation("eui.IAssetAdapter",assetAdapter);
-			egret.registerImplementation("eui.IThemeAdapter",new ThemeAdapter());
-			//初始化Resource资源加载库
-			//initiate Resource loading library
-			RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
-			RES.loadConfig("resource/default.res.json", "resource/");
-		}
-
-		/**
-		 * 配置文件加载完成,开始预加载皮肤主题资源和preload资源组。
-		 * Loading of configuration file is complete, start to pre-load the theme configuration file and the preload resource group
-		 */
-		private onConfigComplete(event: RES.ResourceEvent): void {
-			RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
-
-			let theme = new eui.Theme("resource/default.thm.json", Stage.stage);
-			theme.addEventListener(eui.UIEvent.COMPLETE, this.onThemeLoadComplete, this);
-
-			RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
-			RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
-			RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
-			RES.loadGroup("preload");
-		}
-
-		private isThemeLoadEnd: boolean = false;
-		/**
-		 * 主题文件加载完成,开始预加载
-		 * Loading of theme configuration file is complete, start to pre-load the
-		 */
-		private onThemeLoadComplete(): void {
-			this.isThemeLoadEnd = true;
-			Play.Game.interval.menuInit()
-		}
-
-		/**
-		 * preload资源组加载完成
-		 * Preload resource group is loaded
-		 */
-		private onResourceLoadComplete(event: RES.ResourceEvent) {
-			if (event.groupName == "preload") {
-				RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
-				RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
-				RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
-				RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
-			}
-		}
-
-		/**
-		 * 资源组加载出错
-		 *  The resource group loading failed
-		 */
-		private onItemLoadError(event: RES.ResourceEvent) {
-			console.warn("Url:" + event.resItem.url + " has failed to load");
-		}
-
-		/**
-		 * 资源组加载出错
-		 *  The resource group loading failed
-		 */
-		private onResourceLoadError(event: RES.ResourceEvent) {
-			//TODO
-			console.warn("Group:" + event.groupName + " has failed to load");
-			//忽略加载失败的项目
-			//Ignore the loading failed projects
-			this.onResourceLoadComplete(event);
-		}
-
-		/**
-		 * preload资源组加载进度
-		 * Loading process of preload resource group
-		 */
-		private onResourceProgress(event: RES.ResourceEvent) {
-			if (event.groupName == "preload") {
-				this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
-			}
-		}
-	}
-	//加载UI类
-	export class LoadingUI extends egret.Sprite {
-
-		public constructor() {
-			super();
-			this.createView();
-		}
-
-		private textField:egret.TextField;
-
-		private createView():void {
-			this.textField = new egret.TextField();
-			this.addChild(this.textField);
-			this.textField.y = 300;
-			this.textField.width = 480;
-			this.textField.height = 100;
-			this.textField.textAlign = "center";
-		}
-
-		public setProgress(current:number, total:number):void {
-			this.textField.text = `Loading...${current}/${total}`;
-		}
 	}
 
 	//锚点工具类（需要初始化）
 	export class AnchorUtils {
-		/**
-		 * 设置对象锚点
-		 * @param target 对象
-		 * @param value 值
-		 * @param type 类型，X，Y，X和Y同值
-		 */
-		public static setAnchor(target: egret.Sprite, value: number, type: Coordinate = Coordinate.both){
-			switch (type){
-				case Coordinate.x:
-					target['anchorX'] = value;
-					break;
-				case Coordinate.y:
-					target['anchorY'] = value;
-					break;
-				case Coordinate.both:
-					target['anchorX'] = target['anchorY'] = value;
-					break;
-				default:
-					break;
-			}
+		private static _propertyChange: any;
+		private static _anchorChange: any;
 
+		public static init(): void {
+			this._propertyChange = Object.create(null);
+			this._anchorChange = Object.create(null);
+			this.injectAnchor();
 		}
 
-		/**
-		 * 获取锚点值
-		 * @param target 对象
-		 * @param type 类型，X，Y，X和Y同值
-		 * @returns {any}
-		 */
-		public static getAnchor(target: egret.Sprite, type: Coordinate = Coordinate.both): number{
-			switch (type){
-				case Coordinate.x:
-					return target['anchorX'];
-				case Coordinate.y:
-					return target['anchorY'];
-				case Coordinate.both:
-					if(target['anchorX'] != target['anchorY']){
-						return 0;
-					}
-					return target['anchorX']
-				default:
-					break;
-			}
+		public static setAnchorX(target: egret.DisplayObject,value: number): void {
+			target["anchorX"] = value;
+		}
 
+		public static setAnchorY(target: egret.DisplayObject,value: number): void {
+			target["anchorY"] = value;
+		}
+
+		public static setAnchor(target: egret.DisplayObject,value: number): void {
+			target["anchorX"] = target["anchorY"] = value;
+		}
+
+		public static getAnchor(target: egret.DisplayObject): number {
+			if(target["anchorX"] != target["anchorY"]) {
+				console.log("target's anchorX != anchorY");
+			}
+			return target["anchorX"] || 0;
+		}
+
+		public static getAnchorY(target: egret.DisplayObject): number {
+			return target["anchorY"] || 0;
+		}
+
+		public static getAnchorX(target: egret.DisplayObject): number {
+			return target["anchorX"] || 0;
+		}
+
+		private static injectAnchor(): void {
+			Object.defineProperty(egret.DisplayObject.prototype,"width",{
+				get: function() {
+					return this.$getWidth();
+				},
+				set: function(value) {
+					this.$setWidth(value);
+					AnchorUtils._propertyChange[this.hashCode] = true;
+					egret.callLater(() => {
+						AnchorUtils.changeAnchor(this);
+					},this);
+				},
+				enumerable: true,
+				configurable: true
+			});
+
+			Object.defineProperty(egret.DisplayObject.prototype,"height",{
+				get: function() {
+					return this.$getHeight();
+				},
+				set: function(value) {
+					this.$setHeight(value);
+					AnchorUtils._propertyChange[this.hashCode] = true;
+					egret.callLater(() => {
+						AnchorUtils.changeAnchor(this);
+					},this);
+				},
+				enumerable: true,
+				configurable: true
+			});
+
+			Object.defineProperty(egret.DisplayObject.prototype,"anchorX",{
+				get: function() {
+					return this._anchorX;
+				},
+				set: function(value) {
+					this._anchorX = value;
+					AnchorUtils._propertyChange[this.hashCode] = true;
+					AnchorUtils._anchorChange[this.hashCode] = true;
+					egret.callLater(() => {
+						AnchorUtils.changeAnchor(this);
+					},this);
+				},
+				enumerable: true,
+				configurable: true
+			});
+
+			Object.defineProperty(egret.DisplayObject.prototype,"anchorY",{
+				get: function() {
+					return this._anchorY;
+				},
+				set: function(value) {
+					this._anchorY = value;
+					AnchorUtils._propertyChange[this.hashCode] = true;
+					AnchorUtils._anchorChange[this.hashCode] = true;
+					egret.callLater(() => {
+						AnchorUtils.changeAnchor(this);
+					},this);
+				},
+				enumerable: true,
+				configurable: true
+			});
+		}
+
+		private static changeAnchor(tar: any): void {
+			if(this._propertyChange[tar.hashCode] && this._anchorChange[tar.hashCode]) {
+				tar.anchorOffsetX = tar._anchorX * tar.width;
+				tar.anchorOffsetY = tar._anchorY * tar.height;
+				delete this._propertyChange[tar.hashCode];
+			}
 		}
 	}
 
-	export class AssetAdapter implements eui.IAssetAdapter {
-		/**
-		 * @language zh_CN
-		 * 解析素材
-		 * @param source 待解析的新素材标识符
-		 * @param compFunc 解析完成回调函数，示例：callBack(content:any,source:string):void;
-		 * @param thisObject callBack的 this 引用
-		 */
-		public getAsset(source: string, compFunc:Function, thisObject: any): void {
-			function onGetRes(data: any): void {
-				compFunc.call(thisObject, data, source);
-			}
-			if (RES.hasRes(source)) {
-				let data = RES.getRes(source);
-				if (data) {
-					onGetRes(data);
-				}
-				else {
-					RES.getResAsync(source, onGetRes, this);
-				}
-			}
-			else {
-				RES.getResByUrl(source, onGetRes, this, RES.ResourceItem.TYPE_IMAGE);
-			}
-		}
-	}
-	//主题解析类
-	export class ThemeAdapter implements eui.IThemeAdapter {
-
-		/**
-		 * 解析主题
-		 * @param url 待解析的主题url
-		 * @param compFunc 解析完成回调函数，示例：compFunc(e:egret.Event):void;
-		 * @param errorFunc 解析失败回调函数，示例：errorFunc():void;
-		 * @param thisObject 回调的this引用
-		 */
-		public getTheme(url:string,compFunc:Function,errorFunc:Function,thisObject:any):void {
-			function onGetRes(e:string):void {
-				compFunc.call(thisObject, e);
-			}
-			function onError(e:RES.ResourceEvent):void {
-				if(e.resItem.url == url) {
-					RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, onError, null);
-					errorFunc.call(thisObject);
-				}
-			}
-			RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, onError, null);
-			RES.getResByUrl(url, onGetRes, this, RES.ResourceItem.TYPE_TEXT);
-		}
-	}
 	//游戏状态
 	export enum GameStatus{
 		Load = 0,//加载资源
