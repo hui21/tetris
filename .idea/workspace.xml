@@ -23,8 +23,8 @@
       <file leaf-file-name="Play.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Play.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="658" column="55" lean-forward="false" selection-start-line="658" selection-start-column="55" selection-end-line="658" selection-end-column="55" />
+            <state relative-caret-position="431">
+              <caret line="660" column="13" lean-forward="true" selection-start-line="660" selection-start-column="13" selection-end-line="660" selection-end-column="13" />
               <folding>
                 <element signature="n#!!doc;n#Play#0" expanded="false" />
                 <element signature="n#Game#0;n#Play#0" expanded="false" />
@@ -744,16 +744,16 @@
       <workItem from="1505645034352" duration="1344000" />
       <workItem from="1505740137806" duration="2896000" />
       <workItem from="1505826973016" duration="5808000" />
-      <workItem from="1505869767106" duration="14651000" />
+      <workItem from="1505869767106" duration="14758000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24699000" />
+    <option name="totallyTimeSpent" value="24806000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1261,8 +1261,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Play.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="658" column="55" lean-forward="false" selection-start-line="658" selection-start-column="55" selection-end-line="658" selection-end-column="55" />
+        <state relative-caret-position="431">
+          <caret line="660" column="13" lean-forward="true" selection-start-line="660" selection-start-column="13" selection-end-line="660" selection-end-column="13" />
           <folding>
             <element signature="n#!!doc;n#Play#0" expanded="false" />
             <element signature="n#Game#0;n#Play#0" expanded="false" />
