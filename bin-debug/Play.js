@@ -197,6 +197,10 @@ var Play;
             this.textGroup.addChild(textMap);
             this.closeBtn = Tool.drawBtn(150, this.textGroup.height - 70, this.btnWidth, this.btnHeight, this.btnRound, "关闭", this.btnColor, this.fontColor);
             this.textGroup.addChild(this.closeBtn);
+            this.startBtn.touchEnabled = false;
+            this.explainBtn.touchEnabled = false;
+            this.aboutBtn.touchEnabled = false;
+            this.settingBtn.touchEnabled = false;
             this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.closeBtnFunc, this);
         };
         /**
@@ -205,6 +209,10 @@ var Play;
         Menu.prototype.closeBtnFunc = function () {
             this.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.closeBtnFunc, this);
             this.removeChild(this.textGroup);
+            this.startBtn.touchEnabled = true;
+            this.explainBtn.touchEnabled = true;
+            this.aboutBtn.touchEnabled = true;
+            this.settingBtn.touchEnabled = true;
         };
         /**
          * 菜单淡出
@@ -686,7 +694,7 @@ var Play;
             var _this = _super.call(this) || this;
             _this.cudes = []; //方块集合
             _this.nowCude = []; //当前正在前进的方块
-            _this.nowSpeed = 400; //当前速度
+            _this.nowSpeed = 1000; //当前速度
             _this.isMove = true; //当前方块组是否在移动
             _this.canMove = true; //是否可以移动
             _this.moveNewPosXy = []; //移动时新的位置数组

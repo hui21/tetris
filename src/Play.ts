@@ -210,6 +210,10 @@ module Play {
                 150, this.textGroup.height-70, this.btnWidth, this.btnHeight, this.btnRound, "关闭",
                 this.btnColor, this.fontColor)
             this.textGroup.addChild(this.closeBtn)
+            this.startBtn.touchEnabled = false
+            this.explainBtn.touchEnabled = false
+            this.aboutBtn.touchEnabled = false
+            this.settingBtn.touchEnabled = false
             this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.closeBtnFunc, this)
         }
 
@@ -219,6 +223,10 @@ module Play {
         private closeBtnFunc(): void {
             this.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.closeBtnFunc, this)
             this.removeChild(this.textGroup)
+            this.startBtn.touchEnabled = true
+            this.explainBtn.touchEnabled = true
+            this.aboutBtn.touchEnabled = true
+            this.settingBtn.touchEnabled = true
         }
         /**
          * 菜单淡出
@@ -686,7 +694,7 @@ module Play {
         public cudes: Array<cude> = [] //方块集合
         public nowCude: Array<cude> = [] //当前正在前进的方块
         public nowCudeType: cudeType //当前正在前进的方块类型
-        public nowSpeed:number = 400 //当前速度
+        public nowSpeed:number = 1000 //当前速度
         public speedTimer: egret.Timer //速度时间对象
         public gameTimer: egret.Timer //游戏时间对象
         private isMove: boolean = true //当前方块组是否在移动
