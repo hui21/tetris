@@ -7,6 +7,7 @@ module Play {
     import GameStatus = Uilt.GameStatus;
     import Tool = Uilt.Tool;
     import AnchorUtils = Uilt.AnchorUtils;
+    import Panel = eui.Panel;
     //游戏开始菜单页面和基础游戏信息
     export class Game extends egret.Sprite {
         private Score: number = 0;//分数
@@ -94,8 +95,21 @@ module Play {
             this.group.addChild(this.settingBtn)
             this.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startBtnFunc, this)
             this.explainBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.explainBtnFunc, this)
+            this.aboutBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.aboutBtnFunc, this)
+            this.settingBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.settingBtnFunc, this)
         }
 
+        /**
+         * 设置游戏
+         */
+        private settingBtnFunc(): void {
+            let text: string = "\r\n游戏设置\r\n" +
+                "游戏音效：你的扬声器有问题     \r\n" +
+                "游戏震动：你的操作系统不支持\r\n" +
+                "炫酷特效：快来资助我吧o_O??\r\n" +
+                "游戏难度：有点意思                  \r\n"
+            this.textPanel(text)
+        }
         /**
          * 绘制游戏名称
          */
@@ -138,6 +152,9 @@ module Play {
          */
         private startBtnFunc(): void {
             Stage.stage.removeChild(this)
+            UniltGame.interval.restart()
+            panel.interval.restart()
+            cudeData._interval = null
             this.startBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.startBtnFunc, this)
             Stage.stage.addChild(cudeData.interval)
             cudeData.interval.createRandOneCude()
@@ -145,34 +162,68 @@ module Play {
             UniltGame.interval.setGameStatus(GameStatus.Start)
         }
 
+        private closeBtn: egret.Sprite //关闭按钮
+        private textGroup: egret.Sprite //文字组
+
+        /**
+         * 操作介绍
+         */
         private explainBtnFunc(): void {
-            let group: egret.Sprite = new egret.Sprite,
-                textMap: egret.TextField = new egret.TextField,
-                closeBtn: egret.Sprite
-            group.width = 500
-            group.height = 400
-            group.x = (Stage.stageW-group.width)/2
-            group.y = (Stage.stageH-group.height)/1.6
-            group.graphics.beginFill(0x3bb4f2)
-            group.graphics.drawRoundRect( 0, 0, group.width, group.height, 10, 10)
-            group.graphics.endFill()
-            this.addChild(group)
-
-            textMap.width = group.width
-            textMap.height = group.height
-            textMap.lineSpacing = 20
-            textMap.text = "\r\n说明：\r\n" +
-                "       键盘：上键旋转，下键快速下落，左右键左右移动\r\n" +
-                "       触屏：向上滑旋转，下滑快速下落，左右滑左右移动"
-            textMap.textColor = 0xffffff
-            group.addChild(textMap)
-
-            closeBtn = Tool.drawBtn(
-                150, group.height-70, this.btnWidth, this.btnHeight, this.btnRound, "关闭",
-                this.btnColor, this.fontColor)
-            group.addChild(closeBtn)
+            let text: string = "操作介绍\r\n\r\n" +
+                "键盘：上键旋转，下键快速下落，左右键左右移动，回车键暂停\r\n" +
+                "触屏：向上滑旋转，下滑快速下落，左右滑左右移动，双击暂停"
+            this.textPanel(text)
         }
 
+        /**
+         * 关于我们
+         */
+        private aboutBtnFunc(): void {
+            let text: string = "关于游戏\r\n\r\n" +
+                "作者：听风              \r\n" +
+                "QQ：3123118153\r\n\r\n" +
+                "-----------------完成于2017年09月22日"
+            this.textPanel(text)
+        }
+
+        /**
+         * 文字显示面板
+         * @param text
+         */
+        private textPanel(text: string): void {
+            this.textGroup = new egret.Sprite
+            let textMap: egret.TextField = new egret.TextField
+            this.textGroup.width = 500
+            this.textGroup.height = 400
+            this.textGroup.x = (Stage.stageW-this.textGroup.width)/2
+            this.textGroup.y = (Stage.stageH-this.textGroup.height)/1.6
+            this.textGroup.graphics.beginFill(0x3bb4f2)
+            this.textGroup.graphics.drawRoundRect( 0, 0, this.textGroup.width, this.textGroup.height, 10, 10)
+            this.textGroup.graphics.endFill()
+            this.addChild(this.textGroup)
+
+            textMap.width = this.textGroup.width
+            textMap.height = this.textGroup.height
+            textMap.lineSpacing = 20
+            textMap.text = text
+            textMap.textAlign = "center"
+            textMap.textColor = 0xffffff
+            this.textGroup.addChild(textMap)
+
+            this.closeBtn = Tool.drawBtn(
+                150, this.textGroup.height-70, this.btnWidth, this.btnHeight, this.btnRound, "关闭",
+                this.btnColor, this.fontColor)
+            this.textGroup.addChild(this.closeBtn)
+            this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.closeBtnFunc, this)
+        }
+
+        /**
+         * 关闭按钮
+         */
+        private closeBtnFunc(): void {
+            this.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.closeBtnFunc, this)
+            this.removeChild(this.textGroup)
+        }
         /**
          * 菜单淡出
          */
@@ -194,6 +245,234 @@ module Play {
                 .call((target) => {
                     egret.Tween.removeTweens(target)
                 }, this, [this.group])
+        }
+    }
+    //游戏暂停
+    export class gameStop extends egret.Sprite {
+        public group: egret.Sprite = new egret.Sprite() //菜单组
+        public backGameBtn: egret.Sprite //返回游戏按钮
+        public backMenuBtn: egret.Sprite //返回游戏按钮
+        public restartBtn: egret.Sprite //重玩游戏按钮
+        private btnColor: number = 0xe0690c //按钮默认颜色
+        private btnRound: number = 10 //默认圆角大小
+        private btnHeight: number = 60 //按钮默认高度
+        private btnWidth: number = 200 //按钮默认宽度
+        private fontColor: number = 0xffffff //字体颜色
+        public constructor() {
+            super()
+            this.init()
+        }
+        /**
+         * 初始化
+         */
+        public init(): void {
+            Stage.stage.addChild(grid.interval)
+            Stage.stage.addChild(panel.interval)
+            //面板
+            this.groupDraw()
+            this.addChild(this.group)
+            let btnX: number = (this.group.width - this.btnWidth)/2
+            this.backGameBtn = Tool.drawBtn(
+                btnX, 0+20, this.btnWidth, this.btnHeight, this.btnRound, "继续游戏",
+                this.btnColor, this.fontColor)
+            this.restartBtn = Tool.drawBtn(
+                btnX, (this.btnHeight+40)*1, this.btnWidth, this.btnHeight, this.btnRound,
+                "重新开始", this.btnColor, this.fontColor)
+            this.backMenuBtn = Tool.drawBtn(
+                btnX, (this.btnHeight+30)*2, this.btnWidth, this.btnHeight, this.btnRound,
+                "回到菜单", this.btnColor, this.fontColor)
+            this.group.addChild(this.backGameBtn)
+            this.group.addChild(this.restartBtn)
+            this.group.addChild(this.backMenuBtn)
+            this.backGameBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backGameBtnFunc, this)
+            this.restartBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.restartBtnFunc, this)
+            this.backMenuBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backMenuBtnFunc, this)
+        }
+
+        /**
+         * 返回游戏
+         */
+        private backGameBtnFunc(): void {
+            this.backGameBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.backGameBtnFunc, this)
+            Stage.stage.removeChild(this)
+            cudeData.interval.startTimer()
+            UniltGame.interval.setGameStatus(GameStatus.Start)
+        }
+
+        /**
+         * 重玩
+         */
+        private restartBtnFunc(): void {
+            this.restartBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.restartBtnFunc, this)
+            Stage.stage.removeChild(this)
+            panel.interval.restart()
+            UniltGame.interval.restart()
+            cudeData.interval.removeTimer()
+            Stage.stage.removeChild(cudeData.interval)
+            cudeData._interval = null
+            Stage.stage.addChild(cudeData.interval)
+            cudeData.interval.createRandOneCude()
+        }
+
+        /**
+         * 返回菜单
+         */
+        private backMenuBtnFunc(): void {
+            this.backMenuBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.backMenuBtnFunc, this)
+            //重置数据
+            panel.interval.restart()
+            cudeData.interval.removeTimer()
+            Stage.stage.removeChild(cudeData.interval)
+            Stage.stage.removeChild(this)
+            cudeData._interval = null
+            let menu: Menu = new Menu()
+            Stage.stage.addChild(menu)
+        }
+
+        /**
+         * 绘制菜单组
+         */
+        private groupDraw(): void {
+            this.group.width = 240
+            this.group.height = 250
+            this.group.alpha = 0
+            this.group.x = (Stage.stageW-this.group.width)/2
+            this.group.y = (Stage.stageH-this.group.height)/1.5
+            this.group.graphics.beginFill(0x3bb4f2)
+            this.group.graphics.drawRoundRect( 0, 0, this.group.width, this.group.height, 10, 10)
+            this.group.graphics.endFill()
+            this.groupIn()
+        }
+        /**
+         * 菜单淡现
+         */
+        private groupIn(): void {
+            egret.Tween.get(this.group).to({
+                alpha: 1
+            }, 2000, egret.Ease.backInOut)
+                .call((target) => {
+                    egret.Tween.removeTweens(target)
+                }, this, [this.group])
+        }
+    }
+    //游戏结束面板
+    export class gameOver extends egret.Sprite {
+        public maskMap: egret.Shape = new egret.Shape() //遮罩
+        public group: egret.Sprite = new egret.Sprite() //组件
+        public restartBtn: egret.Sprite //重新开始按钮
+        public backMenuBtn: egret.Sprite //返回彩单按钮
+        public constructor(){
+            super()
+            this.width = Stage.stageW
+            this.height = Stage.stageH
+            this.init()
+        }
+
+        //初始化
+        private init(): void {
+            this.x = 0
+            this.y = 0
+            this.maskMap.graphics.beginFill( 0x000 )
+            this.maskMap.graphics.drawRect( 0,0,this.width,this.height)
+            this.maskMap.graphics.endFill()
+            this.maskMap.alpha = 0.6
+            this.addChild( this.maskMap )
+
+            //面板
+            this.group.width = 400
+            this.group.height = 400
+            this.group.alpha = 0
+            this.group.x = (Stage.stageW-this.group.width)/2
+            this.group.y = (Stage.stageH-this.group.height)/2
+            this.group.graphics.beginFill(0x3bb4f2)
+            this.group.graphics.drawRoundRect( 0, 0, this.group.width, this.group.height, 10, 10)
+            this.group.graphics.endFill()
+            this.addChild(this.group)
+
+            //重新开始按钮
+            this.restartBtn = Tool.drawBtn(
+                100, this.group.height-170, 200, 60, 10,
+                "重新开始", 0xe0690c, 0xffffff)
+            this.group.addChild(this.restartBtn)
+            this.restartBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.restartFunc, this)
+
+            this.backMenuBtn = Tool.drawBtn(
+                100, this.group.height-90, 200, 60, 10,
+                "返回菜单", 0xe0690c, 0xffffff)
+            this.group.addChild(this.backMenuBtn)
+            this.backMenuBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backMenuBtnFunc, this)
+
+            //分数
+            let scoreTitleText: egret.TextField = new egret.TextField()
+            scoreTitleText.y = 60
+            scoreTitleText.width = this.group.width/2
+            scoreTitleText.text = "分数"
+            scoreTitleText.textAlign = "center"
+            let scoreText: egret.TextField = new egret.TextField()
+            scoreText.width = this.group.width/2
+            scoreText.y = scoreTitleText.y+60
+            scoreText.textAlign = "center"
+            scoreText.text = String(UniltGame.interval.getScore())
+            this.group.addChild(scoreTitleText)
+            this.group.addChild(scoreText)
+
+            //时间
+            let timeTitleText: egret.TextField = new egret.TextField()
+            timeTitleText.x = this.group.width/2
+            timeTitleText.y = 60
+            timeTitleText.width = this.group.width/2
+            timeTitleText.text = "用时"
+            timeTitleText.textAlign = "center"
+            let timeText: egret.TextField = new egret.TextField()
+            timeText.x = this.group.width/2
+            timeText.y = timeTitleText.y+60
+            timeText.width = this.group.width/2
+            timeText.textAlign = "center"
+            timeText.text = String(UniltGame.interval.getNowTime())
+            this.group.addChild(timeTitleText)
+            this.group.addChild(timeText)
+
+            //显示、抖动效果
+            egret.Tween.get(this.group).to({
+                alpha: 1
+            }, 1000, egret.Ease.circOut).wait(600).to({
+                x: this.group.x-10
+            }, 50, egret.Ease.backInOut).to({
+                x: this.group.x
+            }, 50, egret.Ease.backInOut).to({
+                x: this.group.x+10
+            }, 50, egret.Ease.backInOut).to({
+                x: this.group.x
+            }, 50, egret.Ease.backInOut).call((group)=>{
+                egret.Tween.removeTweens(group)
+            }, this, [this.group])
+        }
+
+        //重新开始按钮点击事件
+        private restartFunc(e: egret.Event){
+            this.restartBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.restartFunc, this)
+            Stage.stage.removeChild(this)
+            //重置数据
+            panel.interval.restart()
+            UniltGame.interval.restart()
+            cudeData.interval.removeTimer()
+            Stage.stage.removeChild(cudeData.interval)
+            cudeData._interval = null
+            Stage.stage.addChild(cudeData.interval)
+            cudeData.interval.createRandOneCude()
+        }
+
+        //返回主彩单按钮
+        private backMenuBtnFunc(e: egret.Event){
+            this.backMenuBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.backMenuBtnFunc, this)
+            Stage.stage.removeChild(this)
+            //重置数据
+            panel.interval.restart()
+            cudeData.interval.removeTimer()
+            Stage.stage.removeChild(cudeData.interval)
+            cudeData._interval = null
+            let menu: Menu = new Menu()
+            Stage.stage.addChild(menu)
         }
     }
     //面板
@@ -406,124 +685,6 @@ module Play {
         }
     }
 
-    //游戏结束面板
-    export class gameOver extends egret.Sprite {
-        public maskMap: egret.Shape = new egret.Shape() //遮罩
-        public group: egret.Sprite = new egret.Sprite() //组件
-        public restartBtn: egret.Sprite //重新开始按钮
-        public backMenuBtn: egret.Sprite //返回彩单按钮
-        public constructor(){
-            super()
-            this.width = Stage.stageW
-            this.height = Stage.stageH
-            this.init()
-        }
-
-        //初始化
-        private init(): void {
-            this.x = 0
-            this.y = 0
-            this.maskMap.graphics.beginFill( 0x000 )
-            this.maskMap.graphics.drawRect( 0,0,this.width,this.height)
-            this.maskMap.graphics.endFill()
-            this.maskMap.alpha = 0.6
-            this.addChild( this.maskMap )
-
-            //面板
-            this.group.width = 400
-            this.group.height = 400
-            this.group.alpha = 0
-            this.group.x = (Stage.stageW-this.group.width)/2
-            this.group.y = (Stage.stageH-this.group.height)/2
-            this.group.graphics.beginFill(0x3bb4f2)
-            this.group.graphics.drawRoundRect( 0, 0, this.group.width, this.group.height, 10, 10)
-            this.group.graphics.endFill()
-            this.addChild(this.group)
-
-            //重新开始按钮
-            this.restartBtn = Tool.drawBtn(
-                100, this.group.height-170, 200, 60, 10,
-                "重新开始", 0xe0690c, 0xffffff)
-            this.group.addChild(this.restartBtn)
-            this.restartBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.restartFunc, this)
-
-            this.backMenuBtn = Tool.drawBtn(
-                100, this.group.height-90, 200, 60, 10,
-                "返回彩单", 0xe0690c, 0xffffff)
-            this.group.addChild(this.backMenuBtn)
-            this.backMenuBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backMenuBtnFunc, this)
-
-            //分数
-            let scoreTitleText: egret.TextField = new egret.TextField()
-            scoreTitleText.y = 60
-            scoreTitleText.width = this.group.width/2
-            scoreTitleText.text = "分数"
-            scoreTitleText.textAlign = "center"
-            let scoreText: egret.TextField = new egret.TextField()
-            scoreText.width = this.group.width/2
-            scoreText.y = scoreTitleText.y+60
-            scoreText.textAlign = "center"
-            scoreText.text = String(UniltGame.interval.getScore())
-            this.group.addChild(scoreTitleText)
-            this.group.addChild(scoreText)
-
-            //时间
-            let timeTitleText: egret.TextField = new egret.TextField()
-            timeTitleText.x = this.group.width/2
-            timeTitleText.y = 60
-            timeTitleText.width = this.group.width/2
-            timeTitleText.text = "用时"
-            timeTitleText.textAlign = "center"
-            let timeText: egret.TextField = new egret.TextField()
-            timeText.x = this.group.width/2
-            timeText.y = timeTitleText.y+60
-            timeText.width = this.group.width/2
-            timeText.textAlign = "center"
-            timeText.text = String(UniltGame.interval.getNowTime())
-            this.group.addChild(timeTitleText)
-            this.group.addChild(timeText)
-
-            //显示、抖动效果
-            egret.Tween.get(this.group).to({
-                alpha: 1
-            }, 1000, egret.Ease.circOut).wait(600).to({
-                x: this.group.x-10
-            }, 50, egret.Ease.backInOut).to({
-                x: this.group.x
-            }, 50, egret.Ease.backInOut).to({
-                x: this.group.x+10
-            }, 50, egret.Ease.backInOut).to({
-                x: this.group.x
-            }, 50, egret.Ease.backInOut).call((group)=>{
-                egret.Tween.removeTweens(group)
-            }, this, [this.group])
-        }
-
-        //重新开始按钮点击事件
-        private restartFunc(e: egret.Event){
-            this.restartBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.restartFunc, this)
-            Stage.stage.removeChild(this)
-            //重置数据
-            panel.interval.restart()
-            UniltGame.interval.restart()
-            Stage.stage.removeChild(cudeData.interval)
-            cudeData._interval = null
-            Stage.stage.addChild(cudeData.interval)
-            cudeData.interval.createRandOneCude()
-        }
-
-        //返回主彩单按钮
-        private backMenuBtnFunc(e: egret.Event){
-            this.backMenuBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.backMenuBtnFunc, this)
-            Stage.stage.removeChild(this)
-            //重置数据
-            panel.interval.restart()
-            Stage.stage.removeChild(cudeData.interval)
-            cudeData._interval = null
-            let menu: Menu = new Menu()
-            Stage.stage.addChild(menu)
-        }
-    }
     //方块数据
     export class cudeData extends egret.Sprite {
         public cudes: Array<cude> = [] //方块集合
@@ -555,6 +716,7 @@ module Play {
             this.touchEnabled = true
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.touchBegin,this);
             this.addEventListener(egret.TouchEvent.TOUCH_END,this.touchEnd,this);
+            this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchTap,this);
             //按键事件侦听
             window.addEventListener('keydown', (e) => {
                 switch (e.keyCode){
@@ -580,12 +742,39 @@ module Play {
             //速度时间
             this.speedTimer = new egret.Timer(this.nowSpeed, 0);
             this.speedTimer.addEventListener(egret.TimerEvent.TIMER,this.speedTimerFunc,this);
-            this.speedTimer.start();
 
             //游戏时间
             this.gameTimer = new egret.Timer(1000, 0);
             this.gameTimer.addEventListener(egret.TimerEvent.TIMER,this.gameTimerFunc,this);
-            this.gameTimer.start();
+
+            this.startTimer()
+        }
+
+        /**
+         * 移除计时器
+         */
+        public removeTimer(): void {
+            this.speedTimer.removeEventListener(egret.TimerEvent.TIMER,this.speedTimerFunc,this)
+            this.gameTimer.removeEventListener(egret.TimerEvent.TIMER,this.gameTimerFunc,this);
+            this.removeEventListener(egret.TouchEvent.TOUCH_BEGIN,this.touchBegin,this);
+            this.removeEventListener(egret.TouchEvent.TOUCH_END,this.touchEnd,this);
+            this.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.touchTap,this);
+        }
+
+        /**
+         * 计时器开始
+         */
+        public startTimer(): void {
+            this.speedTimer.start()
+            this.gameTimer.start()
+        }
+
+        /**
+         * 停止计时器
+         */
+        public stopTimer(): void {
+            this.speedTimer.stop()
+            this.gameTimer.stop()
         }
 
         /**
@@ -623,6 +812,19 @@ module Play {
             this.isTouch = false
         }
 
+        private touchTapCount: number = 0 //点击次数
+        //双击暂停
+        private touchTap(e: egret.TouchEvent): void {
+            if(this.touchTapCount < 1){
+                this.touchTapCount++
+            }else {
+                this.KeySpace()
+            }
+            egret.setTimeout(() => {
+                this.touchTapCount = 0
+            }, this, 500)
+        }
+
         /**
          * 速度回调函数
          * @returns {boolean}
@@ -652,10 +854,10 @@ module Play {
                 }
             }else{
                 if(this.isGameOVer()){
-                    this.speedTimer.stop()
-                    this.gameTimer.stop()
+                    this.stopTimer()
                     let gameOverMap: gameOver = new gameOver()
                     Stage.stage.addChild(gameOverMap)
+                    return
                 }
                 cudeData.interval.createRandOneCude() //创建一个类型方块组
                 this.isMove = true
@@ -678,7 +880,7 @@ module Play {
         private isGameOVer(): boolean {
             let cudes: Array<cude> = this.ArrSortAsc(this.cudes)
             if(cudes[0].posY <= 0){
-                Uilt.Game.interval.setGameStatus(GameStatus.Died)
+                UniltGame.interval.setGameStatus(GameStatus.Died)
                 return true
             }
             return false
@@ -727,14 +929,14 @@ module Play {
          */
         private KeyUp(): void{
             //如果游戏状态不为开始/运行状态则直接返回
-            if(UniltGame.interval.getGameStatus() !== GameStatus.Start) return;
+            if(UniltGame.interval.getGameStatus() !== GameStatus.Start || !this.canDown()) return;
             if(this.nowCudeType === cudeType.Type1 || this.nowCudeType === cudeType.Type0) return;
             let canRotate: boolean = true,
                 newPosXy: Array<cudePosXY> = []
             for(let i = 0; i < this.nowCude.length; i++){
                 let newXy = this.rotatePoint(this.nowCude[2], this.nowCude[i])
-                if(this.isOverGrid(newXy.posX, KeyCode.KeyLeft) ||
-                    this.isOverGrid(newXy.posX, KeyCode.KeyRight) ||
+                if(this.isOverGrid(newXy.posX-1, KeyCode.KeyLeft) ||
+                    this.isOverGrid(newXy.posX+1, KeyCode.KeyRight) ||
                     this.isOverGrid(newXy.posY, KeyCode.KeyDown)
                 ){
                     canRotate = false
@@ -873,11 +1075,10 @@ module Play {
         private KeySpace(){
             //如果游戏的状态为开始/运行的状态，则暂停
             if(UniltGame.interval.getGameStatus() === GameStatus.Start){
+                this.stopTimer()
                 UniltGame.interval.setGameStatus(GameStatus.Stop)
-            }
-            //如果游戏的状态为暂时则切换到开始/运行的状态
-            else if(UniltGame.interval.getGameStatus() === GameStatus.Stop){
-                UniltGame.interval.setGameStatus(GameStatus.Start)
+                let gameStopMap: gameStop = new gameStop()
+                Stage.stage.addChild(gameStopMap)
             }
         }
 
