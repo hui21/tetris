@@ -21,8 +21,6 @@ var Play;
         __extends(Game, _super);
         function Game() {
             var _this = _super.call(this) || this;
-            _this.Score = 0; //分数
-            _this.Level = 1; //关卡
             _this.Init();
             return _this;
         }
@@ -169,7 +167,7 @@ var Play;
          * 关于我们
          */
         Menu.prototype.aboutBtnFunc = function () {
-            var text = "关于游戏\r\n\r\n" +
+            var text = "关于游戏\r\n\r\n" + "" +
                 "作者：听风              \r\n" +
                 "QQ：3123118153\r\n\r\n" +
                 "-----------------完成于2017年09月22日";
@@ -807,7 +805,6 @@ var Play;
         //双击暂停
         cudeData.prototype.touchTap = function (e) {
             var _this = this;
-            console.log(this.touchTapCount);
             if (this.touchTapCount < 1) {
                 this.touchTapCount++;
             }
@@ -816,7 +813,6 @@ var Play;
             }
             egret.setTimeout(function () {
                 _this.touchTapCount = 0;
-                console.log(0);
             }, this, 500);
         };
         /**

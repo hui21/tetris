@@ -7,13 +7,9 @@ module Play {
     import GameStatus = Uilt.GameStatus;
     import Tool = Uilt.Tool;
     import AnchorUtils = Uilt.AnchorUtils;
-    import Panel = eui.Panel;
     //游戏开始菜单页面和基础游戏信息
     export class Game extends egret.Sprite {
-        private Score: number = 0;//分数
-        private Level: number = 1;//关卡
-        public menuTween: egret.tween.TweenGroup;//菜单动画
-        public startBtn: eui.BitmapLabel;//点击按钮
+        public startBtn: egret.Sprite;//点击按钮
         public static _interval:Game;
         public static get interval(): Game{
             return (this._interval || (this._interval = new Game));
@@ -179,7 +175,7 @@ module Play {
          * 关于我们
          */
         private aboutBtnFunc(): void {
-            let text: string = "关于游戏\r\n\r\n" +
+            let text: string = "关于游戏\r\n\r\n" +"" +
                 "作者：听风              \r\n" +
                 "QQ：3123118153\r\n\r\n" +
                 "-----------------完成于2017年09月22日"
